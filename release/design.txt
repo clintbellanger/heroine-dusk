@@ -1,0 +1,17 @@
+Wood Stick
+Iron Dagger
+Bronze Mace
+Steel Sword
+War Hammer
+Battle Axe
+Great Sword
+
+Serf Rags
+Travel Cloak
+Hide Cuirass
+Studded Leather
+Chain Maille
+Plate Armor
+Wyvern Scale
+
+
