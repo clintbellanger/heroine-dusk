@@ -48,8 +48,218 @@ function action_logic() {
 
   // handle keypress to activate the selected button
 
-  
-  // handle arrowkeys to navigate the select cursor
+  action_logic_moveselect();
+}
+
+/**
+ * Use the arrowkeys to move the selection cursor
+ * The complexity here comes from two factors: 
+ * 1. This menu is used in COMBAT and INFO context, with Fight/Run only being combat buttons
+ * 2. Spells are unlockable (in order) so we have to skip unknown spells
+ */
+function action_logic_moveselect() {
+
+  // skip if no directions are being pressed
+  if (!pressing.up && !pressing.left && !pressing.right && !pressing.down) return;
+
+  // currently on the info button
+  if (action.select_pos == BUTTON_POS_INFO) {
+    if (pressing.down && !input_lock.down) {
+      if (avatar.spellbook >= 1) {
+        action.select_pos = BUTTON_POS_HEAL;
+        input_lock.down = true;
+        redraw = true;
+        return;
+      }
+    }
+  }
+
+  // currently on the attack button
+  else if (action.select_pos == BUTTON_POS_ATTACK) {
+    if (pressing.right && !input_lock.right) {
+      action.select_pos = BUTTON_POS_RUN;
+      input_lock.right = true;
+      redraw = true;
+      return;
+    }
+    else if (pressing.down && !input_lock.down) {
+      if (avatar.spellbook >= 1) {
+        action.select_pos = BUTTON_POS_HEAL;
+        input_lock.down = true;
+        redraw = true;
+        return;
+      }
+    }
+  }
+
+  // currently on the run button
+  else if (action.select_pos == BUTTON_POS_RUN) {
+    if (pressing.left && !input_lock.left) {
+      action.select_pos = BUTTON_POS_ATTACK;
+      input_lock.left = true;
+      redraw = true;
+      return;
+    }
+    else if (pressing.down && !input_lock.down) {
+      if (avatar.spellbook >= 2) {
+        action.select_pos = BUTTON_POS_BURN;
+        input_lock.down = true;
+        redraw = true;
+        return;
+      }
+    }
+
+  }
+
+  // currently on the heal button
+  else if (action.select_pos == BUTTON_POS_HEAL) {
+    if (pressing.up && !input_lock.up) {
+      if (gamestate == STATE_COMBAT) {
+        action.select_pos = BUTTON_POS_ATTACK;
+        input_lock.up = true;
+        redraw = true;
+        return;
+      }
+      else if (gamestate == STATE_INFO) {
+        action.select_pos = BUTTON_POS_INFO;
+        input_lock.up = true;
+        redraw = true;
+        return;
+      }
+    }
+    else if (pressing.right && !input_lock.right) {
+      if (avatar.spellbook >= 2) {
+        action.select_pos = BUTTON_POS_BURN;
+        input_lock.right = true;
+        redraw = true;
+        return;
+      }
+    }
+    else if (pressing.down && !input_lock.down) {
+      if (avatar.spellbook >= 3) {
+        action.select_pos = BUTTON_POS_UNLOCK;
+        input_lock.down = true;
+        redraw = true;
+        return;
+      }
+    }
+  }
+
+  // currently on the burn button
+  else if (action.select_pos == BUTTON_POS_BURN) {
+    if (pressing.up && !input_lock.up) {
+      if (gamestate == STATE_COMBAT) {
+        action.select_pos = BUTTON_POS_RUN;
+        input_lock.up = true;
+        redraw = true;
+        return;
+      }
+      else if (gamestate == STATE_INFO) {
+        action.select_pos = BUTTON_POS_INFO;
+        input_lock.up = true;
+        redraw = true;
+        return;
+      }
+    }
+    else if (pressing.left && !input_lock.left) {
+      action.select_pos = BUTTON_POS_HEAL;
+      input_lock.left = true;
+      redraw = true;
+      return;
+    }
+    else if (pressing.down && !input_lock.down) {
+      if (avatar.spellbook >= 4) {
+        action.select_pos = BUTTON_POS_LIGHT;
+        input_lock.down = true;
+        redraw = true;
+        return;
+      }
+    }
+  }
+
+  // currently on the unlock button
+  else if (action.select_pos == BUTTON_POS_UNLOCK) {
+    if (pressing.up && !input_lock.up) {
+      action.select_pos = BUTTON_POS_HEAL;
+      input_lock.up = true;
+      redraw = true;
+      return;
+    }
+    else if (pressing.right && !input_lock.right) {
+      if (avatar.spellbook >= 4) {
+        action.select_pos = BUTTON_POS_LIGHT;
+        input_lock.right = true;
+        redraw = true;
+        return;
+      }
+    }
+    else if (pressing.down && !input_lock.down) {
+      if (avatar.spellbook >= 5) {
+        action.select_pos = BUTTON_POS_FREEZE;
+        input_lock.down = true;
+        redraw = true;
+        return;
+      }
+    }
+  }
+
+  // currently on the light button
+  else if (action.select_pos == BUTTON_POS_LIGHT) {
+    if (pressing.up && !input_lock.up) {
+      action.select_pos = BUTTON_POS_BURN;
+      input_lock.up = true;
+      redraw = true;
+      return;
+    }
+    else if (pressing.left && !input_lock.left) {
+      action.select_pos = BUTTON_POS_UNLOCK;
+      input_lock.left = true
+      redraw = true;
+      return;
+    }
+    else if (pressing.down && !input_lock.down) {
+      if (avatar.spellbook >= 6) {
+        action.select_pos = BUTTON_POS_REFLECT;
+        input_lock.down = true;
+        redraw = true;
+        return;
+      }
+    }
+  }
+
+  // currently on the freeze button
+  else if (action.select_pos == BUTTON_POS_FREEZE) {
+    if (pressing.up && !input_lock.up) {
+      action.select_pos = BUTTON_POS_UNLOCK;
+      input_lock.up = true;
+      redraw = true;
+      return;
+    }
+    else if (pressing.right && !input_lock.right) {
+      if (avatar.spellbook >= 6) {
+        action.select_pos = BUTTON_POS_REFLECT;
+        input_lock.right = true;
+        redraw = true;
+        return;
+      }
+    }
+  }
+
+  // currently on the reflect button
+  else if (action.select_pos == BUTTON_POS_REFLECT) {
+    if (pressing.up && !input_lock.up) {
+      action.select_pos = BUTTON_POS_LIGHT;
+      input_lock.up = true;
+      redraw = true;
+      return;
+    }
+    else if (pressing.left && !input_lock.left) {
+      action.select_pos = BUTTON_POS_FREEZE;
+      input_lock.left = true
+      redraw = true;
+      return;
+    }
+  }
 
 }
 

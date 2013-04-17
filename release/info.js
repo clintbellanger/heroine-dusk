@@ -60,19 +60,22 @@ function info_button_onload() {info.button_img_loaded = true;}
 /*** Logic Functions **********************/
 function info_logic() {
 
-  // check closing info screen
-  if (pressing.action && !input_lock.action) {
+  // check key to info screen
+  if (pressing.action && !input_lock.action && action.select_pos == BUTTON_POS_INFO) {
     gamestate = STATE_EXPLORE;
 	input_lock.action = true;	
 	redraw = true;
   }
 
-  // check closing info screen (mouse)
+  // check click to close info screen
   if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, clickarea_info)) {
     gamestate = STATE_EXPLORE;
 	input_lock.mouse = true;
 	redraw = true;  
   }
+
+  // check select movement for spell actions
+  action_logic();
 }
 
 /*** Render Functions **********************/
