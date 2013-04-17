@@ -3,6 +3,7 @@
  Display information about the heroine
  */
 
+// consts
 var AVATAR_SPRITE_W = 80;
 var AVATAR_SPRITE_H = 100;
 var AVATAR_DRAW_X = 40;
@@ -10,7 +11,11 @@ var AVATAR_DRAW_Y = 20;
 
 var TYPE_ARMOR = 0;
 var TYPE_WEAPON = 1;
- 
+
+var ICON_SIZE = 16; 
+
+// class info
+
 var info = new Object();
 
 info.avatar_img = new Image();
@@ -18,6 +23,9 @@ info.avatar_img_loaded = false;
 
 info.button_img = new Image();
 info.button_img_loaded = false;
+
+info.spells_img = new Image();
+info.spells_img_loaded = false;
 
 info.weapons = new Array();
 info.armors = new Array();
@@ -28,7 +36,8 @@ function info_init() {
   info.avatar_img.onload = function() {info_avatar_onload();};
   info.button_img.src = "images/info_button.png";
   info.button_img.onload = function() {info_button_onload();};
-  
+  info.spells_img.src = "images/spell_buttons.png";
+  info.spells_img.onload = function() {info_spells_onload();};
   
   info.weapons[0] = {"name":"Bare Fists",  "atk_min":1,  "atk_max":4};
   info.weapons[1] = {"name":"Wood Stick",  "atk_min":2,  "atk_max":6};
@@ -53,9 +62,11 @@ function info_init() {
 function info_avatar_onload() {
   info.avatar_img_loaded = true;
 }
-
 function info_button_onload() {
   info.button_img_loaded = true;
+}
+function info_spells_onload() {
+  info.spells_img_loaded = true;
 }
  
 function info_logic() {
@@ -130,14 +141,33 @@ function info_show_stats() {
 
 function info_show_spells() {
 
-  bitfont_render("Spells:", 158, 50, JUSTIFY_RIGHT);
+  if (!info.spells_img_loaded) return;
+
+  if (gamestate == STATE_INFO) {
+    bitfont_render("Spells:", 158, 50, JUSTIFY_RIGHT);
+  }
+
+  if (avatar.spellbook >= 1) info_show_spell_button(2, 122, 62);
+  if (avatar.spellbook >= 2) info_show_spell_button(3, 142, 62);
+  if (avatar.spellbook >= 3) info_show_spell_button(4, 122, 82);
+  if (avatar.spellbook >= 4) info_show_spell_button(5, 142, 82);
+  if (avatar.spellbook >= 5) info_show_spell_button(6, 122, 102);
+  if (avatar.spellbook >= 6) info_show_spell_button(7, 142, 102);
   
-  if (avatar.spellbook >= 1) bitfont_render("Heal", 158, 60, JUSTIFY_RIGHT); 
-  if (avatar.spellbook >= 2) bitfont_render("Burn", 158, 70, JUSTIFY_RIGHT);
-  if (avatar.spellbook >= 3) bitfont_render("Light", 158, 80, JUSTIFY_RIGHT);
-  if (avatar.spellbook >= 4) bitfont_render("Unlock", 158, 90, JUSTIFY_RIGHT);
-  if (avatar.spellbook >= 5) bitfont_render("Freeze", 158, 100, JUSTIFY_RIGHT);
-  if (avatar.spellbook >= 6) bitfont_render("Reflect", 158, 110, JUSTIFY_RIGHT); 
+}
+
+function info_show_spell_button(id, x, y) {
+  ctx.drawImage(
+    info.spells_img,
+    id * ICON_SIZE,
+    0,
+    ICON_SIZE,
+    ICON_SIZE,	
+    x * SCALE,
+    y * SCALE,
+    ICON_SIZE * SCALE,
+    ICON_SIZE * SCALE
+  );
 }
 
 function info_show_button() {
@@ -155,11 +185,12 @@ function info_show_button() {
     info.button_img,
     button_x,
     0,
-    16,
-    16,	
+    ICON_SIZE,
+    ICON_SIZE,	
     142 * SCALE,
     2 * SCALE,
-    16 * SCALE,
-    16 * SCALE
+    ICON_SIZE * SCALE,
+    ICON_SIZE * SCALE
   );
 }
+

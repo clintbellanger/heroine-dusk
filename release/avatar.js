@@ -10,8 +10,8 @@ avatar.y = 1;
 avatar.facing = "north";
 
 // equipment info
-avatar.weapon = 1;
-avatar.armor = 1;
+avatar.weapon = 4;
+avatar.armor = 3;
 
 // status info
 avatar.hp = 25;
@@ -29,7 +29,7 @@ avatar.bonus_def = 0;
 
 // quest progress
 avatar.quest = 0;
-avatar.spellbook = 1;
+avatar.spellbook = 6;
 
 
 //---- Public Functions ---------------------------------------------
