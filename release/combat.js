@@ -314,6 +314,7 @@ function combat_render_defeat() {
   combat_render_defense_log();
   info_render_hpmp();
   bitfont_render("You are defeated...", 158, 110, JUSTIFY_RIGHT);
+  bitfont_render("Final Gold: " + avatar.gold, 158, 100, JUSTIFY_RIGHT);
 }
 
 function combat_render_offense_log() {
