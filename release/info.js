@@ -8,36 +8,29 @@ var AVATAR_SPRITE_W = 80;
 var AVATAR_SPRITE_H = 100;
 var AVATAR_DRAW_X = 40;
 var AVATAR_DRAW_Y = 20;
-
 var TYPE_ARMOR = 0;
 var TYPE_WEAPON = 1;
 
-var ICON_SIZE = 16; 
 
 // class info
-
 var info = new Object();
 
+// image setup
 info.avatar_img = new Image();
 info.avatar_img_loaded = false;
-
 info.button_img = new Image();
 info.button_img_loaded = false;
-
-info.spells_img = new Image();
-info.spells_img_loaded = false;
 
 info.weapons = new Array();
 info.armors = new Array();
 
-
+/*** Initialize **********************/
 function info_init() {
+
   info.avatar_img.src = "images/heroine.png";
   info.avatar_img.onload = function() {info_avatar_onload();};
   info.button_img.src = "images/info_button.png";
   info.button_img.onload = function() {info_button_onload();};
-  info.spells_img.src = "images/spell_buttons.png";
-  info.spells_img.onload = function() {info_spells_onload();};
   
   info.weapons[0] = {"name":"Bare Fists",  "atk_min":1,  "atk_max":4};
   info.weapons[1] = {"name":"Wood Stick",  "atk_min":2,  "atk_max":6};
@@ -59,16 +52,12 @@ function info_init() {
     
 }
 
-function info_avatar_onload() {
-  info.avatar_img_loaded = true;
-}
-function info_button_onload() {
-  info.button_img_loaded = true;
-}
-function info_spells_onload() {
-  info.spells_img_loaded = true;
-}
- 
+/*** Image loading Helpers **********************/
+function info_avatar_onload() {info.avatar_img_loaded = true;}
+function info_button_onload() {info.button_img_loaded = true;}
+
+
+/*** Logic Functions **********************/
 function info_logic() {
 
   // check closing info screen
@@ -86,12 +75,20 @@ function info_logic() {
   }
 }
 
-
+/*** Render Functions **********************/
 function info_render() {
 
-    tileset_background();
-    mazemap_render(avatar.x, avatar.y, avatar.facing);
-	info_render_equipment();
+  tileset_background();
+  mazemap_render(avatar.x, avatar.y, avatar.facing);
+ 
+  bitfont_render("INFO", 80, 2, JUSTIFY_CENTER);
+  bitfont_render("Spells:", 158, 50, JUSTIFY_RIGHT);
+
+  info_render_equipment();
+  info_render_button();
+  info_render_itemlist();
+  info_render_hpmp();
+  action_render();
 
 }
 
@@ -104,11 +101,6 @@ function info_render_equipment() {
   // render worn equipment  
   info_render_equiplayer(avatar.armor, TYPE_ARMOR);
   info_render_equiplayer(avatar.weapon, TYPE_WEAPON);
-  
-  info_show_stats();
-  info_show_spells();
-  
-  info_show_button();
   
 }
 
@@ -127,50 +119,18 @@ function info_render_equiplayer(itemtier, itemtype) {
   );
 }
 
-function info_show_stats() {
-  bitfont_render("INFO", 80, 2, JUSTIFY_CENTER);
+function info_render_itemlist() {
   bitfont_render(info.weapons[avatar.weapon].name, 2, 15, JUSTIFY_LEFT);
   bitfont_render(info.armors[avatar.armor].name, 2, 25, JUSTIFY_LEFT);
-  
   bitfont_render("Gold: " + avatar.gold, 2, 35, JUSTIFY_LEFT);
- 
+}
+
+function info_render_hpmp() { 
   bitfont_render("HP: " + avatar.hp + "/" + avatar.max_hp, 2, 100, JUSTIFY_LEFT);
   bitfont_render("MP: " + avatar.mp + "/" + avatar.max_mp, 2, 110, JUSTIFY_LEFT); 
- 
 }
 
-function info_show_spells() {
-
-  if (!info.spells_img_loaded) return;
-
-  if (gamestate == STATE_INFO) {
-    bitfont_render("Spells:", 158, 50, JUSTIFY_RIGHT);
-  }
-
-  if (avatar.spellbook >= 1) info_show_spell_button(2, 122, 62);
-  if (avatar.spellbook >= 2) info_show_spell_button(3, 142, 62);
-  if (avatar.spellbook >= 3) info_show_spell_button(4, 122, 82);
-  if (avatar.spellbook >= 4) info_show_spell_button(5, 142, 82);
-  if (avatar.spellbook >= 5) info_show_spell_button(6, 122, 102);
-  if (avatar.spellbook >= 6) info_show_spell_button(7, 142, 102);
-  
-}
-
-function info_show_spell_button(id, x, y) {
-  ctx.drawImage(
-    info.spells_img,
-    id * ICON_SIZE,
-    0,
-    ICON_SIZE,
-    ICON_SIZE,	
-    x * SCALE,
-    y * SCALE,
-    ICON_SIZE * SCALE,
-    ICON_SIZE * SCALE
-  );
-}
-
-function info_show_button() {
+function info_render_button() {
 
   if (!info.button_img_loaded) return;
   
@@ -178,19 +138,20 @@ function info_show_button() {
   
   // show button up on explore, down on info, and hidden any other state
   if (gamestate == STATE_EXPLORE) button_x = 0;
-  else if (gamestate == STATE_INFO) button_x = 16;
+  else if (gamestate == STATE_INFO) button_x = BUTTON_SIZE;
   else return;
   
   ctx.drawImage(
     info.button_img,
     button_x,
     0,
-    ICON_SIZE,
-    ICON_SIZE,	
-    142 * SCALE,
-    2 * SCALE,
-    ICON_SIZE * SCALE,
-    ICON_SIZE * SCALE
+    BUTTON_SIZE,
+    BUTTON_SIZE,	
+    (BUTTON_POS_INFO.x + BUTTON_OFFSET) * SCALE,
+    (BUTTON_POS_INFO.y + BUTTON_OFFSET) * SCALE,
+    BUTTON_SIZE * SCALE,
+    BUTTON_SIZE * SCALE
   );
 }
+
 

@@ -17,13 +17,15 @@ function explore_logic() {
     gamestate = STATE_INFO;
 	input_lock.action = true;
 	redraw = true;
+    action.select_pos = BUTTON_POS_INFO;
   }
   
   // check opening info screen (mouse)
   if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, clickarea_info)) {
     gamestate = STATE_INFO;
 	input_lock.mouse = true;
-	redraw = true;  
+	redraw = true;
+    action.select_pos = BUTTON_POS_INFO;
   }
 
 }
@@ -38,6 +40,6 @@ function explore_render() {
     // direction
     bitfont_render(avatar.facing, 80, 2, JUSTIFY_CENTER);
 	
-	info_show_button();
+	info_render_button();
 
 }
