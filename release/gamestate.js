@@ -18,7 +18,10 @@ function gamestate_logic() {
   }
   else if (gamestate == STATE_INFO) {
     info_logic();
-  }  
+  }
+  else if (gamestate == STATE_COMBAT) {
+    combat_logic();
+  }
   
 }
 
@@ -29,6 +32,9 @@ function gamestate_render() {
   }
   else if (gamestate == STATE_INFO) {
     info_render();
+  }
+  else if (gamestate == STATE_COMBAT) {
+    combat_render();
   }
 
 }

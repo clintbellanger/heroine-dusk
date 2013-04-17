@@ -2,6 +2,11 @@
  Exploration game state
  
  */
+
+var explore = new Object();
+explore.encounter_chance = 0;
+explore.encounter_increment = .05;
+explore.encounter_max = .30;
  
 /**
  * Exploration
@@ -10,7 +15,24 @@
  * and completed states usually return here.
  */
 function explore_logic() {
+
   avatar_explore();
+
+  // check random encounter
+  if (avatar.moved) {
+
+    if (Math.random() < explore.encounter_chance) {
+      explore.encounter_chance = 0.0;
+      gamestate = STATE_COMBAT;
+      action.select_pos = BUTTON_POS_ATTACK;
+      combat.intro_timer = COMBAT_INTRO_DELAY;
+      return;
+    }
+    else {
+      explore.encounter_chance += explore.encounter_increment;
+      explore.encounter_chance = Math.min(explore.encounter_chance, explore.encounter_max);
+    }
+  }
   
   // check opening info screen (keyboard)
   if (pressing.action && !input_lock.action) {
@@ -18,14 +40,16 @@ function explore_logic() {
 	input_lock.action = true;
 	redraw = true;
     action.select_pos = BUTTON_POS_INFO;
+    return;
   }
   
   // check opening info screen (mouse)
-  if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, clickarea_info)) {
+  if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, BUTTON_POS_INFO)) {
     gamestate = STATE_INFO;
 	input_lock.mouse = true;
 	redraw = true;
     action.select_pos = BUTTON_POS_INFO;
+    return;
   }
 
 }

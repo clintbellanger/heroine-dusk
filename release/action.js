@@ -6,15 +6,15 @@ var BUTTON_SIZE = 16;
 var SELECT_SIZE = 20;
 var BUTTON_OFFSET = 2;
 
-var BUTTON_POS_INFO = {x:140, y:0};
-var BUTTON_POS_ATTACK = {x:120, y:30};
-var BUTTON_POS_RUN = {x:140, y:30};
-var BUTTON_POS_HEAL = {x:120, y:60};
-var BUTTON_POS_BURN = {x:140, y:60};
-var BUTTON_POS_UNLOCK = {x:120, y:80};
-var BUTTON_POS_LIGHT = {x:140, y:80};
-var BUTTON_POS_FREEZE = {x:120, y:100};
-var BUTTON_POS_REFLECT = {x:140, y:100};
+var BUTTON_POS_INFO = {x:140, y:0, w:20, h:20};
+var BUTTON_POS_ATTACK = {x:120, y:30, w:20, h:20};
+var BUTTON_POS_RUN = {x:140, y:30, w:20, h:20};
+var BUTTON_POS_HEAL = {x:120, y:60, w:20, h:20};
+var BUTTON_POS_BURN = {x:140, y:60, w:20, h:20};
+var BUTTON_POS_UNLOCK = {x:120, y:80, w:20, h:20};
+var BUTTON_POS_LIGHT = {x:140, y:80, w:20, h:20};
+var BUTTON_POS_FREEZE = {x:120, y:100, w:20, h:20};
+var BUTTON_POS_REFLECT = {x:140, y:100, w:20, h:20};
 
 
 var action = new Object();
@@ -31,9 +31,9 @@ action.select_pos = BUTTON_POS_INFO;
 /**** Initialize ***************/
 function action_init() {
 
-  action.button_img.src = "images/action_buttons.png";
+  action.button_img.src = "images/interface/action_buttons.png";
   action.button_img.onload = function() {action_button_onload();};
-  action.select_img.src = "images/select.png";
+  action.select_img.src = "images/interface/select.png";
   action.select_img.onload = function() {action_select_onload();};
 }
 
@@ -41,14 +41,27 @@ function action_button_onload() {action.button_img_loaded = true;}
 function action_select_onload() {action.select_img_loaded = true;}
 
 /**** Logic functions ***************/
+
 function action_logic() {
-
-  // handle clicking on a button
-
-
-  // handle keypress to activate the selected button
-
   action_logic_moveselect();
+}
+
+// check an action by the button location
+function action_checkuse(check_pos) {
+
+  // option 1: mouse click
+  if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, check_pos)) {
+	input_lock.mouse = true;
+    return true;
+  }
+
+  // option 2: action button
+  if (pressing.action && !input_lock.action && action.select_pos == check_pos) {
+    input_lock.action = true;
+    return true;
+  }
+
+  return false;
 }
 
 /**

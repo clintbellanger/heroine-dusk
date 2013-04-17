@@ -8,6 +8,7 @@ var avatar = new Object();
 avatar.x = 2;
 avatar.y = 1;
 avatar.facing = "north";
+avatar.moved = false;
 
 // equipment info
 avatar.weapon = 4;
@@ -35,7 +36,8 @@ avatar.spellbook = 6;
 //---- Public Functions ---------------------------------------------
 
 function avatar_explore() {
-  
+  avatar.moved = false;
+
   var input_up = pressing.up && !input_lock.up;
   var input_down = pressing.down && !input_lock.down;
   var input_left = pressing.left && !input_lock.left;
@@ -88,6 +90,7 @@ function avatar_move(dx,dy) {
     avatar.x += dx;
 	avatar.y += dy;
 	redraw = true;
+    avatar.moved = true;
   }
 }
 
@@ -106,3 +109,4 @@ function avatar_turn_right() {
   else if (avatar.facing == "west") avatar.facing = "north";
   redraw = true;
 }
+

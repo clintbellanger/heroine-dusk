@@ -27,9 +27,9 @@ info.armors = new Array();
 /*** Initialize **********************/
 function info_init() {
 
-  info.avatar_img.src = "images/heroine.png";
+  info.avatar_img.src = "images/interface/heroine.png";
   info.avatar_img.onload = function() {info_avatar_onload();};
-  info.button_img.src = "images/info_button.png";
+  info.button_img.src = "images/interface/info_button.png";
   info.button_img.onload = function() {info_button_onload();};
   
   info.weapons[0] = {"name":"Bare Fists",  "atk_min":1,  "atk_max":4};
@@ -68,7 +68,7 @@ function info_logic() {
   }
 
   // check click to close info screen
-  if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, clickarea_info)) {
+  if (pressing.mouse && !input_lock.mouse && isWithin(mouse_pos, BUTTON_POS_INFO)) {
     gamestate = STATE_EXPLORE;
 	input_lock.mouse = true;
 	redraw = true;  

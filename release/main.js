@@ -64,5 +64,7 @@ function init() {
   bitfont_init();
   action_init();
   info_init();
+  enemy_init();
 
 }
+

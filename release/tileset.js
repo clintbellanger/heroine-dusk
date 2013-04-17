@@ -42,24 +42,24 @@ function tileset_init() {
     tileset.img[i] = new Image();
   }
   tileset.background = new Image();
-  tileset.background.src = "images/nightsky.png";
+  tileset.background.src = "images/backgrounds/nightsky.png";
   tileset.background.onload = function() {tileset_onload();};
 
   tileset.walkable[0] = false;
   
-  tileset.img[1].src = "images/dungeon_floor.png";
+  tileset.img[1].src = "images/tiles/dungeon_floor.png";
   tileset.img[1].onload = function() {tileset_onload();};
   tileset.walkable[1] = true;
   
-  tileset.img[2].src = "images/dungeon_wall.png";
+  tileset.img[2].src = "images/tiles/dungeon_wall.png";
   tileset.img[2].onload = function() {tileset_onload();};
   tileset.walkable[2] = false;
 
-  tileset.img[3].src = "images/dungeon_door.png";
+  tileset.img[3].src = "images/tiles/dungeon_door.png";
   tileset.img[3].onload = function() {tileset_onload();};
   tileset.walkable[3] = false;
 
-  tileset.img[4].src = "images/pillar_exterior.png";
+  tileset.img[4].src = "images/tiles/pillar_exterior.png";
   tileset.img[4].onload = function() {tileset_onload();};
   tileset.walkable[4] = false;
   

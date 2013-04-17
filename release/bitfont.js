@@ -97,7 +97,7 @@ bitfont.glyph_x["}"] = 501; bitfont.glyph_w["}"] = 5;
 bitfont.glyph_x["~"] = 507; bitfont.glyph_w["~"] = 9;
 
 function bitfont_init() {
-  bitfont.img.src = "images/boxy_bold.png";
+  bitfont.img.src = "images/interface/boxy_bold.png";
   bitfont.img.onload = function() {bitfont_onload();};
 }
 
