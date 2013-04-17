@@ -23,7 +23,7 @@ function enemy_init() {
   enemy.img[ENEMY_SKELETON].src = "images/enemies/skeleton.png";
   enemy.img[ENEMY_SKELETON].onload = function() {enemy_onload();};
 
-  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton"};
+  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:15, atk_min:5, atk_max:12, gold_min:1, gold_max:4};
 }
 
 function enemy_onload() {

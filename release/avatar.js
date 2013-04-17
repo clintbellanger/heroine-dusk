@@ -30,7 +30,7 @@ avatar.bonus_def = 0;
 
 // quest progress
 avatar.quest = 0;
-avatar.spellbook = 6;
+avatar.spellbook = 2;
 
 
 //---- Public Functions ---------------------------------------------

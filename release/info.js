@@ -24,6 +24,9 @@ info.button_img_loaded = false;
 info.weapons = new Array();
 info.armors = new Array();
 
+info.power_action = "";
+info.power_result = "";
+
 /*** Initialize **********************/
 function info_init() {
 
@@ -76,6 +79,18 @@ function info_logic() {
 
   // check select movement for spell actions
   action_logic();
+  
+  // check power usage
+  
+  if (action_checkuse(BUTTON_POS_HEAL) && avatar.mp > 0 && avatar.spellbook >= 1) {
+    power_heal();
+	redraw = true;
+  }  
+}
+
+function info_clear_messages() {
+  info.power_action = "";
+  info.power_result = "";
 }
 
 /*** Render Functions **********************/
@@ -92,6 +107,8 @@ function info_render() {
   info_render_itemlist();
   info_render_hpmp();
   action_render();
+  
+  info_render_messages();
 
 }
 
@@ -157,4 +174,11 @@ function info_render_button() {
   );
 }
 
-
+function info_render_messages() {
+  if (info.power_action != "") {
+    bitfont_render(info.power_action, 2, 70, JUSTIFY_LEFT);
+  }
+  if (info.power_result != "") {
+    bitfont_render(info.power_result, 2, 80, JUSTIFY_LEFT);
+  }
+}

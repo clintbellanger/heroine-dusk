@@ -13,29 +13,31 @@ var gamestate = STATE_EXPLORE;
 
 function gamestate_logic() {
 
-  if (gamestate == STATE_EXPLORE) {
-    explore_logic();
-  }
-  else if (gamestate == STATE_INFO) {
-    info_logic();
-  }
-  else if (gamestate == STATE_COMBAT) {
-    combat_logic();
-  }
-  
+  switch(gamestate) {
+    case STATE_EXPLORE:
+	  explore_logic();
+	  break;
+	case STATE_INFO:
+	  info_logic();
+	  break;
+	case STATE_COMBAT:
+	  combat_logic();
+	  break;
+  } 
 }
 
 function gamestate_render() {
 
-  if (gamestate == STATE_EXPLORE) {
-    explore_render();  
+  switch(gamestate) {
+    case STATE_EXPLORE:
+	  explore_render();
+	  break;
+	case STATE_INFO:
+	  info_render();
+	  break;
+	case STATE_COMBAT:
+	  combat_render();
+	  break;
   }
-  else if (gamestate == STATE_INFO) {
-    info_render();
-  }
-  else if (gamestate == STATE_COMBAT) {
-    combat_render();
-  }
-
 }
 

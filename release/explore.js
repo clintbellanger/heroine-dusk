@@ -25,7 +25,9 @@ function explore_logic() {
       explore.encounter_chance = 0.0;
       gamestate = STATE_COMBAT;
       action.select_pos = BUTTON_POS_ATTACK;
-      combat.intro_timer = COMBAT_INTRO_DELAY;
+      combat.timer = COMBAT_INTRO_DELAY;
+	  combat.phase = COMBAT_PHASE_INTRO;
+	  combat_set_enemy(ENEMY_SKELETON);
       return;
     }
     else {
@@ -40,6 +42,7 @@ function explore_logic() {
 	input_lock.action = true;
 	redraw = true;
     action.select_pos = BUTTON_POS_INFO;
+	info_clear_messages();
     return;
   }
   
@@ -49,6 +52,7 @@ function explore_logic() {
 	input_lock.mouse = true;
 	redraw = true;
     action.select_pos = BUTTON_POS_INFO;
+	info_clear_messages();
     return;
   }
 

@@ -44,7 +44,8 @@ function init() {
 
   ctx.imageSmoothingEnabled = false;
   ctx.webkitImageSmoothingEnabled = false;
-  ctx.mozImageSmoothingEnabled = false;  
+  ctx.mozImageSmoothingEnabled = false;
+  ctx.oImageSmoothingEnabled = false;  
   
   if (window.addEventListener) {
     window.addEventListener('keydown', handleKeyDown, true);
@@ -65,6 +66,7 @@ function init() {
   action_init();
   info_init();
   enemy_init();
+  combat_init();
 
 }
 
