@@ -3,7 +3,7 @@
 
  */
 
-COMBAT_INTRO_DELAY = 60;
+COMBAT_INTRO_DELAY = 30;
 
 var combat = new Object();
 
@@ -14,7 +14,13 @@ function combat_logic() {
   
   if (combat.intro_timer > 0) {
     combat.intro_timer--;
-    if (combat.intro_timer == 0) redraw = true;
+
+    //tileset.render_offset.x = Math.round(Math.random() * 4) - 2;
+    //tileset.render_offset.y = Math.round(Math.random() * 4) - 2;
+
+    if (combat.intro_timer == 0) {
+      redraw = true;
+    }
     return;
   }
 
@@ -39,9 +45,11 @@ function combat_render() {
   enemy_render(combat.enemy);
   bitfont_render(enemy.stats[combat.enemy].name, 80, 2, JUSTIFY_CENTER);
 
-  if (combat.intro_timer == 0) {
-    info_render_hpmp();
-    action_render();
-  }
+  if (combat.intro_timer > 0) return;
+
+  info_render_hpmp();
+  action_render();
+
+
 }
 

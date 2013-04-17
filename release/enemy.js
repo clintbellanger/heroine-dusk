@@ -13,6 +13,7 @@ enemy.load_counter = 0;
 enemy.img = new Array();
 enemy.img_loaded = false;
 enemy.stats = new Array();
+enemy.render_offset = {x:0, y:0};
 
 function enemy_init() {
   for (i=0; i<ENEMY_COUNT; i++) {
@@ -40,8 +41,8 @@ function enemy_render(enemy_id) {
     0,
     160,
     120,
-    0,
-    0,
+    enemy.render_offset.x * SCALE,
+    enemy.render_offset.y * SCALE,
     160 * SCALE,
     120 * SCALE
   );

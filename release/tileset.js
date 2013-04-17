@@ -8,6 +8,7 @@ var tileset = new Object();
 tileset.img = new Array();
 tileset.walkable = new Array();
 tileset.background = new Image();
+tileset.render_offset = {x:0, y:0};
 
 // image loader progress
 tileset.load_counter = 0;
@@ -86,8 +87,8 @@ function tileset_render(tile_id, position) {
 	tileset.draw_area[position].src_y,
 	tileset.draw_area[position].width,
 	tileset.draw_area[position].height,
-	tileset.draw_area[position].dest_x * SCALE,
-	tileset.draw_area[position].dest_y * SCALE,
+	(tileset.draw_area[position].dest_x + tileset.render_offset.x) * SCALE,
+	(tileset.draw_area[position].dest_y + tileset.render_offset.y) * SCALE,
 	tileset.draw_area[position].width * SCALE,
 	tileset.draw_area[position].height * SCALE
   );
