@@ -62,6 +62,7 @@ function init() {
   
   // initialize all game units
   tileset_init();
+  mazemap_init();
   bitfont_init();
   action_init();
   info_init();

@@ -7,6 +7,7 @@ var explore = new Object();
 explore.encounter_chance = 0;
 explore.encounter_increment = .05;
 explore.encounter_max = .30;
+explore.message = "";
  
 /**
  * Exploration
@@ -15,9 +16,22 @@ explore.encounter_max = .30;
  * and completed states usually return here.
  */
 function explore_logic() {
-
+  explore.message = "";
+  
   avatar_explore();
 
+  // check map exit
+  if (avatar.moved) {
+    if (mazemap_check_exit()) {
+	
+	  // display the name of the new map
+	  explore.message = atlas.maps[mazemap.current_id].name;
+	  
+	  // don't allow a random encounter when switching maps
+	  return;
+	}
+  }  
+  
   // check random encounter
   if (avatar.moved) {
 
@@ -61,13 +75,19 @@ function explore_logic() {
 
 function explore_render() {
 
-    tileset_background();
-    mazemap_render(avatar.x, avatar.y, avatar.facing);
+  tileset_background();
+  mazemap_render(avatar.x, avatar.y, avatar.facing);
 
-    // HUD elements
-    // direction
-    bitfont_render(avatar.facing, 80, 2, JUSTIFY_CENTER);
+  // HUD elements
+  // direction
+  bitfont_render(avatar.facing, 80, 2, JUSTIFY_CENTER);
 	
-	info_render_button();
+  info_render_button();
 
+  // TEMP: coordinates
+  bitfont_render(avatar.x + "," + avatar.y, 2, 2, JUSTIFY_LEFT);
+  
+  if (explore.message != "") {
+    bitfont_render(explore.message, 80, 100, JUSTIFY_CENTER);
+  }
 }

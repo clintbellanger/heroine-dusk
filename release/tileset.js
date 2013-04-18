@@ -58,7 +58,7 @@ function tileset_init() {
 
   tileset.img[3].src = "images/tiles/dungeon_door.png";
   tileset.img[3].onload = function() {tileset_onload();};
-  tileset.walkable[3] = false;
+  tileset.walkable[3] = true;
 
   tileset.img[4].src = "images/tiles/pillar_exterior.png";
   tileset.img[4].onload = function() {tileset_onload();};

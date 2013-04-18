@@ -1,6 +1,10 @@
 /**
 MazeMap class
 
+MazeMap represents the current active map.
+Atlas, another class, is a collection of all the map data.
+While Atlas is a static collection, MazeMap can be altered by events.
+
 2013 Clint Bellanger
 */
 
@@ -8,6 +12,7 @@ var mazemap = new Object();
 
 //---- Properties ---------------------------------------------------
 
+/*
 mazemap.width = 10;
 mazemap.height = 10;
 
@@ -23,9 +28,13 @@ mazemap.tiles = [
   [2,1,1,1,2,1,1,1,1,2],
   [2,2,2,2,2,2,2,2,2,2]
 ];
-
+*/
 
 //---- Public Functions ---------------------------------------------
+
+function mazemap_init() {
+  mazemap_set(0);
+}
 
 /**
 
@@ -144,4 +153,31 @@ function mazemap_get_tile(pos_x, pos_y) {
     return mazemap.tiles[pos_y][pos_x];
   }
   else return 0;
+}
+
+function mazemap_set(map_id) {
+  mazemap.tiles = atlas.maps[map_id].tiles;
+  mazemap.width = atlas.maps[map_id].width;
+  mazemap.height = atlas.maps[map_id].height;
+  mazemap.current_id = map_id;
+}
+
+/**
+ * Each map in the atlas has a list of exits
+ * If the avatar is on an exit tile, move them to the new map
+ */
+function mazemap_check_exit() {
+  for (var i=0; i<atlas.maps[mazemap.current_id].exits.length; i++) {
+
+    if ((avatar.x == atlas.maps[mazemap.current_id].exits[i].exit_x) &&
+	    (avatar.y == atlas.maps[mazemap.current_id].exits[i].exit_y)) {
+		
+      avatar.x = atlas.maps[mazemap.current_id].exits[i].dest_x;
+      avatar.y = atlas.maps[mazemap.current_id].exits[i].dest_y;
+      mazemap_set(atlas.maps[mazemap.current_id].exits[i].dest_map);
+
+	  return true;
+    }  
+  }
+  return false;
 }
