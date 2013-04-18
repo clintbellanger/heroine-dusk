@@ -10,7 +10,7 @@ var COMBAT_PHASE_DEFENSE = 3;
 var COMBAT_PHASE_VICTORY = 4;
 var COMBAT_PHASE_DEFEAT = 5;
 
-var COMBAT_INTRO_DELAY = 30;
+var COMBAT_INTRO_DELAY = 15;
 
 // object setup
 var combat = new Object();
@@ -270,7 +270,7 @@ function combat_render() {
 function combat_render_intro() {
 
   // TEMP: skip first frame if we want to animate in combat logic()
-  if (combat.timer < 30) enemy_render(combat.enemy.type);
+  if (combat.timer < COMBAT_INTRO_DELAY) enemy_render(combat.enemy.type);
   bitfont_render(enemy.stats[combat.enemy.type].name, 80, 2, JUSTIFY_CENTER);
 }
 
