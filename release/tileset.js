@@ -4,11 +4,25 @@ TileSet class.
 2013 Clint Bellanger
 */
 
+var TILE_COUNT = 5;
+var BACKGROUND_COUNT = 2;
+
 var tileset = new Object();
-tileset.img = new Array();
+tileset.tile_img = new Array();
+tileset.background_img = new Array();
+
 tileset.walkable = new Array();
 tileset.background = new Image();
 tileset.render_offset = {x:0, y:0};
+
+// notice we skip 0 which means "no tile"
+for (i=1; i<=TILE_COUNT; i++) {
+  tileset.tile_img[i] = new Image();
+}
+
+for (i=0; i<BACKGROUND_COUNT; i++) {
+  tileset.background_img[i] = new Image();
+}
 
 // image loader progress
 tileset.load_counter = 0;
@@ -39,41 +53,45 @@ tileset.draw_area = [
 
 function tileset_init() {
 
-  for (i=1; i<=4; i++) {
-    tileset.img[i] = new Image();
-  }
-  tileset.background = new Image();
-  tileset.background.src = "images/backgrounds/nightsky.png";
-  tileset.background.onload = function() {tileset_onload();};
+  // load background images
+  tileset.background_img[0].src = "images/backgrounds/black.png";
+  tileset.background_img[0].onload = function() {tileset_onload();};
+  
+  tileset.background_img[1].src = "images/backgrounds/nightsky.png";
+  tileset.background_img[1].onload = function() {tileset_onload();};
 
   tileset.walkable[0] = false;
   
-  tileset.img[1].src = "images/tiles/dungeon_floor.png";
-  tileset.img[1].onload = function() {tileset_onload();};
+  // load tile images
+  tileset.tile_img[1].src = "images/tiles/dungeon_floor.png";
+  tileset.tile_img[1].onload = function() {tileset_onload();};
   tileset.walkable[1] = true;
   
-  tileset.img[2].src = "images/tiles/dungeon_wall.png";
-  tileset.img[2].onload = function() {tileset_onload();};
+  tileset.tile_img[2].src = "images/tiles/dungeon_wall.png";
+  tileset.tile_img[2].onload = function() {tileset_onload();};
   tileset.walkable[2] = false;
 
-  tileset.img[3].src = "images/tiles/dungeon_door.png";
-  tileset.img[3].onload = function() {tileset_onload();};
+  tileset.tile_img[3].src = "images/tiles/dungeon_door.png";
+  tileset.tile_img[3].onload = function() {tileset_onload();};
   tileset.walkable[3] = true;
 
-  tileset.img[4].src = "images/tiles/pillar_exterior.png";
-  tileset.img[4].onload = function() {tileset_onload();};
+  tileset.tile_img[4].src = "images/tiles/pillar_exterior.png";
+  tileset.tile_img[4].onload = function() {tileset_onload();};
   tileset.walkable[4] = false;
+  
+  tileset.tile_img[5].src = "images/tiles/dungeon_ceiling.png";
+  tileset.tile_img[5].onload = function() {tileset_onload();};
+  tileset.walkable[5] = true;
   
 }
 
 function tileset_onload() {
   tileset.load_counter++;
-  if (tileset.load_counter == 5) redraw = true;
+  if (tileset.load_counter == (TILE_COUNT + BACKGROUND_COUNT)) redraw = true;
 }
 
 function tileset_background() {
- 
-  ctx.drawImage(tileset.background,0,0, 640,480);
+  ctx.drawImage(tileset.background_img[atlas.maps[mazemap.current_id].background],0,0, 640,480);
 }
 
 function tileset_render(tile_id, position) {
@@ -82,7 +100,7 @@ function tileset_render(tile_id, position) {
   if (tile_id == 0) return;
   
   ctx.drawImage(
-    tileset.img[tile_id],
+    tileset.tile_img[tile_id],
 	tileset.draw_area[position].src_x,
 	tileset.draw_area[position].src_y,
 	tileset.draw_area[position].width,

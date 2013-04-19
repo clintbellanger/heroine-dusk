@@ -84,8 +84,8 @@ function explore_render() {
 	
   info_render_button();
 
-  // TEMP: coordinates
-  bitfont_render(avatar.x + "," + avatar.y, 2, 2, JUSTIFY_LEFT);
+  // DEBUG: coordinates
+  // bitfont_render(avatar.x + "," + avatar.y, 2, 2, JUSTIFY_LEFT);
   
   if (explore.message != "") {
     bitfont_render(explore.message, 80, 100, JUSTIFY_CENTER);
