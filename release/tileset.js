@@ -4,7 +4,7 @@ TileSet class.
 2013 Clint Bellanger
 */
 
-var TILE_COUNT = 5;
+var TILE_COUNT = 7;
 var BACKGROUND_COUNT = 2;
 
 var tileset = new Object();
@@ -82,7 +82,14 @@ function tileset_init() {
   tileset.tile_img[5].src = "images/tiles/dungeon_ceiling.png";
   tileset.tile_img[5].onload = function() {tileset_onload();};
   tileset.walkable[5] = true;
+
+  tileset.tile_img[6].src = "images/tiles/grass.png";
+  tileset.tile_img[6].onload = function() {tileset_onload();};
+  tileset.walkable[6] = true;
   
+  tileset.tile_img[7].src = "images/tiles/pillar_interior.png";
+  tileset.tile_img[7].onload = function() {tileset_onload();};
+  tileset.walkable[7] = true;  
 }
 
 function tileset_onload() {

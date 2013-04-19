@@ -5,9 +5,9 @@
 var avatar = new Object();
 
 // location info
-avatar.x = 2;
+avatar.x = 1;
 avatar.y = 1;
-avatar.facing = "north";
+avatar.facing = "south";
 avatar.moved = false;
 
 // equipment info
