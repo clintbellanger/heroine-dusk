@@ -89,7 +89,7 @@ function tileset_init() {
   
   tileset.tile_img[7].src = "images/tiles/pillar_interior.png";
   tileset.tile_img[7].onload = function() {tileset_onload();};
-  tileset.walkable[7] = true;  
+  tileset.walkable[7] = false;  
 }
 
 function tileset_onload() {
