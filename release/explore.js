@@ -40,7 +40,9 @@ function explore_logic() {
   }
 
   // check random encounter
-  if (avatar.moved) {
+
+  var enemy_options = atlas.maps[mazemap.current_id].enemies.length;
+  if (avatar.moved && enemy_options > 0) {
 
     if (Math.random() < explore.encounter_chance) {
       explore.encounter_chance = 0.0;
@@ -48,7 +50,12 @@ function explore_logic() {
       action.select_pos = BUTTON_POS_ATTACK;
       combat.timer = COMBAT_INTRO_DELAY;
 	  combat.phase = COMBAT_PHASE_INTRO;
-	  combat_set_enemy(ENEMY_SKELETON);
+
+      // choose an enemy randomly from the list for this map
+      var enemy_roll = Math.floor(Math.random() * enemy_options);
+      var enemy_id = atlas.maps[mazemap.current_id].enemies[enemy_roll];
+	  combat_set_enemy(enemy_id);
+
       return;
     }
     else {
