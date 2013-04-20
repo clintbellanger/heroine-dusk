@@ -155,6 +155,13 @@ function mazemap_get_tile(pos_x, pos_y) {
   else return 0;
 }
 
+// Note: x,y flipped to ease map making
+function mazemap_set_tile(pos_x, pos_y, tile_id) {
+  if (mazemap_bounds_check(pos_x, pos_y)) {
+    mazemap.tiles[pos_y][pos_x] = tile_id;
+  }
+}
+
 function mazemap_set(map_id) {
   mazemap.tiles = atlas.maps[map_id].tiles;
   mazemap.width = atlas.maps[map_id].width;

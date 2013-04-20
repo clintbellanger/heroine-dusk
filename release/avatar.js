@@ -11,8 +11,8 @@ avatar.facing = "south";
 avatar.moved = false;
 
 // equipment info
-avatar.weapon = 4;
-avatar.armor = 3;
+avatar.weapon = 0;
+avatar.armor = 1;
 
 // status info
 avatar.hp = 25;
@@ -29,8 +29,8 @@ avatar.bonus_atk = 0;
 avatar.bonus_def = 0;
 
 // quest progress
-avatar.quest = 0;
-avatar.spellbook = 2;
+avatar.spellbook = 0;
+avatar.campaign = new Array();
 
 
 //---- Public Functions ---------------------------------------------

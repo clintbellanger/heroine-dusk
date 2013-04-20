@@ -32,6 +32,13 @@ function explore_logic() {
 	}
   }  
   
+  // check special script;
+  if (avatar.moved) {
+    if (mapscript(mazemap.current_id)) {
+      return;
+    }
+  }
+
   // check random encounter
   if (avatar.moved) {
 
