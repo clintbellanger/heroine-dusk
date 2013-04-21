@@ -45,6 +45,9 @@ var ALTCODE_ACTION = 13; // enter
 //---- Input Functions ----------------------------------------------
 
 function handleKeyDown(evt) {
+
+  evt.preventDefault();
+
   if (evt.keyCode == KEYCODE_UP || evt.keyCode == ALTCODE_UP) {
     pressing.up = true;
   }

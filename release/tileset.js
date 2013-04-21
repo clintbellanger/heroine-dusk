@@ -107,7 +107,7 @@ function tileset_onload() {
 }
 
 function tileset_background() {
-  ctx.drawImage(tileset.background_img[atlas.maps[mazemap.current_id].background],0,0, 640,480);
+  ctx.drawImage(tileset.background_img[atlas.maps[mazemap.current_id].background],0,0, 160*SCALE, 120*SCALE);
 }
 
 function tileset_render(tile_id, position) {
