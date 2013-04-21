@@ -182,6 +182,7 @@ function combat_logic_defense() {
     // check for defeated hero
 	if (avatar.hp <= 0) {
 	  combat.phase = COMBAT_PHASE_DEFEAT;
+      avatar_save();
 	  redraw = true;
 	  return;
 	}
@@ -235,6 +236,8 @@ function combat_determine_reward() {
   combat.reward_result = "+" + gold_reward + " Gold!";
   
   avatar.gold += gold_reward;
+  avatar_save();
+
 }
 
 

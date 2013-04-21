@@ -3,37 +3,53 @@
  **/
  
 var avatar = new Object();
-
-// location info
-avatar.x = 1;
-avatar.y = 1;
-avatar.facing = "south";
-avatar.moved = false;
-
-// equipment info
-avatar.weapon = 0;
-avatar.armor = 1;
-
-// status info
-avatar.hp = 25;
-avatar.max_hp = 25;
-avatar.mp = 4;
-avatar.max_mp = 4;
-
-// currency
-avatar.gold = 0;
-
-// bonuses
-// Note that hp_max, mp_max already contain bonuses
-avatar.bonus_atk = 0;
-avatar.bonus_def = 0;
-
-// quest progress
-avatar.spellbook = 0;
 avatar.campaign = new Array();
 
 
 //---- Public Functions ---------------------------------------------
+function avatar_init() {
+
+  // check save games
+  var json_save = getCookie("mazesave");
+  if (json_save != null) {
+    avatar = JSON.parse(json_save);
+
+    if (avatar.hp > 0) {
+      mazemap_set(avatar.map_id);
+    }
+    else {
+      avatar_reset();
+      mazemap_set(avatar.map_id);
+    }
+    return;
+  }
+
+  avatar_reset();
+}
+
+function avatar_save() {
+  var json_save = JSON.stringify(avatar);
+  setCookie("mazesave",json_save,90);
+}
+
+function avatar_reset() {
+  avatar.x = 1;
+  avatar.y = 1;
+  avatar.facing = "south";
+  avatar.moved = false;
+  avatar.map_id = 0;
+  avatar.weapon = 0;
+  avatar.armor = 1;
+  avatar.hp = 25;
+  avatar.max_hp = 25;
+  avatar.mp = 4;
+  avatar.max_mp = 4;
+  avatar.gold = 0;
+  avatar.bonus_atk = 0;
+  avatar.bonus_def = 0;
+  avatar.spellbook = 0;
+  avatar.campaign = new Array();
+}
 
 function avatar_explore() {
   avatar.moved = false;
@@ -91,6 +107,7 @@ function avatar_move(dx,dy) {
 	avatar.y += dy;
 	redraw = true;
     avatar.moved = true;
+    avatar_save();
   }
 }
 
@@ -100,6 +117,8 @@ function avatar_turn_left() {
   else if (avatar.facing == "south") avatar.facing = "east";
   else if (avatar.facing == "east") avatar.facing = "north";
   redraw = true;
+  avatar_save();
+
 }
 
 function avatar_turn_right() {
@@ -108,5 +127,6 @@ function avatar_turn_right() {
   else if (avatar.facing == "south") avatar.facing = "west";
   else if (avatar.facing == "west") avatar.facing = "north";
   redraw = true;
+  avatar_save();
 }
 

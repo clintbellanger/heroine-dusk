@@ -28,6 +28,7 @@ function explore_logic() {
 	  explore.message = atlas.maps[mazemap.current_id].name;
 	  
 	  // don't allow a random encounter when switching maps
+      avatar_save();
 	  return;
 	}
   }  
@@ -35,6 +36,7 @@ function explore_logic() {
   // check special script;
   if (avatar.moved) {
     if (mapscript(mazemap.current_id)) {
+      avatar_save();
       return;
     }
   }
@@ -71,6 +73,7 @@ function explore_logic() {
 	redraw = true;
     action.select_pos = BUTTON_POS_INFO;
 	info_clear_messages();
+
     return;
   }
   

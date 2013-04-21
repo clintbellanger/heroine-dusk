@@ -167,6 +167,12 @@ function mazemap_set(map_id) {
   mazemap.width = atlas.maps[map_id].width;
   mazemap.height = atlas.maps[map_id].height;
   mazemap.current_id = map_id;
+
+  mapscript(map_id);
+
+
+  // for save game info
+  avatar.map_id = map_id;
 }
 
 /**
@@ -188,3 +194,4 @@ function mazemap_check_exit() {
   }
   return false;
 }
+
