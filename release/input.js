@@ -35,45 +35,52 @@ var KEYCODE_LEFT   = 37; // arrow left
 var KEYCODE_RIGHT  = 39; // arrow right
 var KEYCODE_ACTION = 32; // space
 
+// secondary
+var ALTCODE_UP     = 87; // w
+var ALTCODE_DOWN   = 83; // s
+var ALTCODE_LEFT   = 65; // a
+var ALTCODE_RIGHT  = 68; // d
+var ALTCODE_ACTION = 13; // enter
+
 //---- Input Functions ----------------------------------------------
 
 function handleKeyDown(evt) {
-  if (evt.keyCode == KEYCODE_UP) {
+  if (evt.keyCode == KEYCODE_UP || evt.keyCode == ALTCODE_UP) {
     pressing.up = true;
   }
-  else if (evt.keyCode == KEYCODE_DOWN) {
+  else if (evt.keyCode == KEYCODE_DOWN || evt.keyCode == ALTCODE_DOWN) {
     pressing.down = true;
   }
-  else if (evt.keyCode == KEYCODE_LEFT) {
+  else if (evt.keyCode == KEYCODE_LEFT || evt.keyCode == ALTCODE_LEFT) {
     pressing.left = true;
   }
-  else if (evt.keyCode == KEYCODE_RIGHT) {
+  else if (evt.keyCode == KEYCODE_RIGHT || evt.keyCode == ALTCODE_RIGHT) {
     pressing.right = true;
   }
-  else if (evt.keyCode == KEYCODE_ACTION) {
+  else if (evt.keyCode == KEYCODE_ACTION || evt.keyCode == ALTCODE_ACTION) {
     pressing.action = true;
   }
   
 }
 
 function handleKeyUp(evt) {
-  if (evt.keyCode == KEYCODE_UP) {
+  if (evt.keyCode == KEYCODE_UP || evt.keyCode == ALTCODE_UP) {
     pressing.up = false;
 	input_lock.up = false;
   }
-  else if (evt.keyCode == KEYCODE_DOWN) {
+  else if (evt.keyCode == KEYCODE_DOWN || evt.keyCode == ALTCODE_DOWN) {
     pressing.down = false;
 	input_lock.down = false;
   }
-  else if (evt.keyCode == KEYCODE_LEFT) {
+  else if (evt.keyCode == KEYCODE_LEFT || evt.keyCode == ALTCODE_LEFT) {
     pressing.left = false;
 	input_lock.left = false;
   }
-  else if (evt.keyCode == KEYCODE_RIGHT) {
+  else if (evt.keyCode == KEYCODE_RIGHT || evt.keyCode == ALTCODE_RIGHT) {
     pressing.right = false;
 	input_lock.right = false;
   }
-  else if (evt.keyCode == KEYCODE_ACTION) {
+  else if (evt.keyCode == KEYCODE_ACTION || evt.keyCode == ALTCODE_ACTION) {
     pressing.action = false;
 	input_lock.action = false;  
   }
