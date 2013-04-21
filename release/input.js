@@ -67,6 +67,7 @@ function handleKeyDown(evt) {
 }
 
 function handleKeyUp(evt) {
+
   if (evt.keyCode == KEYCODE_UP || evt.keyCode == ALTCODE_UP) {
     pressing.up = false;
 	input_lock.up = false;
@@ -91,6 +92,9 @@ function handleKeyUp(evt) {
 }
 
 function handleMouseDown(evt) {
+
+  evt.preventDefault();
+
   pressing.mouse = true;
   mouse_pos = clickCoord(evt);
 }

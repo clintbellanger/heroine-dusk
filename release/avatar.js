@@ -16,10 +16,11 @@ function avatar_init() {
 
     if (avatar.hp > 0) {
       mazemap_set(avatar.map_id);
-    }
+   }
     else {
       avatar_reset();
       mazemap_set(avatar.map_id);
+ 
     }
     return;
   }

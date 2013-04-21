@@ -6,7 +6,7 @@
 var STATE_EXPLORE = 0;
 var STATE_COMBAT = 1;
 var STATE_INFO = 2;
-var STATE_SHOP = 3;
+var STATE_DIALOG = 3;
 var STATE_SPECIAL = 4; 
  
 var gamestate = STATE_EXPLORE;
@@ -23,6 +23,9 @@ function gamestate_logic() {
 	case STATE_COMBAT:
 	  combat_logic();
 	  break;
+    case STATE_DIALOG:
+      dialog_logic();
+      break;
   } 
 }
 
@@ -38,6 +41,9 @@ function gamestate_render() {
 	case STATE_COMBAT:
 	  combat_render();
 	  break;
+    case STATE_DIALOG:
+      dialog_render();
+      break;
   }
 }
 

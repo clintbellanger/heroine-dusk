@@ -195,3 +195,21 @@ function mazemap_check_exit() {
   return false;
 }
 
+function mazemap_check_shop() {
+  for (var i=0; i<atlas.maps[mazemap.current_id].shops.length; i++) {
+
+    if ((avatar.x == atlas.maps[mazemap.current_id].shops[i].exit_x) &&
+	    (avatar.y == atlas.maps[mazemap.current_id].shops[i].exit_y)) {
+	
+      shop_set(atlas.maps[mazemap.current_id].shops[i].shop_id);
+
+      // put avatar back outside for save purposes
+      avatar.x = shop[dialog.shop_id].exit.x;
+      avatar.y = shop[dialog.shop_id].exit.y;
+
+	  return true;
+    }  
+  }
+  return false;
+}
+

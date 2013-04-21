@@ -63,12 +63,13 @@ function init() {
   // initialize all game units
   tileset_init();
   mazemap_init();
+  info_init();
   avatar_init();
   bitfont_init();
   action_init();
-  info_init();
   enemy_init();
   combat_init();
+  dialog_init();
 
 }
 

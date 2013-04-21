@@ -17,7 +17,7 @@ explore.message = "";
  */
 function explore_logic() {
   explore.message = "";
-  
+
   avatar_explore();
 
   // check map exit
@@ -33,6 +33,16 @@ function explore_logic() {
 	}
   }  
   
+  // check shop
+  if (avatar.moved) {
+    if (mazemap_check_shop()) {
+      gamestate = STATE_DIALOG;
+      redraw = true;
+      avatar_save();
+      return;
+    }
+  }
+
   // check special script;
   if (avatar.moved) {
     if (mapscript(mazemap.current_id)) {
@@ -107,4 +117,5 @@ function explore_render() {
   if (explore.message != "") {
     bitfont_render(explore.message, 80, 100, JUSTIFY_CENTER);
   }
+
 }
