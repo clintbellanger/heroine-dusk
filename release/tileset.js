@@ -4,8 +4,8 @@ TileSet class.
 2013 Clint Bellanger
 */
 
-var TILE_COUNT = 9;
-var BACKGROUND_COUNT = 2;
+var TILE_COUNT = 11;
+var BACKGROUND_COUNT = 3;
 
 var tileset = new Object();
 tileset.tile_img = new Array();
@@ -60,6 +60,10 @@ function tileset_init() {
   tileset.background_img[1].src = "images/backgrounds/nightsky.png";
   tileset.background_img[1].onload = function() {tileset_onload();};
 
+  tileset.background_img[2].src = "images/backgrounds/tempest.png";
+  tileset.background_img[2].onload = function() {tileset_onload();};
+  
+
   tileset.walkable[0] = false;
   
   // load tile images
@@ -99,6 +103,13 @@ function tileset_init() {
   tileset.tile_img[9].onload = function() {tileset_onload();};
   tileset.walkable[9] = true;
 
+  tileset.tile_img[10].src = "images/tiles/medieval_house.png";
+  tileset.tile_img[10].onload = function() {tileset_onload();};
+  tileset.walkable[10] = false;
+  
+  tileset.tile_img[11].src = "images/tiles/medieval_door.png";
+  tileset.tile_img[11].onload = function() {tileset_onload();};
+  tileset.walkable[11] = true;  
 }
 
 function tileset_onload() {

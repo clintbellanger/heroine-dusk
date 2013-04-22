@@ -37,9 +37,9 @@ atlas.maps[1].tiles = [
   [2,2,2,1,1,1,2,2,2],
   [2,6,6,4,1,4,6,6,2],
   [2,6,6,1,1,1,6,6,2],
-  [2,2,6,4,1,4,6,2,2],
-  [2,3,1,1,1,1,1,3,2],
-  [2,2,6,4,1,4,6,2,2],
+  [2,10,6,4,1,4,6,10,2],
+  [2,11,1,1,1,1,1,11,2],
+  [2,10,6,4,1,4,6,10,2],
   [2,6,6,1,1,1,6,6,2],
   [2,6,6,4,1,4,6,6,2],
   [2,2,2,2,3,2,2,2,2]
@@ -63,16 +63,16 @@ atlas.maps[2].tiles = [
 ];
 atlas.maps[2].exits[0] = {exit_x:2, exit_y:2, dest_map:1, dest_x:2, dest_y:6};
 
-atlas.maps[3].name = "Meditation Hall";
+atlas.maps[3].name = "Meditation Point";
 atlas.maps[3].width = 5;
 atlas.maps[3].height = 6;
-atlas.maps[3].background = 0;
+atlas.maps[3].background = 2;
 atlas.maps[3].tiles = [
-  [0,2,2,2,0],
-  [2,2,8,2,2],
-  [2,7,5,7,2],
-  [2,5,5,5,2],
-  [2,7,5,7,2],  
+  [0,0,0,0,0],
+  [0,0,9,0,0],
+  [0,7,5,7,0],
+  [0,5,5,5,0],
+  [0,7,5,7,0],
   [2,2,3,2,2]
 ];
 atlas.maps[3].exits[0] = {exit_x:2, exit_y:5, dest_map:1, dest_x:4, dest_y:1};
