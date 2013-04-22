@@ -4,7 +4,7 @@ TileSet class.
 2013 Clint Bellanger
 */
 
-var TILE_COUNT = 11;
+var TILE_COUNT = 12;
 var BACKGROUND_COUNT = 3;
 
 var tileset = new Object();
@@ -110,6 +110,10 @@ function tileset_init() {
   tileset.tile_img[11].src = "images/tiles/medieval_door.png";
   tileset.tile_img[11].onload = function() {tileset_onload();};
   tileset.walkable[11] = true;  
+  
+  tileset.tile_img[12].src = "images/tiles/tree_evergreen.png";
+  tileset.tile_img[12].onload = function() {tileset_onload();};
+  tileset.walkable[12] = false;
 }
 
 function tileset_onload() {
