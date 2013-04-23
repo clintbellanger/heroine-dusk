@@ -177,10 +177,12 @@ function dialog_render_text(option, pos) {
   }
 }
 
-function dialog_render_button(id, pos) {
+function dialog_render_button(button_id, pos) {
+  if (button_id == 0) return;
+
   ctx.drawImage(
     dialog.button_img,
-    (id-1) * BUTTON_SIZE,
+    (button_id-1) * BUTTON_SIZE,
     0,
     BUTTON_SIZE,
     BUTTON_SIZE,	
