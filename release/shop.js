@@ -89,7 +89,7 @@ function shop_set_spell(slot, spell_id) {
   if (spell_id <= avatar.spellbook) disable_reason = "(You know this)";
   else if (spell_id > avatar.spellbook +1) disable_reason = "(Too advanced)";
   
-  shop_set_buy(slot, info.spells[spell_id].name, info.spells[spell_id].gold, disable_reason); 
+  shop_set_buy(slot, "Spellbook: " + info.spells[spell_id].name, info.spells[spell_id].gold, disable_reason); 
 }
 
 function shop_set_room(slot, room_cost) {
