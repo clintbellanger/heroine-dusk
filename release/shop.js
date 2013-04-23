@@ -2,7 +2,7 @@
  Dialog info for game shops
  */
 
-var SHOP_COUNT = 3;
+var SHOP_COUNT = 4;
 
 var SHOP_WEAPON = 0;
 var SHOP_ARMOR = 1;
@@ -15,10 +15,20 @@ for (var i=0; i<SHOP_COUNT; i++) {
   shop[i].item = new Array();
 }
 
-shop[0].name = "Milford's General";
-//shop[0].exit = {x:4, y:9};
+// Cedar Village Shops
+shop[0].name = "Cedar Arms";
 shop[0].item[0] = {type:SHOP_WEAPON, value:2};
-shop[0].item[1] = {type:SHOP_ARMOR, value:2};
+shop[0].item[1] = {type:SHOP_WEAPON, value:3};
+
+shop[1].name = "Simmons Fine Clothier";
+shop[1].item[0] = {type:SHOP_ARMOR, value:2};
+shop[1].item[1] = {type:SHOP_ARMOR, value:3};
+
+shop[2].name = "The Pilgrim Inn";
+shop[2].item[1] = {type:SHOP_ROOM, value:10};
+
+shop[3].name = "Sage Therel";
+shop[3].item[1] = {type:SHOP_SPELL, value:2};
 
 
 //---- Set choice options for shops --------
@@ -37,12 +47,23 @@ function shop_set(shop_id) {
 
   // shops can have two items for purchase
   for (var i=0; i<=1; i++) {
-    if (shop[shop_id].item[i].type == SHOP_WEAPON) {
-      shop_set_weapon(i, shop[shop_id].item[i].value);
-    }
-    else if (shop[shop_id].item[i].type == SHOP_ARMOR) {
-      shop_set_armor(i, shop[shop_id].item[i].value);
-    }
+    if (shop[shop_id].item[i]) {
+      if (shop[shop_id].item[i].type == SHOP_WEAPON) {
+        shop_set_weapon(i, shop[shop_id].item[i].value);
+      }
+      else if (shop[shop_id].item[i].type == SHOP_ARMOR) {
+        shop_set_armor(i, shop[shop_id].item[i].value);
+      }
+	  else if (shop[shop_id].item[i].type == SHOP_SPELL) {
+	    shop_set_spell(i, shop[shop_id].item[i].value);
+	  }
+	  else if (shop[shop_id].item[i].type == SHOP_ROOM) {
+	    shop_set_room(i, shop[shop_id].item[i].value);
+	  }
+	}
+	else {
+	  shop_clear_slot(i);
+	}
   }
 
 }
@@ -61,6 +82,20 @@ function shop_set_armor(slot, armor_id) {
   else if (armor_id < avatar.armor) disable_reason = "(Yours is better)";
 
   shop_set_buy(slot, info.armors[armor_id].name, info.armors[armor_id].gold, disable_reason);
+}
+
+function shop_set_spell(slot, spell_id) {
+  var disable_reason = "";
+  if (spell_id <= avatar.spellbook) disable_reason = "(You know this)";
+  else if (spell_id > avatar.spellbook +1) disable_reason = "(Too advanced)";
+  
+  shop_set_buy(slot, info.spells[spell_id].name, info.spells[spell_id].gold, disable_reason); 
+}
+
+function shop_set_room(slot, room_cost) {
+  var disable_reason = "";
+  if (avatar.hp == avatar.max_hp && avatar.mp == avatar.max_mp) disable_reason = "(You are well rested)";
+  shop_set_buy(slot, "Room for the night", room_cost, disable_reason);
 }
 
 function shop_set_buy(slot, name, cost, disable_reason) {
@@ -88,6 +123,12 @@ function shop_set_buy(slot, name, cost, disable_reason) {
   }
 }
 
+function shop_clear_slot(slot) {
+  dialog.option[slot].msg1 = "";
+  dialog.option[slot].msg2 = "";
+  dialog.option[slot].button = DIALOG_BUTTON_NONE;
+}
+
 //---- Handle choices for shops --------
 
 function shop_act(shop_id, slot_id) {
@@ -107,6 +148,15 @@ function shop_act(shop_id, slot_id) {
     return;
   }
 
+  if (shop[shop_id].item[slot_id].type == SHOP_SPELL) {
+    shop_buy_spell(shop[shop_id].item[slot_id].value);
+    return;
+  }
+  
+  if (shop[shop_id].item[slot_id].type == SHOP_ROOM) {
+    shop_buy_room(shop[shop_id].item[slot_id].value);
+    return;
+  }  
 }
 
 function shop_buy_weapon(weapon_id) {
@@ -132,6 +182,17 @@ function shop_buy_armor(armor_id) {
   redraw = true;
 }
 
+function shop_buy_spell(spell_id) {
+  var cost = info.spells[spell_id].gold;
+  if (avatar.gold < cost) return;
+  
+  avatar.gold -= cost;
+  avatar.spellbook = spell_id;
+  dialog.message = "Learned " + info.spells[spell_id].name;
+  shop_set(dialog.shop_id);
+  redraw = true;
+}
+
 function shop_buy_room(cost) {
   if (avatar.gold < cost) return;
   
@@ -139,6 +200,7 @@ function shop_buy_room(cost) {
   avatar.hp = avatar.max_hp;
   avatar.mp = avatar.max_mp;
   dialog.message = "You have rested";
+  shop_set(dialog.shop_id);
   redraw = true;
 }
 

@@ -1,7 +1,7 @@
 /**
  Scripting for various maps
  */
-
+ 
 function mapscript(map_id) {
   switch (map_id) {
     case 0:
@@ -10,21 +10,37 @@ function mapscript(map_id) {
       return mapscript_map2();
     case 3:
       return mapscript_map3();
+	case 4:
+	  return mapscript_map4();
+	case 5:
+	  return mapscript_map5();
+	  
   }
   return false;
 }
 
+// scripting for individual maps
 function mapscript_map0() {
   return mapscript_haybale(1,1);
 }
 
 function mapscript_map2() {
-  return mapscript_chest(1,1,"stick", "Wood Stick");
+  return mapscript_chest(1,1,"stick", "Wood Stick", 1);
 }
 
 function mapscript_map3() {
-  return mapscript_chest(2,1,"heal", "Spellbook: Heal");
+  return mapscript_chest(2,1,"heal", "Spellbook: Heal", 1);
 }
+
+function mapscript_map4() {
+  return mapscript_chest(2,2,"trailhp", "Magic Emerald (HP Up)", 1);
+}
+
+function mapscript_map5() {
+  return mapscript_chest(7,10,"cedarg", "Gold", 10);
+}
+
+// general script types
 
 function mapscript_haybale(x, y) {
   if (avatar.x == x && avatar.y == y) { 
@@ -36,7 +52,7 @@ function mapscript_haybale(x, y) {
   return false;
 }
 
-function mapscript_chest(x, y, status, item) {
+function mapscript_chest(x, y, status, item_type, item_count) {
 
   // if the player has already opened this chest, hide the chest
   if (avatar.campaign.indexOf(status) > -1) {
@@ -56,7 +72,7 @@ function mapscript_chest(x, y, status, item) {
   else {
     if (avatar.x == x && avatar.y == y) { 
       avatar.campaign.push(status);
-      mapscript_grant_item(item);
+      mapscript_grant_item(item_type, item_count);
       return true;
     }
   }
@@ -67,21 +83,40 @@ function mapscript_chest(x, y, status, item) {
 /**
  Found items have permanent unique effects, handle those here
  */
-function mapscript_grant_item(item) {
+function mapscript_grant_item(item, item_count) {
 
-  explore.message = "Found " + item + "!";
+  if (item_count == 1) {
+    explore.message = "Found " + item + "!";
+  }
+  else if (item_count > 1) {
+    explore.message = "Found " + item_count + " " + item;
+  }
 
-  if (item == "Wood Stick") {
-
+  if (item == "Gold") {
+    avatar.gold += item_count;
+  }
+  else if (item == "Wood Stick") {
     // only keep the stick if it's better than what you already have
     if (avatar.weapon == 0) avatar.weapon = 1;
-    return;
   }
   else if (item == "Spellbook: Heal") {
     if (avatar.spellbook == 0) avatar.spellbook = 1;
-    return;
   }
-
+  else if (item == "Magic Emerald (HP Up)") {
+    avatar.hp += 5;
+	avatar.max_hp += 5;
+  }
+  else if (item == "Magic Sapphire (MP Up)") {
+    avatar.mp += 2;
+	avatar.max_mp += 2;
+  }
+  else if (item == "Magic Ruby (Atk Up)") {
+    avatar.bonus_atk += 1;
+  }
+  else if (item == "Magic Diamond (Def Up)") {
+    avatar.bonus_def += 1;
+  }
+  
 }
 
 

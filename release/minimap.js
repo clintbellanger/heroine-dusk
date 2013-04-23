@@ -10,7 +10,7 @@ var MINIMAP_ICON_WALKABLE = 1;
 var MINIMAP_ICON_HEROINE = 2;
 
 var MINIMAP_CENTER_X = 30;
-var MINIMAP_CENTER_Y = 70;
+var MINIMAP_CENTER_Y = 71;
 
 var minimap = new Object();
 

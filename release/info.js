@@ -23,6 +23,7 @@ info.button_img_loaded = false;
 
 info.weapons = new Array();
 info.armors = new Array();
+info.spells = new Array();
 
 info.power_action = "";
 info.power_result = "";
@@ -38,22 +39,30 @@ function info_init() {
   info.weapons[0] = {name:"Bare Fists",  atk_min:1,  atk_max:4,  gold:0};
   info.weapons[1] = {name:"Wood Stick",  atk_min:2,  atk_max:6,  gold:0};
   info.weapons[2] = {name:"Iron Knife",  atk_min:3,  atk_max:8,  gold:50};
-  info.weapons[3] = {name:"Bronze Mace", atk_min:4,  atk_max:10, gold:100};
-  info.weapons[4] = {name:"Steel Sword", atk_min:5,  atk_max:12, gold:200};
-  info.weapons[5] = {name:"War Hammer",  atk_min:6,  atk_max:14, gold:500};
-  info.weapons[6] = {name:"Battle Axe",  atk_min:7,  atk_max:16, gold:1000};
-  info.weapons[7] = {name:"Great Sword", atk_min:8,  atk_max:18, gold:2000};
+  info.weapons[3] = {name:"Bronze Mace", atk_min:4,  atk_max:10, gold:200};
+  info.weapons[4] = {name:"Steel Sword", atk_min:5,  atk_max:12, gold:1000};
+  info.weapons[5] = {name:"War Hammer",  atk_min:6,  atk_max:14, gold:5000};
+  info.weapons[6] = {name:"Battle Axe",  atk_min:7,  atk_max:16, gold:20000};
+  info.weapons[7] = {name:"Great Sword", atk_min:8,  atk_max:18, gold:100000};
   
   info.armors[0] = {name:"No Armor",        def:0,  gold:0};
   info.armors[1] = {name:"Serf Rags",       def:2,  gold:0};
   info.armors[2] = {name:"Travel Cloak",    def:4,  gold:50};
-  info.armors[3] = {name:"Hide Cuirass",    def:6,  gold:100};
-  info.armors[4] = {name:"Studded Leather", def:8,  gold:200};
-  info.armors[5] = {name:"Chain Maille",    def:10, gold:500};
-  info.armors[6] = {name:"Plate Armor",     def:12, gold:1000};
-  info.armors[7] = {name:"Wyvern Scale",    def:14, gold:2000};
-    
-}
+  info.armors[3] = {name:"Hide Cuirass",    def:6,  gold:200};
+  info.armors[4] = {name:"Studded Leather", def:8,  gold:1000};
+  info.armors[5] = {name:"Chain Maille",    def:10, gold:5000};
+  info.armors[6] = {name:"Plate Armor",     def:12, gold:20000};
+  info.armors[7] = {name:"Wyvern Scale",    def:14, gold:100000};
+  
+  info.spells[0] = {name:"No Spell", gold:0};
+  info.spells[1] = {name:"Heal", gold:0};
+  info.spells[2] = {name:"Burn", gold:100};
+  info.spells[3] = {name:"Unlock", gold:500};
+  info.spells[4] = {name:"Light", gold:2500};
+  info.spells[5] = {name:"Freeze", gold:10000};
+  info.spells[6] = {name:"Reflect", gold:50000};
+  
+} 
 
 /*** Image loading Helpers **********************/
 function info_avatar_onload() {info.avatar_img_loaded = true;}
