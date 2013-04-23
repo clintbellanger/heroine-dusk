@@ -37,9 +37,9 @@ atlas.maps[1].tiles = [
   [2,2,2,1,1,1,2,2,2],
   [2,6,6,4,1,4,6,6,2],
   [2,6,6,1,1,1,6,6,2],
-  [2,10,6,4,1,4,6,10,2],
-  [2,11,1,1,1,1,1,11,2],
-  [2,10,6,4,1,4,6,10,2],
+  [2,2,6,4,1,4,6,2,2],
+  [2,3,1,1,1,1,1,3,2],
+  [2,2,6,4,1,4,6,2,2],
   [2,6,6,1,1,1,6,6,2],
   [2,6,6,4,1,4,6,6,2],
   [2,2,2,2,3,2,2,2,2]
@@ -48,7 +48,7 @@ atlas.maps[1].exits[0] = {exit_x:7, exit_y:6, dest_map:0, dest_x:1, dest_y:2};
 atlas.maps[1].exits[1] = {exit_x:1, exit_y:6, dest_map:2, dest_x:1, dest_y:2};
 atlas.maps[1].exits[2] = {exit_x:4, exit_y:0, dest_map:3, dest_x:2, dest_y:4};
 //atlas.maps[1].exits[3] = {exit_x:4, exit_y:10, dest_map:4, dest_x:2, dest_y:1};
-atlas.maps[1].shops[0] = {exit_x:4, exit_y:10, shop_id:0};
+atlas.maps[1].shops[0] = {exit_x:4, exit_y:10, shop_id:0, dest_x:4, dest_y:9};
 atlas.maps[1].enemies[0] = ENEMY_SKELETON;
 
 atlas.maps[2].name = "Monk Quarters";
@@ -77,7 +77,7 @@ atlas.maps[3].tiles = [
 ];
 atlas.maps[3].exits[0] = {exit_x:2, exit_y:5, dest_map:1, dest_x:4, dest_y:1};
 
-atlas.maps[4].name = "Unfinished Area";
+atlas.maps[4].name = "Monastery Trail";
 atlas.maps[4].width = 5;
 atlas.maps[4].height = 6;
 atlas.maps[4].background = 1;
@@ -87,7 +87,7 @@ atlas.maps[4].tiles = [
   [6,6,6,6,6],
   [6,6,6,6,6],
   [6,6,6,6,6],  
-  [6,6,6,6,6]
+  [6,6,6,6,6]  
 ];
 atlas.maps[4].exits[0] = {exit_x:2, exit_y:0, dest_map:1, dest_x:4, dest_y:9};
 atlas.maps[4].enemies[0] = ENEMY_SKELETON;

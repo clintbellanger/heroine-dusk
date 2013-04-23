@@ -107,8 +107,13 @@ function info_render() {
   info_render_itemlist();
   info_render_hpmp();
   action_render();
+
   
-  info_render_messages();
+  if (!info_render_messages()) {
+  
+    // only display the minimap if messages aren't showing
+    minimap_render();
+  }
 
 }
 
@@ -175,10 +180,15 @@ function info_render_button() {
 }
 
 function info_render_messages() {
+  var message_displayed = false;
+
   if (info.power_action != "") {
     bitfont_render(info.power_action, 2, 70, JUSTIFY_LEFT);
+	message_displayed = true;
   }
   if (info.power_result != "") {
     bitfont_render(info.power_result, 2, 80, JUSTIFY_LEFT);
+	message_displayed = true;
   }
+  return message_displayed;
 }

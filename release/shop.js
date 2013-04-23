@@ -16,7 +16,7 @@ for (var i=0; i<SHOP_COUNT; i++) {
 }
 
 shop[0].name = "Milford's General";
-shop[0].exit = {x:4, y:9};
+//shop[0].exit = {x:4, y:9};
 shop[0].item[0] = {type:SHOP_WEAPON, value:2};
 shop[0].item[1] = {type:SHOP_ARMOR, value:2};
 

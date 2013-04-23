@@ -204,8 +204,8 @@ function mazemap_check_shop() {
       shop_set(atlas.maps[mazemap.current_id].shops[i].shop_id);
 
       // put avatar back outside for save purposes
-      avatar.x = shop[dialog.shop_id].exit.x;
-      avatar.y = shop[dialog.shop_id].exit.y;
+      avatar.x = atlas.maps[mazemap.current_id].shops[i].dest_x;
+      avatar.y = atlas.maps[mazemap.current_id].shops[i].dest_y;
 
 	  return true;
     }  
