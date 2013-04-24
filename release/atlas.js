@@ -48,7 +48,7 @@ atlas.maps[1].exits[0] = {exit_x:7, exit_y:6, dest_map:0, dest_x:1, dest_y:2};
 atlas.maps[1].exits[1] = {exit_x:1, exit_y:6, dest_map:2, dest_x:1, dest_y:2};
 atlas.maps[1].exits[2] = {exit_x:4, exit_y:0, dest_map:3, dest_x:2, dest_y:4};
 atlas.maps[1].exits[3] = {exit_x:4, exit_y:10, dest_map:4, dest_x:6, dest_y:2};
-atlas.maps[1].enemies[0] = ENEMY_SKELETON;
+atlas.maps[1].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON];
 
 atlas.maps[2].name = "Monk Quarters";
 atlas.maps[2].width = 3;
@@ -100,7 +100,7 @@ atlas.maps[4].tiles = [
 ];
 atlas.maps[4].exits[0] = {exit_x:6, exit_y:1, dest_map:1, dest_x:4, dest_y:9};
 atlas.maps[4].exits[1] = {exit_x:10, exit_y:15, dest_map:5, dest_x:3, dest_y:1};
-atlas.maps[4].enemies[0] = ENEMY_SKELETON;
+atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
 
 atlas.maps[5].name = "Cedar Village";
 atlas.maps[5].width = 12;

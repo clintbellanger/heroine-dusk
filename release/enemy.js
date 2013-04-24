@@ -4,8 +4,11 @@
  Includes the images for enemies
  */
 
-var ENEMY_COUNT = 1;
+var ENEMY_COUNT = 3;
+
 var ENEMY_SKELETON = 0;
+var ENEMY_SHADOW_TENDRILS = 1;
+var ENEMY_SHADOW_SOUL = 2;
 
 var enemy = new Object();
 
@@ -22,8 +25,16 @@ function enemy_init() {
 
   enemy.img[ENEMY_SKELETON].src = "images/enemies/skeleton.png";
   enemy.img[ENEMY_SKELETON].onload = function() {enemy_onload();};
+  enemy.img[ENEMY_SHADOW_TENDRILS].src = "images/enemies/shadow_tendrils.png";
+  enemy.img[ENEMY_SHADOW_TENDRILS].onload = function() {enemy_onload();};
+  enemy.img[ENEMY_SHADOW_SOUL].src = "images/enemies/shadow_soul.png";
+  enemy.img[ENEMY_SHADOW_SOUL].onload = function() {enemy_onload();};
 
-  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:8, atk_min:3, atk_max:8, gold_min:1, gold_max:3};
+
+  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:8, atk_min:3, atk_max:8, gold_min:2, gold_max:4};
+  enemy.stats[ENEMY_SHADOW_TENDRILS] = {name:"Shadow Tendrils", hp:6, atk_min:2, atk_max:6, gold_min:1, gold_max:3};
+  enemy.stats[ENEMY_SHADOW_SOUL] = {name:"Shadow Soul", hp:12, atk_min:5, atk_max:12, gold_min:3, gold_max:6};
+ 
 }
 
 function enemy_onload() {
