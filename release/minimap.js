@@ -8,6 +8,7 @@ var MINIMAP_ICON_SIZE = 3; // pixels
 var MINIMAP_ICON_NONWALKABLE = 0;
 var MINIMAP_ICON_WALKABLE = 1;
 var MINIMAP_ICON_HEROINE = 2;
+var MINIMAP_ICON_EXIT = 3;
 
 var MINIMAP_CENTER_X = 30;
 var MINIMAP_CENTER_Y = 71;
@@ -65,6 +66,28 @@ function minimap_render() {
 	  }	  
 	}
   }
+  
+  // render exits
+  var exit_x;
+  var exit_y;
+  
+  for (var i=0; i<atlas.maps[mazemap.current_id].exits.length; i++) {
+    exit_x = atlas.maps[mazemap.current_id].exits[i].exit_x;
+	exit_y = atlas.maps[mazemap.current_id].exits[i].exit_y;
+	draw_x = exit_x * MINIMAP_ICON_SIZE + left_x;
+	draw_y = exit_y * MINIMAP_ICON_SIZE + top_y;
+	minimap_render_icon(draw_x, draw_y, MINIMAP_ICON_EXIT);
+  }
+  
+  // render shops
+  for (var i=0; i<atlas.maps[mazemap.current_id].shops.length; i++) {
+    exit_x = atlas.maps[mazemap.current_id].shops[i].exit_x;
+	exit_y = atlas.maps[mazemap.current_id].shops[i].exit_y;
+	draw_x = exit_x * MINIMAP_ICON_SIZE + left_x;
+	draw_y = exit_y * MINIMAP_ICON_SIZE + top_y;
+	minimap_render_icon(draw_x, draw_y, MINIMAP_ICON_EXIT);
+  }
+  
   
 }
 
