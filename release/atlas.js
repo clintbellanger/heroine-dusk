@@ -3,7 +3,7 @@
  Collection of maps and transition data
  */
 
-var MAP_COUNT = 6;
+var MAP_COUNT = 8;
 
 var atlas = new Object();
 atlas.maps = new Array();
@@ -48,7 +48,7 @@ atlas.maps[1].exits[0] = {exit_x:7, exit_y:6, dest_map:0, dest_x:1, dest_y:2};
 atlas.maps[1].exits[1] = {exit_x:1, exit_y:6, dest_map:2, dest_x:1, dest_y:2};
 atlas.maps[1].exits[2] = {exit_x:4, exit_y:0, dest_map:3, dest_x:2, dest_y:4};
 atlas.maps[1].exits[3] = {exit_x:4, exit_y:10, dest_map:4, dest_x:6, dest_y:2};
-atlas.maps[1].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON];
+//atlas.maps[1].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON];
 
 atlas.maps[2].name = "Monk Quarters";
 atlas.maps[2].width = 3;
@@ -100,7 +100,7 @@ atlas.maps[4].tiles = [
 ];
 atlas.maps[4].exits[0] = {exit_x:6, exit_y:1, dest_map:1, dest_x:4, dest_y:9};
 atlas.maps[4].exits[1] = {exit_x:10, exit_y:15, dest_map:5, dest_x:3, dest_y:1};
-atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
+//atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
 
 atlas.maps[5].name = "Cedar Village";
 atlas.maps[5].width = 12;
@@ -121,10 +121,54 @@ atlas.maps[5].tiles = [
   [ 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2],  
 ];
 atlas.maps[5].exits[0] = {exit_x:3, exit_y:0, dest_map:4, dest_x:10, dest_y:14};
+atlas.maps[5].exits[1] = {exit_x:9, exit_y:11, dest_map:6, dest_x:4, dest_y:3};
 atlas.maps[5].shops[0] = {exit_x:6, exit_y:4, shop_id:0, dest_x:6, dest_y:5};
 atlas.maps[5].shops[1] = {exit_x:6, exit_y:8, shop_id:1, dest_x:6, dest_y:7};
 atlas.maps[5].shops[2] = {exit_x:8, exit_y:8, shop_id:2, dest_x:9, dest_y:8};
 atlas.maps[5].shops[3] = {exit_x:1, exit_y:8, shop_id:3, dest_x:2, dest_y:8};
 
+atlas.maps[6].name = "Zuruth Plains";
+atlas.maps[6].width = 16;
+atlas.maps[6].height = 16;
+atlas.maps[6].background = 2;
+atlas.maps[6].tiles = [
+  [ 0, 0, 0, 0, 0, 0, 2,12,12,12,12,12,12,15,15,15],
+  [ 0, 0, 0, 0, 0, 0, 2,12,12,12,12,12,12,15,15,15],
+  [ 2, 2, 2, 2, 3, 2, 2, 6, 6, 6, 6, 6, 6,15,15,15],
+  [12,12,12, 6, 1, 6, 6, 6, 7, 5, 7, 6, 6,15,15,15],
+  [12,12, 6, 6, 1, 6,12, 6, 5, 8, 5, 6, 6,15,15,15],
+  [12,12, 6,12, 1, 6, 6, 6, 7, 5, 7, 6, 6,15,15,15],
+  [12,12, 6, 6, 1, 6, 6, 6, 6, 6, 6, 6, 4,15,15,15],
+  [12,12, 6, 6, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  [12,12,12, 6, 6, 6, 6, 6, 1, 6, 6, 6, 4,15,15,15],
+  [12,12, 6, 6, 6, 6,12, 6, 1, 6,12, 6, 6,15,15,15],
+  [12,12, 6, 6, 6,12, 6, 6, 1, 6, 6, 6, 6,15,15,15],
+  [12,12,12, 6, 6, 6, 6,12, 1, 6, 6, 6,12,15,15,15],
+  [12,12, 6, 6, 6, 6, 6, 6, 1, 6, 6, 6, 6,15,15,15],
+  [12, 7, 5, 7, 5, 7, 5, 7, 5, 7, 5, 7, 6, 4,15, 4],  
+  [12, 2, 5, 5, 5, 2, 5, 5, 5, 5, 5, 2, 6,15, 9,15],
+  [ 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2]
+];
+atlas.maps[6].exits[0] = {exit_x:4, exit_y:2, dest_map:5, dest_x:9, dest_y:10};
+atlas.maps[6].exits[1] = {exit_x:14, exit_y:7, dest_map:7, dest_x:2, dest_y:5};
+
+atlas.maps[7].name = "Canal Boneyard";
+atlas.maps[7].width = 15;
+atlas.maps[7].height = 11;
+atlas.maps[7].background = 2;
+atlas.maps[7].tiles = [
+  [ 0,15,15,15, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [ 0,15,15,15,12, 6, 6, 6, 6, 6,14,14,13,14, 2],
+  [ 0,15,15,15,13, 6,14, 1,14, 6,13,13,14,13, 2],
+  [ 6,15,15,15, 6, 6,14, 1,13, 6, 6, 6, 6, 6, 2],
+  [ 4,15,15,15, 4, 6,13, 1,14, 6, 2, 2, 2, 5, 2],
+  [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2, 8, 2],
+  [ 4,15,15,15, 4, 6,14, 1,13, 6, 2, 2, 2, 5, 2],
+  [ 6,15,15,15, 6, 6,13, 1,14, 6, 6, 6, 6, 6, 2],
+  [ 0,15,15,15,13, 6,14, 1,13, 6,14,13,13,14, 2],
+  [ 0,15,15,15,12, 6, 6, 6, 6, 6,14,13,14,13, 2],
+  [ 0,15,15,15, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]  
+];
+atlas.maps[7].exits[0] = {exit_x:1, exit_y:5, dest_map:6, dest_x:13, dest_y:7};
 
 
