@@ -9,6 +9,7 @@ While Atlas is a static collection, MazeMap can be altered by events.
 */
 
 var mazemap = new Object();
+mazemap.current_id = 0;
 
 //---- Properties ---------------------------------------------------
 
@@ -169,7 +170,6 @@ function mazemap_set(map_id) {
   mazemap.current_id = map_id;
 
   mapscript(map_id);
-
 
   // for save game info
   avatar.map_id = map_id;

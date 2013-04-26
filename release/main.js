@@ -8,10 +8,12 @@ var SCALE = 4;
 // this style of game doesn't update visually often
 // set this flag anytime the render function should update the view
 var redraw = false;
+var init_complete = false;
 
 //---- Main Loop --------------------------------------------------
 
 setInterval(function() {
+  if (!init_complete) return;
   logic();
   render();
 }, 1000/FPS);
@@ -72,5 +74,6 @@ function init() {
   combat_init();
   dialog_init();
 
+  init_complete = true;
 }
 
