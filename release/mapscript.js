@@ -4,40 +4,33 @@
  
 function mapscript(map_id) {
   switch (map_id) {
-    case 0:
-      return mapscript_map0();
-    case 2:
-      return mapscript_map2();
-    case 3:
-      return mapscript_map3();
-	case 4:
-	  return mapscript_map4();
-	case 5:
-	  return mapscript_map5();
-	  
+
+    case 0: // Serf Quarters
+      return mapscript_haybale(1,1);
+
+    case 1: // Gar'ashi Monastery
+      return false;
+
+    case 2: // Monk Quarters
+      return mapscript_chest(1,1,"stick", "Wood Stick", 1);
+
+    case 3: // Meditation Point
+      return mapscript_chest(2,1,"heal", "Spellbook: Heal", 1);
+
+	case 4: // Monastery Trail
+	  return mapscript_chest(2,2,"hp1", "Magic Emerald (HP Up)", 1);
+
+	case 5: // Cedar Village
+	  return mapscript_chest(7,10,"g1", "Gold", 10);
+
+	case 6: // Zuruth Plains
+      return mapscript_chest(9,4,"mp1", "Magic Sapphire (MP Up)", 1);
+
+	case 7: // Canal Boneyard
+      return mapscript_chest(13,5,"def1", "Magic Diamond (Def Up)", 1);
+
   }
   return false;
-}
-
-// scripting for individual maps
-function mapscript_map0() {
-  return mapscript_haybale(1,1);
-}
-
-function mapscript_map2() {
-  return mapscript_chest(1,1,"stick", "Wood Stick", 1);
-}
-
-function mapscript_map3() {
-  return mapscript_chest(2,1,"heal", "Spellbook: Heal", 1);
-}
-
-function mapscript_map4() {
-  return mapscript_chest(2,2,"trailhp", "Magic Emerald (HP Up)", 1);
-}
-
-function mapscript_map5() {
-  return mapscript_chest(7,10,"cedarg", "Gold", 10);
 }
 
 // general script types

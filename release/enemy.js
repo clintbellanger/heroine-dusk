@@ -4,11 +4,13 @@
  Includes the images for enemies
  */
 
-var ENEMY_COUNT = 3;
+var ENEMY_COUNT = 5;
 
-var ENEMY_SKELETON = 0;
-var ENEMY_SHADOW_TENDRILS = 1;
+var ENEMY_SHADOW_TENDRILS = 0;
+var ENEMY_IMP = 1;
 var ENEMY_SHADOW_SOUL = 2;
+var ENEMY_ZOMBIE = 3;
+var ENEMY_SKELETON = 4;
 
 var enemy = new Object();
 
@@ -23,17 +25,27 @@ function enemy_init() {
     enemy.img[i] = new Image();
   }
 
-  enemy.img[ENEMY_SKELETON].src = "images/enemies/skeleton.png";
-  enemy.img[ENEMY_SKELETON].onload = function() {enemy_onload();};
   enemy.img[ENEMY_SHADOW_TENDRILS].src = "images/enemies/shadow_tendrils.png";
   enemy.img[ENEMY_SHADOW_TENDRILS].onload = function() {enemy_onload();};
+
+  enemy.img[ENEMY_IMP].src = "images/enemies/imp.png";
+  enemy.img[ENEMY_IMP].onload = function() {enemy_onload();};
+
   enemy.img[ENEMY_SHADOW_SOUL].src = "images/enemies/shadow_soul.png";
   enemy.img[ENEMY_SHADOW_SOUL].onload = function() {enemy_onload();};
 
+  enemy.img[ENEMY_ZOMBIE].src = "images/enemies/zombie.png";
+  enemy.img[ENEMY_ZOMBIE].onload = function() {enemy_onload();};
 
-  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:8, atk_min:3, atk_max:8, gold_min:2, gold_max:4};
-  enemy.stats[ENEMY_SHADOW_TENDRILS] = {name:"Shadow Tendrils", hp:6, atk_min:2, atk_max:6, gold_min:1, gold_max:3};
-  enemy.stats[ENEMY_SHADOW_SOUL] = {name:"Shadow Soul", hp:12, atk_min:5, atk_max:12, gold_min:3, gold_max:6};
+  enemy.img[ENEMY_SKELETON].src = "images/enemies/skeleton.png";
+  enemy.img[ENEMY_SKELETON].onload = function() {enemy_onload();};
+
+
+  enemy.stats[ENEMY_SHADOW_TENDRILS] = {name:"Shadow Tendrils", hp:6, atk_min:2, atk_max:5, gold_min:1, gold_max:2};
+  enemy.stats[ENEMY_IMP] = {name:"Imp", hp:7, atk_min:2, atk_max:7, gold_min:1, gold_max:3};
+  enemy.stats[ENEMY_SHADOW_SOUL] = {name:"Shadow Soul", hp:8, atk_min:3, atk_max:8, gold_min:2, gold_max:4};
+  enemy.stats[ENEMY_ZOMBIE] = {name:"Zombie", hp:12, atk_min:4, atk_max:10, gold_min:2, gold_max:5};
+  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:12, atk_min:6, atk_max:12, gold_min:3, gold_max:7};
  
 }
 

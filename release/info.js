@@ -154,8 +154,16 @@ function info_render_equiplayer(itemtier, itemtype) {
 }
 
 function info_render_itemlist() {
-  bitfont_render(info.weapons[avatar.weapon].name, 2, 15, JUSTIFY_LEFT);
-  bitfont_render(info.armors[avatar.armor].name, 2, 25, JUSTIFY_LEFT);
+  var item_string;
+
+  item_string = info.weapons[avatar.weapon].name;
+  if (avatar.bonus_atk > 0) item_string += "+" + avatar.bonus_atk;
+  bitfont_render(item_string, 2, 15, JUSTIFY_LEFT);
+
+  item_string = info.armors[avatar.armor].name;
+  if (avatar.bonus_def > 0) item_string += " +" + avatar.bonus_def;
+  bitfont_render(item_string, 2, 25, JUSTIFY_LEFT);
+
   bitfont_render("Gold: " + avatar.gold, 2, 35, JUSTIFY_LEFT);
 }
 

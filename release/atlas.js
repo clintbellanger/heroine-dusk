@@ -48,7 +48,7 @@ atlas.maps[1].exits[0] = {exit_x:7, exit_y:6, dest_map:0, dest_x:1, dest_y:2};
 atlas.maps[1].exits[1] = {exit_x:1, exit_y:6, dest_map:2, dest_x:1, dest_y:2};
 atlas.maps[1].exits[2] = {exit_x:4, exit_y:0, dest_map:3, dest_x:2, dest_y:4};
 atlas.maps[1].exits[3] = {exit_x:4, exit_y:10, dest_map:4, dest_x:6, dest_y:2};
-atlas.maps[1].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON];
+atlas.maps[1].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_IMP];
 
 atlas.maps[2].name = "Monk Quarters";
 atlas.maps[2].width = 3;
@@ -100,7 +100,7 @@ atlas.maps[4].tiles = [
 ];
 atlas.maps[4].exits[0] = {exit_x:6, exit_y:1, dest_map:1, dest_x:4, dest_y:9};
 atlas.maps[4].exits[1] = {exit_x:10, exit_y:15, dest_map:5, dest_x:3, dest_y:1};
-atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
+atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_IMP, ENEMY_SHADOW_SOUL];
 
 atlas.maps[5].name = "Cedar Village";
 atlas.maps[5].width = 12;
@@ -152,7 +152,7 @@ atlas.maps[6].tiles = [
 atlas.maps[6].exits[0] = {exit_x:4, exit_y:2, dest_map:5, dest_x:9, dest_y:10};
 atlas.maps[6].exits[1] = {exit_x:14, exit_y:7, dest_map:7, dest_x:2, dest_y:5};
 atlas.maps[6].exits[2] = {exit_x:8, exit_y:15, dest_map:10, dest_x:2, dest_y:1};
-atlas.maps[6].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
+atlas.maps[6].enemies = [ENEMY_IMP, ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE];
 
 atlas.maps[7].name = "Canal Boneyard";
 atlas.maps[7].width = 15;
@@ -173,7 +173,7 @@ atlas.maps[7].tiles = [
 ];
 atlas.maps[7].exits[0] = {exit_x:1, exit_y:5, dest_map:6, dest_x:13, dest_y:7};
 atlas.maps[7].exits[1] = {exit_x:10, exit_y:5, dest_map:8, dest_x:1, dest_y:7};
-atlas.maps[7].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
+atlas.maps[7].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
 
 atlas.maps[8].name = "Mausoleum";
 atlas.maps[8].width = 16;
@@ -198,7 +198,7 @@ atlas.maps[8].tiles = [
 ];
 atlas.maps[8].exits[0] = {exit_x:0, exit_y:7, dest_map:7, dest_x:9, dest_y:5};
 atlas.maps[8].exits[1] = {exit_x:15, exit_y:7, dest_map:9, dest_x:1, dest_y:5};
-atlas.maps[8].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
+atlas.maps[8].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
 
 atlas.maps[9].name = "Dead Walkways";
 atlas.maps[9].width = 13;
@@ -217,7 +217,7 @@ atlas.maps[9].tiles = [
   [ 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0]
 ];
 atlas.maps[9].exits[0] = {exit_x:0, exit_y:5, dest_map:8, dest_x:14, dest_y:7};
-atlas.maps[9].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
+atlas.maps[9].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
 
 atlas.maps[10].name = "Trade Tunnel";
 atlas.maps[10].width = 16;
@@ -242,5 +242,5 @@ atlas.maps[10].tiles = [
   [ 0, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 ];
 atlas.maps[10].exits[0] = {exit_x:2, exit_y:0, dest_map:6, dest_x:8, dest_y:14};
-atlas.maps[10].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_SKELETON, ENEMY_SHADOW_SOUL];
+atlas.maps[10].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
 
