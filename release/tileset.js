@@ -4,7 +4,7 @@ TileSet class.
 2013 Clint Bellanger
 */
 
-var TILE_COUNT = 15;
+var TILE_COUNT = 16;
 var BACKGROUND_COUNT = 3;
 
 var tileset = new Object();
@@ -126,6 +126,10 @@ function tileset_init() {
   tileset.tile_img[15].src = "images/tiles/water.png";
   tileset.tile_img[15].onload = function() {tileset_onload();};
   tileset.walkable[15] = false;
+
+  tileset.tile_img[16].src = "images/tiles/skull_pile.png";
+  tileset.tile_img[16].onload = function() {tileset_onload();};
+  tileset.walkable[16] = false;
   
 }
 

@@ -94,7 +94,12 @@ function info_logic() {
   if (action_checkuse(BUTTON_POS_HEAL) && avatar.mp > 0 && avatar.spellbook >= 1) {
     power_heal();
 	redraw = true;
-  }  
+  }
+
+  if (action_checkuse(BUTTON_POS_BURN) && avatar.mp > 0 && avatar.spellbook >= 2) {
+    power_map_burn();
+    redraw = true;
+  }
 }
 
 function info_clear_messages() {

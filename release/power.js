@@ -121,3 +121,40 @@ function power_run() {
   }  
 }
 
+function power_map_burn() {
+  if (avatar.mp == 0) return;
+  var burn_target = false;
+
+  // tile 16 (skull pile) burns into tile 5 (dungeon interior)
+
+  // don't let the player waste mana if there is no nearby tile to burn
+  if (mazemap_get_tile(avatar.x+1, avatar.y) == 16) {
+    burn_target = true;
+    mazemap_set_tile(avatar.x+1, avatar.y, 5);
+  }
+  if (mazemap_get_tile(avatar.x, avatar.y+1) == 16) {
+    burn_target = true;
+    mazemap_set_tile(avatar.x, avatar.y+1, 5);
+  }
+  if (mazemap_get_tile(avatar.x-1, avatar.y) == 16) {
+    burn_target = true;
+    mazemap_set_tile(avatar.x-1, avatar.y, 5);
+  }
+  if (mazemap_get_tile(avatar.x, avatar.y-1) == 16) {
+    burn_target = true;
+    mazemap_set_tile(avatar.x, avatar.y-1, 5);
+  }
+
+  if (burn_target) {
+    info.power_action = "Burn!";
+    info.power_result = "Cleared Path!";
+    avatar.mp--;
+    avatar_save();
+  }
+  else {
+    info.power_action = "(No Target)";
+  }
+}
+
+
+
