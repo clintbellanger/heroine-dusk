@@ -45,7 +45,7 @@ function explore_logic() {
 
   // check special script;
   if (avatar.moved) {
-    if (mapscript(mazemap.current_id)) {
+    if (mapscript_exec(mazemap.current_id)) {
       avatar_save();
       return;
     }

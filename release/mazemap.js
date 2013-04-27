@@ -11,26 +11,6 @@ While Atlas is a static collection, MazeMap can be altered by events.
 var mazemap = new Object();
 mazemap.current_id = 0;
 
-//---- Properties ---------------------------------------------------
-
-/*
-mazemap.width = 10;
-mazemap.height = 10;
-
-mazemap.tiles = [
-  [2,2,3,2,2,2,2,2,2,2],
-  [2,1,1,2,1,1,4,1,1,2],
-  [2,1,1,2,1,1,1,1,1,2],
-  [2,1,2,2,1,1,4,1,1,2],
-  [2,1,2,1,1,1,4,1,1,2],
-  [2,1,2,1,2,2,4,1,1,2],
-  [2,1,1,1,2,1,1,1,1,2],
-  [2,1,2,2,3,1,2,1,2,2],
-  [2,1,1,1,2,1,1,1,1,2],
-  [2,2,2,2,2,2,2,2,2,2]
-];
-*/
-
 //---- Public Functions ---------------------------------------------
 
 function mazemap_init() {
@@ -169,7 +149,7 @@ function mazemap_set(map_id) {
   mazemap.height = atlas.maps[map_id].height;
   mazemap.current_id = map_id;
 
-  mapscript(map_id);
+  mapscript_exec(map_id);
 
   // for save game info
   avatar.map_id = map_id;

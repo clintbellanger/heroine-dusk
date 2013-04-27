@@ -126,24 +126,12 @@ function power_map_burn() {
   var burn_target = false;
 
   // tile 16 (skull pile) burns into tile 5 (dungeon interior)
-
+  
   // don't let the player waste mana if there is no nearby tile to burn
-  if (mazemap_get_tile(avatar.x+1, avatar.y) == 16) {
-    burn_target = true;
-    mazemap_set_tile(avatar.x+1, avatar.y, 5);
-  }
-  if (mazemap_get_tile(avatar.x, avatar.y+1) == 16) {
-    burn_target = true;
-    mazemap_set_tile(avatar.x, avatar.y+1, 5);
-  }
-  if (mazemap_get_tile(avatar.x-1, avatar.y) == 16) {
-    burn_target = true;
-    mazemap_set_tile(avatar.x-1, avatar.y, 5);
-  }
-  if (mazemap_get_tile(avatar.x, avatar.y-1) == 16) {
-    burn_target = true;
-    mazemap_set_tile(avatar.x, avatar.y-1, 5);
-  }
+  burn_target = burn_target || power_map_burntile(avatar.x+1, avatar.y);
+  burn_target = burn_target || power_map_burntile(avatar.x, avatar.y+1);
+  burn_target = burn_target || power_map_burntile(avatar.x-1, avatar.y);
+  burn_target = burn_target || power_map_burntile(avatar.x, avatar.y-1);
 
   if (burn_target) {
     info.power_action = "Burn!";
@@ -156,5 +144,14 @@ function power_map_burn() {
   }
 }
 
+function power_map_burntile(x, y) {
+  if (mazemap_get_tile(x,y) == 16) {
+    burn_target = true;
+    mazemap_set_tile(x,y,5);
+    mapscript_bone_pile_save(x,y);
+    return true;
+  }
+  return false;
+}
 
 

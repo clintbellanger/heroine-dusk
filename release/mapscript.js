@@ -1,8 +1,23 @@
 /**
  Scripting for various maps
  */
- 
-function mapscript(map_id) {
+
+
+var mapscript = new Object();
+
+mapscript.bone_piles = new Array();
+mapscript.bone_piles = [
+  {map_id:8, x:4, y:7, status:"bone1"},
+  {map_id:8, x:4, y:2, status:"bone2"},
+  {map_id:8, x:13, y:7, status:"bone3"},
+  {map_id:8, x:11, y:5, status:"bone4"},
+  {map_id:9, x:5, y:5, status:"bone5"},
+  {map_id:9, x:8, y:2, status:"bone6"},
+  {map_id:10, x:2, y:4, status:"bone7"},
+  {map_id:10, x:4, y:2, status:"bone8"}
+];
+
+function mapscript_exec(map_id) {
   switch (map_id) {
 
     case 0: // Serf Quarters
@@ -29,6 +44,17 @@ function mapscript(map_id) {
 	case 7: // Canal Boneyard
       return mapscript_chest(13,5,"def1", "Magic Diamond (Def Up)", 1);
 
+    case 8: // Mausoleum
+      mapscript_bone_pile_load(8);
+      return false;
+    
+    case 9: // Dead Walkways
+      mapscript_bone_pile_load(9);
+      return false;
+
+    case 10: // Trade Tunnel
+      mapscript_bone_pile_load(10);
+      return false;
   }
   return false;
 }
@@ -112,4 +138,28 @@ function mapscript_grant_item(item, item_count) {
   
 }
 
+function mapscript_bone_pile_save(x, y) {
+
+  // the player has just burned bones, lookup and save the status
+  for (var i=0; i < mapscript.bone_piles.length; i++) {
+    if (mazemap.current_id == mapscript.bone_piles[i].map_id &&
+        x == mapscript.bone_piles[i].x &&
+        y == mapscript.bone_piles[i].y) {
+
+      avatar.campaign.push(mapscript.bone_piles[i].status);
+    }
+  }
+}
+
+function mapscript_bone_pile_load(map_id) {
+  // check all bones for the player has just burned bones, lookup and save the status
+  for (var i=0; i < mapscript.bone_piles.length; i++) {
+    if (mapscript.bone_piles[i].map_id == map_id) {
+    
+      if (avatar.campaign.indexOf(mapscript.bone_piles[i].status) > -1) {
+        mazemap_set_tile(mapscript.bone_piles[i].x, mapscript.bone_piles[i].y, 5);
+      }
+    }
+  }
+}
 
