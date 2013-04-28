@@ -94,13 +94,14 @@ atlas.maps[4].tiles = [
   [ 0,12,12,12, 6, 6, 6, 6, 6, 6,12,12,12, 0],
   [ 0, 0,12,12, 6, 6, 6,12, 6, 6, 6,12,12,12],
   [ 0, 0,12,12,12, 6,12,12,12, 6, 1, 6,12,12],
-  [ 0, 0, 0,12,10,10,12,12,12,12, 1, 6,12,12],
+  [ 0, 0, 0,12,10,11,12,12,12,12, 1, 6,12,12],
   [ 0, 0, 0, 0,12,12,12,12,12, 6, 1, 6,12,12],
   [ 0, 0, 0, 0, 0, 0, 0,12,12, 2, 3, 2,12,12]
 ];
 atlas.maps[4].exits[0] = {exit_x:6, exit_y:1, dest_map:1, dest_x:4, dest_y:9};
 atlas.maps[4].exits[1] = {exit_x:10, exit_y:15, dest_map:5, dest_x:3, dest_y:1};
 atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_IMP, ENEMY_SHADOW_SOUL];
+atlas.maps[4].shops[0] = {exit_x:5, exit_y:13, shop_id:4, dest_x:5, dest_y:12};
 
 atlas.maps[5].name = "Cedar Village";
 atlas.maps[5].width = 12;

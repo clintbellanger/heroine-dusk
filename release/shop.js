@@ -2,12 +2,13 @@
  Dialog info for game shops
  */
 
-var SHOP_COUNT = 4;
+var SHOP_COUNT = 5;
 
 var SHOP_WEAPON = 0;
 var SHOP_ARMOR = 1;
 var SHOP_SPELL = 2;
 var SHOP_ROOM = 3;
+var SHOP_MESSAGE = 4;
 
 var shop = new Array();
 for (var i=0; i<SHOP_COUNT; i++) {
@@ -25,10 +26,15 @@ shop[1].item[0] = {type:SHOP_ARMOR, value:2};
 shop[1].item[1] = {type:SHOP_ARMOR, value:3};
 
 shop[2].name = "The Pilgrim Inn";
+shop[2].item[0] = {type:SHOP_MESSAGE, msg1:"We saw dead walking", msg2:"from the Canal Boneyard."};
 shop[2].item[1] = {type:SHOP_ROOM, value:10};
 
 shop[3].name = "Sage Therel";
+shop[3].item[0] = {type:SHOP_MESSAGE, msg1:"Fire magic is effective", msg2:"against undead and bone."};
 shop[3].item[1] = {type:SHOP_SPELL, value:2};
+
+shop[4].name = "Woodsman";
+shop[4].item[1] = {type:SHOP_MESSAGE, msg1:"I'm staying right here", msg2:"until the sun comes back."};
 
 
 //---- Set choice options for shops --------
@@ -60,6 +66,9 @@ function shop_set(shop_id) {
 	  else if (shop[shop_id].item[i].type == SHOP_ROOM) {
 	    shop_set_room(i, shop[shop_id].item[i].value);
 	  }
+      else if (shop[shop_id].item[i].type == SHOP_MESSAGE) {
+        shop_set_message(i, shop[shop_id].item[i].msg1, shop[shop_id].item[i].msg2);
+      }
 	}
 	else {
 	  shop_clear_slot(i);
@@ -96,6 +105,12 @@ function shop_set_room(slot, room_cost) {
   var disable_reason = "";
   if (avatar.hp == avatar.max_hp && avatar.mp == avatar.max_mp) disable_reason = "(You are well rested)";
   shop_set_buy(slot, "Room for the night", room_cost, disable_reason);
+}
+
+function shop_set_message(slot, msg1, msg2) {
+  dialog.option[slot].button = DIALOG_BUTTON_NONE;
+  dialog.option[slot].msg1 = msg1;
+  dialog.option[slot].msg2 = msg2;
 }
 
 function shop_set_buy(slot, name, cost, disable_reason) {

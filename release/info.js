@@ -162,7 +162,7 @@ function info_render_itemlist() {
   var item_string;
 
   item_string = info.weapons[avatar.weapon].name;
-  if (avatar.bonus_atk > 0) item_string += "+" + avatar.bonus_atk;
+  if (avatar.bonus_atk > 0) item_string += " +" + avatar.bonus_atk;
   bitfont_render(item_string, 2, 15, JUSTIFY_LEFT);
 
   item_string = info.armors[avatar.armor].name;

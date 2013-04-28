@@ -18,10 +18,14 @@ mapscript.bone_piles = [
 ];
 
 function mapscript_exec(map_id) {
+
+  var result = false;
   switch (map_id) {
 
     case 0: // Serf Quarters
-      return mapscript_haybale(1,1);
+      result = mapscript_haybale(1,1);
+      // result = result || mapscript_message(1,2,"serfmsg","This place is no longer safe");
+      return result;
 
     case 1: // Gar'ashi Monastery
       return false;
@@ -46,7 +50,9 @@ function mapscript_exec(map_id) {
 
     case 8: // Mausoleum
       mapscript_bone_pile_load(8);
-      return false;
+      result = mapscript_haybale(11,9);
+      result = result || mapscript_chest(3,2,"atk1", "Magic Ruby (Atk Up)", 1);
+      return result;
     
     case 9: // Dead Walkways
       mapscript_bone_pile_load(9);
@@ -60,6 +66,22 @@ function mapscript_exec(map_id) {
 }
 
 // general script types
+function mapscript_message(x, y, status, message) {
+  if (avatar.x == x && avatar.y == y) {
+
+    // if the player has already read this message, skip it
+    if (avatar.campaign.indexOf(status) > -1) {
+      return false;
+    }
+
+    explore.message = message;
+    avatar.campaign.push(status);
+    return true;
+
+  }
+  return false;
+}
+
 
 function mapscript_haybale(x, y) {
   if (avatar.x == x && avatar.y == y) { 
