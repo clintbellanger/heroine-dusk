@@ -199,7 +199,7 @@ atlas.maps[8].tiles = [
 ];
 atlas.maps[8].exits[0] = {exit_x:0, exit_y:7, dest_map:7, dest_x:9, dest_y:5};
 atlas.maps[8].exits[1] = {exit_x:15, exit_y:7, dest_map:9, dest_x:1, dest_y:5};
-atlas.maps[8].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
+atlas.maps[8].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID];
 
 atlas.maps[9].name = "Dead Walkways";
 atlas.maps[9].width = 13;
@@ -218,7 +218,7 @@ atlas.maps[9].tiles = [
   [ 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0]
 ];
 atlas.maps[9].exits[0] = {exit_x:0, exit_y:5, dest_map:8, dest_x:14, dest_y:7};
-atlas.maps[9].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
+atlas.maps[9].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID];
 
 atlas.maps[10].name = "Trade Tunnel";
 atlas.maps[10].width = 16;
@@ -243,7 +243,8 @@ atlas.maps[10].tiles = [
   [ 0, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
 ];
 atlas.maps[10].exits[0] = {exit_x:2, exit_y:0, dest_map:6, dest_x:8, dest_y:14};
-atlas.maps[10].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
+atlas.maps[10].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID];
 atlas.maps[10].shops[0] = {exit_x:2, exit_y:15, shop_id:5, dest_x:2, dest_y:14};
 atlas.maps[10].shops[1] = {exit_x:11, exit_y:9, shop_id:6, dest_x:12, dest_y:9};
 atlas.maps[10].shops[2] = {exit_x:13, exit_y:7, shop_id:7, dest_x:13, dest_y:8};
+

@@ -4,13 +4,17 @@
  Includes the images for enemies
  */
 
-var ENEMY_COUNT = 5;
+var ENEMY_COUNT = 6;
 
 var ENEMY_SHADOW_TENDRILS = 0;
 var ENEMY_IMP = 1;
 var ENEMY_SHADOW_SOUL = 2;
 var ENEMY_ZOMBIE = 3;
 var ENEMY_SKELETON = 4;
+var ENEMY_DRUID = 5;
+var ENEMY_MIMIC = 6;
+var ENEMY_RAM_DEMON = 7;
+var ENEMY_DEATH_SPEAKER = 8;
 
 var enemy = new Object();
 
@@ -40,12 +44,15 @@ function enemy_init() {
   enemy.img[ENEMY_SKELETON].src = "images/enemies/skeleton.png";
   enemy.img[ENEMY_SKELETON].onload = function() {enemy_onload();};
 
+  enemy.img[ENEMY_DRUID].src = "images/enemies/druid.png";
+  enemy.img[ENEMY_DRUID].onload = function() {enemy_onload();}
 
   enemy.stats[ENEMY_SHADOW_TENDRILS] = {name:"Shadow Tendrils", hp:6, atk_min:2, atk_max:5, gold_min:1, gold_max:2};
   enemy.stats[ENEMY_IMP] = {name:"Imp", hp:7, atk_min:2, atk_max:7, gold_min:1, gold_max:3};
   enemy.stats[ENEMY_SHADOW_SOUL] = {name:"Shadow Soul", hp:8, atk_min:3, atk_max:8, gold_min:2, gold_max:4};
-  enemy.stats[ENEMY_ZOMBIE] = {name:"Zombie", hp:12, atk_min:4, atk_max:10, gold_min:2, gold_max:5};
-  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:12, atk_min:6, atk_max:12, gold_min:3, gold_max:7};
+  enemy.stats[ENEMY_ZOMBIE] = {name:"Zombie", hp:12, atk_min:4, atk_max:10, gold_min:3, gold_max:5};
+  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:18, atk_min:6, atk_max:12, gold_min:3, gold_max:7};
+  enemy.stats[ENEMY_DRUID] = {name:"Druid", hp:16, atk_min:7, atk_max:14, gold_min:4, gold_max:9};
  
 }
 
