@@ -154,4 +154,36 @@ function power_map_burntile(x, y) {
   return false;
 }
 
+function power_map_unlock() {
+  if (avatar.mp == 0) return;
+  var unlock_target = false;
+
+  // tile 16 (skull pile) burns into tile 5 (dungeon interior)
+  
+  // don't let the player waste mana if there is no nearby tile to burn
+  unlock_target = unlock_target || power_map_unlocktile(avatar.x+1, avatar.y);
+  unlock_target = unlock_target || power_map_unlocktile(avatar.x, avatar.y+1);
+  unlock_target = unlock_target || power_map_unlocktile(avatar.x-1, avatar.y);
+  unlock_target = unlock_target || power_map_unlocktile(avatar.x, avatar.y-1);
+
+  if (unlock_target) {
+    info.power_action = "Unlock!";
+    info.power_result = "Door Opened!";
+    avatar.mp--;
+    avatar_save();
+  }
+  else {
+    info.power_action = "(No Target)";
+  }
+}
+
+function power_map_unlocktile(x, y) {
+  if (mazemap_get_tile(x,y) == 18) {
+    unlock_target = true;
+    mazemap_set_tile(x,y,3);
+    mapscript_locked_door_save(x,y);
+    return true;
+  }
+  return false;
+}
 

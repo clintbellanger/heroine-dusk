@@ -100,6 +100,12 @@ function info_logic() {
     power_map_burn();
     redraw = true;
   }
+  
+  if (action_checkuse(BUTTON_POS_UNLOCK) && avatar.mp > 0 && avatar.spellbook >= 3) {
+    power_map_unlock();
+    redraw = true;
+  }
+
 }
 
 function info_clear_messages() {

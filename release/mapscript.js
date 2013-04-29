@@ -17,6 +17,14 @@ mapscript.bone_piles = [
   {map_id:10, x:4, y:2, status:"bone8"}
 ];
 
+mapscript.locked_doors = new Array();
+mapscript.locked_doors = [
+  {map_id:8, x:4, y:12, status:"door1"},
+  {map_id:10, x:11, y:3, status:"door2"},
+  {map_id:10, x:13, y:3, status:"door3"}
+];
+
+
 function mapscript_exec(map_id) {
 
   var result = false;
@@ -50,8 +58,10 @@ function mapscript_exec(map_id) {
 
     case 8: // Mausoleum
       mapscript_bone_pile_load(8);
+	  mapscript_locked_door_load(8);
       result = mapscript_haybale(11,9);
       result = result || mapscript_chest(3,2,"atk1", "Magic Ruby (Atk Up)", 1);
+	  result = result || mapscript_chest(3,12,"mp2", "Magic Sapphire (MP Up)", 1);
       return result;
     
     case 9: // Dead Walkways
@@ -59,8 +69,12 @@ function mapscript_exec(map_id) {
       return false;
 
     case 10: // Trade Tunnel
+	  mapscript_locked_door_load(10);
       mapscript_bone_pile_load(10);
-      return false;
+	  
+	  result = mapscript_chest(11,2, "hp2", "Magic Emerald (HP Up)", 1);
+	  result = result || mapscript_chest(13,2, "g2", "Gold", 100);
+      return result;
   }
   return false;
 }
@@ -174,12 +188,39 @@ function mapscript_bone_pile_save(x, y) {
 }
 
 function mapscript_bone_pile_load(map_id) {
-  // check all bones for the player has just burned bones, lookup and save the status
+
+  // check all bones previously burned
   for (var i=0; i < mapscript.bone_piles.length; i++) {
     if (mapscript.bone_piles[i].map_id == map_id) {
     
       if (avatar.campaign.indexOf(mapscript.bone_piles[i].status) > -1) {
         mazemap_set_tile(mapscript.bone_piles[i].x, mapscript.bone_piles[i].y, 5);
+      }
+    }
+  }
+}
+
+function mapscript_locked_door_save(x, y) {
+
+  // the player has just unlocked a door, lookup and save the status
+  for (var i=0; i < mapscript.locked_doors.length; i++) {
+    if (mazemap.current_id == mapscript.locked_doors[i].map_id &&
+        x == mapscript.locked_doors[i].x &&
+        y == mapscript.locked_doors[i].y) {
+
+      avatar.campaign.push(mapscript.locked_doors[i].status);
+    }
+  }
+}
+
+function mapscript_locked_door_load(map_id) {
+
+  // check all doors previously unlocked
+  for (var i=0; i < mapscript.locked_doors.length; i++) {
+    if (mapscript.locked_doors[i].map_id == map_id) {
+    
+      if (avatar.campaign.indexOf(mapscript.locked_doors[i].status) > -1) {
+        mazemap_set_tile(mapscript.locked_doors[i].x, mapscript.locked_doors[i].y, 3);
       }
     }
   }

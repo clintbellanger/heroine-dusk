@@ -193,7 +193,7 @@ atlas.maps[8].tiles = [
   [ 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5,17, 2, 5, 2, 0],
   [ 0, 0, 0, 0, 0, 2, 2, 5, 2, 2, 5, 2, 7, 5, 2, 0],
   [ 0, 0, 2, 2, 2, 2, 2, 5, 2, 2, 5, 2, 2, 5, 2, 2],
-  [ 0, 0, 2, 8, 3, 5, 5, 5, 0, 0, 5, 5, 5, 5, 0, 2],
+  [ 0, 0, 2, 8,18, 5, 5, 5, 0, 0, 5, 5, 5, 5, 0, 2],
   [ 0, 0, 2, 2, 2, 7, 5, 5, 5, 5, 5, 5, 7, 0, 0, 2],
   [ 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 ];
@@ -223,12 +223,12 @@ atlas.maps[9].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
 atlas.maps[10].name = "Trade Tunnel";
 atlas.maps[10].width = 16;
 atlas.maps[10].height = 16;
-atlas.maps[10].background = 0;
+atlas.maps[10].background = 2;
 atlas.maps[10].tiles = [
   [ 2, 2, 3, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0],
   [ 2, 5, 5, 5, 2, 5, 5, 5, 2, 0, 2, 2, 2, 2, 2, 0],
   [ 2, 5, 5, 5,16, 5,15, 5, 2, 0, 2, 8, 2, 8, 2, 0],
-  [ 2, 5, 5, 5, 2, 5,15, 5, 2, 2, 2, 3, 2, 3, 2, 0],
+  [ 2, 5, 5, 5, 2, 5,15, 5, 2, 2, 2,18, 2,18, 2, 0],
   [ 2, 2,16, 2, 2, 5, 1, 5, 5, 5, 5, 5, 5, 5, 2, 0],
   [ 2, 5, 5, 5, 2, 5,15, 5, 2, 2, 2, 2, 2, 2, 2, 0],
   [ 2, 5, 5, 5, 2, 5,15, 5, 2, 0, 0, 0, 0, 0, 0, 0],
@@ -244,4 +244,6 @@ atlas.maps[10].tiles = [
 ];
 atlas.maps[10].exits[0] = {exit_x:2, exit_y:0, dest_map:6, dest_x:8, dest_y:14};
 atlas.maps[10].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
-
+atlas.maps[10].shops[0] = {exit_x:2, exit_y:15, shop_id:5, dest_x:2, dest_y:14};
+atlas.maps[10].shops[1] = {exit_x:11, exit_y:9, shop_id:6, dest_x:12, dest_y:9};
+atlas.maps[10].shops[2] = {exit_x:13, exit_y:7, shop_id:7, dest_x:13, dest_y:8};
