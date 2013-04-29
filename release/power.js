@@ -2,6 +2,10 @@
  * Resolve power use
  */
 
+var ENEMY_POWER_ATTACK = 0;
+var ENEMY_POWER_SCORCH = 1;
+var ENEMY_POWER_HPDRAIN = 2;
+var ENEMY_POWER_MPDRAIN = 3;
 
 function power_hero_attack() {
 
@@ -32,6 +36,32 @@ function power_hero_attack() {
   
   combat.enemy_hurt = true;
   
+}
+
+
+/**
+ * Choose a random power from the enemy's available powers
+ */
+function power_enemy(enemy_id) {
+
+  var power_options = enemy.stats[enemy_id].powers.length;
+  var power_roll = Math.floor(Math.random() * power_options);
+  var power_choice = enemy.stats[enemy_id].powers[power_roll];
+
+  switch (power_choice) {
+    case ENEMY_POWER_ATTACK:
+      power_enemy_attack();
+      return;
+    case ENEMY_POWER_SCORCH:
+      power_scorch();
+      return;
+    case ENEMY_POWER_HPDRAIN:
+      power_hpdrain();
+      return;
+    case ENEMY_POWER_MPDRAIN:
+      power_mpdrain();
+      return;
+  }
 }
 
 function power_enemy_attack() {
@@ -185,5 +215,80 @@ function power_map_unlocktile(x, y) {
     return true;
   }
   return false;
+}
+
+
+// Enemy special powers
+
+// evil enemy version of burn
+function power_scorch() {
+
+  combat.defense_action = "Scorch!";
+ 
+  // check miss
+  var hit_chance = Math.random();
+  if (hit_chance < 0.30) {
+    combat.defense_result = "Miss!";
+	return;
+  }
+
+  var atk_min = enemy.stats[combat.enemy.type].atk_min *2;
+  var atk_max = enemy.stats[combat.enemy.type].atk_max *2;
+  var attack_damage = Math.round(Math.random() * (atk_max - atk_min)) + atk_min;
+
+  // armor absorb
+  attack_damage -= info.armors[avatar.armor].def;
+  if (attack_damage <= 0) attack_damage = 1;
+  
+  avatar.hp -= attack_damage;
+  combat.defense_result = attack_damage + " damage";
+  
+  combat.hero_hurt = true;
+  
+}
+
+function power_hpdrain() {
+
+  combat.defense_action = "HP Drain!";
+  
+  // check miss
+  var hit_chance = Math.random();
+  if (hit_chance < 0.30) {
+    combat.defense_result = "Miss!";
+	return;
+  }
+  
+  var atk_min = enemy.stats[combat.enemy.type].atk_min;
+  var atk_max = enemy.stats[combat.enemy.type].atk_max;
+  var attack_damage = Math.round(Math.random() * (atk_max - atk_min)) + atk_min;
+  
+  // armor absorb
+  attack_damage -= info.armors[avatar.armor].def;
+  if (attack_damage <= 0) attack_damage = 1;
+  
+  avatar.hp -= attack_damage;
+  combat.enemy.hp += attack_damage;
+
+  combat.defense_result = attack_damage + " damage";  
+  combat.hero_hurt = true;
+}
+
+function power_mpdrain() {
+  combat.defense_action = "MP Drain!";
+  
+  // check miss
+  var hit_chance = Math.random();
+  if (hit_chance < 0.30) {
+    combat.defense_result = "Miss!";
+	return;
+  }
+  
+  if (avatar.mp > 0) {
+    avatar.mp--;
+    combat.defense_result = "-1 MP";
+  }
+  else combat.defense_result = "No effect";
+
+  combat.hero_hurt = true;
 }
 

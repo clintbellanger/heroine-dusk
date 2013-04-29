@@ -153,8 +153,7 @@ function combat_logic_offense() {
 	}
 	else {
 	
-	  // TODO: check for an enemy's action. for now, always attack.
-	  power_enemy_attack();
+      power_enemy(combat.enemy.type);
       combat.phase = COMBAT_PHASE_DEFENSE;
 	  redraw = true;
 	  combat.timer = 30;
