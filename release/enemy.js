@@ -67,10 +67,10 @@ function enemy_init() {
   enemy.stats[ENEMY_ZOMBIE] = {name:"Zombie", hp:12, atk_min:4, atk_max:10, gold_min:3, gold_max:5, category:ENEMY_CATEGORY_UNDEAD};
   enemy.stats[ENEMY_ZOMBIE].powers = [ENEMY_POWER_ATTACK, ENEMY_POWER_ATTACK, ENEMY_POWER_HPDRAIN];
 
-  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:18, atk_min:6, atk_max:12, gold_min:3, gold_max:7, category:ENEMY_CATEGORY_UNDEAD};
+  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:18, atk_min:6, atk_max:12, gold_min:4, gold_max:7, category:ENEMY_CATEGORY_UNDEAD};
   enemy.stats[ENEMY_SKELETON].powers = [ENEMY_POWER_ATTACK];
 
-  enemy.stats[ENEMY_DRUID] = {name:"Druid", hp:16, atk_min:7, atk_max:14, gold_min:4, gold_max:9, category:ENEMY_CATEGORY_DEMON};
+  enemy.stats[ENEMY_DRUID] = {name:"Druid", hp:16, atk_min:7, atk_max:14, gold_min:6, gold_max:10, category:ENEMY_CATEGORY_DEMON};
   enemy.stats[ENEMY_DRUID].powers = [ENEMY_POWER_ATTACK, ENEMY_POWER_SCORCH, ENEMY_POWER_HPDRAIN, ENEMY_POWER_MPDRAIN];
 
 }
