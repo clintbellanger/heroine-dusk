@@ -122,7 +122,6 @@ function power_burn() {
   
   combat.offense_action = "Burn!";
   
-  
   var atk_min = (info.weapons[avatar.weapon].atk_min + avatar.bonus_atk);
   var atk_max = (info.weapons[avatar.weapon].atk_max + avatar.bonus_atk);
   var attack_damage = Math.round(Math.random() * (atk_max - atk_min)) + atk_min;
@@ -192,6 +191,26 @@ function power_map_burntile(x, y) {
     return true;
   }
   return false;
+}
+
+function power_unlock() {
+  if (avatar.mp == 0) return;
+  combat.offense_action = "Unlock!";
+  
+  var atk_min = (info.weapons[avatar.weapon].atk_min + avatar.bonus_atk);
+  var atk_max = (info.weapons[avatar.weapon].atk_max + avatar.bonus_atk);
+  var attack_damage = Math.round(Math.random() * (atk_max - atk_min)) + atk_min;
+  
+  // unlock can only be cast against Automatons
+  // so apply the full damage
+  attack_damage += atk_max + atk_max;
+
+  avatar.mp--;  
+  combat.enemy.hp -= attack_damage;
+  combat.offense_result = attack_damage + " damage";
+  
+  combat.enemy_hurt = true;
+
 }
 
 function power_map_unlock() {

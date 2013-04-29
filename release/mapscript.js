@@ -62,18 +62,24 @@ function mapscript_exec(map_id) {
       result = mapscript_haybale(11,9);
       result = result || mapscript_chest(3,2,"atk1", "Magic Ruby (Atk Up)", 1);
 	  result = result || mapscript_chest(3,12,"mp2", "Magic Sapphire (MP Up)", 1);
+      result = result || mapscript_chest(6,9, "g2", "Gold", 25);
+      result = result || mapscript_enemy(6,5, ENEMY_MIMIC, "");
+
       return result;
     
     case 9: // Dead Walkways
       mapscript_bone_pile_load(9);
-      return false;
+      return mapscript_enemy(4,9, ENEMY_MIMIC, "");
 
     case 10: // Trade Tunnel
 	  mapscript_locked_door_load(10);
       mapscript_bone_pile_load(10);
 	  
 	  result = mapscript_chest(11,2, "hp2", "Magic Emerald (HP Up)", 1);
-	  result = result || mapscript_chest(13,2, "g2", "Gold", 100);
+	  result = result || mapscript_chest(13,2, "g3", "Gold", 100);
+      result = result || mapscript_enemy(14,9, ENEMY_MIMIC, "");
+      result = result || mapscript_enemy(6,4, ENEMY_MIMIC, "");
+
       return result;
   }
   return false;
@@ -224,5 +230,34 @@ function mapscript_locked_door_load(map_id) {
       }
     }
   }
+}
+
+// a specific enemy is on this tile
+function mapscript_enemy(x, y, enemy_id, status) {
+
+  // don't spawn the enemy if just loading
+  if (!init_complete) return false;
+  
+  // if heroine is at the enemy location
+  if (avatar.x == x && avatar.y == y) { 
+
+    // if heroine has not already defeated this enemy
+    if (status != "") {
+      if (avatar.campaign.indexOf(status) > -1) {
+        return false;
+      }
+    }
+    
+    // prepare combat mode
+    explore.encounter_chance = 0.0;
+    gamestate = STATE_COMBAT;
+    action.select_pos = BUTTON_POS_ATTACK;
+    combat.timer = COMBAT_INTRO_DELAY;
+    combat.phase = COMBAT_PHASE_INTRO;
+    combat_set_enemy(enemy_id);
+
+    return true;
+  }
+  return false;
 }
 

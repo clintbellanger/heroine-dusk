@@ -52,7 +52,6 @@ function explore_logic() {
   }
 
   // check random encounter
-
   var enemy_options = atlas.maps[mazemap.current_id].enemies.length;
   if (avatar.moved && enemy_options > 0) {
 

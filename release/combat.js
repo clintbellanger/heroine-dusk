@@ -104,6 +104,10 @@ function combat_logic_input() {
     power_burn();
 	used_action = true;
   }
+  else if (action_checkuse(BUTTON_POS_UNLOCK) && avatar.mp > 0 && avatar.spellbook >= 3 && combat.enemy.category == ENEMY_CATEGORY_AUTOMATON) {
+    power_unlock();
+    used_action = true;
+  }
   else if (action_checkuse(BUTTON_POS_RUN)) {
     power_run();
 	used_action = true;
