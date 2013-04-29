@@ -63,7 +63,6 @@ function mapscript_exec(map_id) {
       result = result || mapscript_chest(3,2,"atk1", "Magic Ruby (Atk Up)", 1);
 	  result = result || mapscript_chest(3,12,"mp2", "Magic Sapphire (MP Up)", 1);
       result = result || mapscript_chest(6,9, "g2", "Gold", 25);
-      result = result || mapscript_enemy(6,5, ENEMY_MIMIC, "");
 
       return result;
     
