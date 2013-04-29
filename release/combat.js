@@ -42,6 +42,7 @@ function combat_init() {
 function combat_set_enemy(enemy_id) {
   combat.enemy.type = enemy_id;
   combat.enemy.hp = enemy.stats[enemy_id].hp;
+  combat.enemy.category = enemy.stats[enemy_id].category;
 }
 
 /**** Logic **************************/

@@ -122,11 +122,21 @@ function power_burn() {
   
   combat.offense_action = "Burn!";
   
-  // for now let's have burn deal triple weapon damage
-  var atk_min = (info.weapons[avatar.weapon].atk_min + avatar.bonus_atk) * 3;
-  var atk_max = (info.weapons[avatar.weapon].atk_max + avatar.bonus_atk) * 3;
+  
+  var atk_min = (info.weapons[avatar.weapon].atk_min + avatar.bonus_atk);
+  var atk_max = (info.weapons[avatar.weapon].atk_max + avatar.bonus_atk);
   var attack_damage = Math.round(Math.random() * (atk_max - atk_min)) + atk_min;
   
+  // against undead, burn does 2x crit
+  if (combat.enemy.category == ENEMY_CATEGORY_UNDEAD) {
+    attack_damage += atk_max + atk_max;
+  }
+  // against most creatures burn does 1x crit
+  else if (combat.enemy.category != ENEMY_CATEGORY_DEMON) {
+    attack_damage += atk_max;
+  }
+  // against demons, burn does regular weapon damage.
+
   avatar.mp--;  
   combat.enemy.hp -= attack_damage;
   combat.offense_result = attack_damage + " damage";
@@ -232,9 +242,12 @@ function power_scorch() {
 	return;
   }
 
-  var atk_min = enemy.stats[combat.enemy.type].atk_min *2;
-  var atk_max = enemy.stats[combat.enemy.type].atk_max *2;
+  var atk_min = enemy.stats[combat.enemy.type].atk_min;
+  var atk_max = enemy.stats[combat.enemy.type].atk_max;
   var attack_damage = Math.round(Math.random() * (atk_max - atk_min)) + atk_min;
+
+  // scorch works like an enemy crit
+  attack_damage += atk_min;
 
   // armor absorb
   attack_damage -= info.armors[avatar.armor].def;
