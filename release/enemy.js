@@ -4,7 +4,7 @@
  Includes the images for enemies
  */
 
-var ENEMY_COUNT = 6;
+var ENEMY_COUNT = 7;
 
 var ENEMY_SHADOW_TENDRILS = 0;
 var ENEMY_IMP = 1;
@@ -53,6 +53,10 @@ function enemy_init() {
   enemy.img[ENEMY_DRUID].src = "images/enemies/druid.png";
   enemy.img[ENEMY_DRUID].onload = function() {enemy_onload();}
 
+  enemy.img[ENEMY_MIMIC].src = "images/enemies/mimic.png";
+  enemy.img[ENEMY_MIMIC].onload = function() {enemy_onload();}
+
+
   // set enemy stats
 
   enemy.stats[ENEMY_SHADOW_TENDRILS] = {name:"Shadow Tendrils", hp:6, atk_min:2, atk_max:5, gold_min:1, gold_max:2, category:ENEMY_CATEGORY_SHADOW};
@@ -72,6 +76,9 @@ function enemy_init() {
 
   enemy.stats[ENEMY_DRUID] = {name:"Druid", hp:16, atk_min:7, atk_max:14, gold_min:6, gold_max:10, category:ENEMY_CATEGORY_DEMON};
   enemy.stats[ENEMY_DRUID].powers = [ENEMY_POWER_ATTACK, ENEMY_POWER_SCORCH, ENEMY_POWER_HPDRAIN, ENEMY_POWER_MPDRAIN];
+
+  enemy.stats[ENEMY_MIMIC] = {name:"Mimic", hp:30, atk_min:10, atk_max:16, gold_min:16, gold_max:25, category:ENEMY_CATEGORY_AUTOMATON};
+  enemy.stats[ENEMY_MIMIC].powers = [ENEMY_POWER_ATTACK];
 
 }
 
