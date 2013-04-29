@@ -92,9 +92,7 @@ function handleKeyUp(evt) {
 }
 
 function handleMouseDown(evt) {
-
   evt.preventDefault();
-
   pressing.mouse = true;
   mouse_pos = clickCoord(evt);
 }
@@ -103,7 +101,6 @@ function handleMouseUp(evt) {
   pressing.mouse = false;
   input_lock.mouse = false;
 }
-
 
 function clickCoord(evt) {
 
@@ -118,6 +115,32 @@ function clickCoord(evt) {
     canx = evt.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
     cany = evt.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
   } 
+  canx -= can.offsetLeft;
+  cany -= can.offsetTop;
+  
+  canx /= SCALE;
+  cany /= SCALE;
+  
+  return {x:canx, y:cany}  
+}
+
+/** Touch Handler **/
+
+function handleTouchStart(evt) {
+  evt.preventDefault();
+  pressing.mouse = true;
+  mouse_pos = touchCoord(evt);
+}
+
+function handleTouchEnd(evt) {
+  pressing.mouse = false;
+  input_lock.mouse = false;
+}
+
+function touchCoord(evt) {
+  var canx = evt.touches[0].pageX;
+  var cany = evt.touches[0].pageY;
+  
   canx -= can.offsetLeft;
   cany -= can.offsetTop;
   
