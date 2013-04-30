@@ -68,7 +68,9 @@ function mapscript_exec(map_id) {
     
     case 9: // Dead Walkways
       mapscript_bone_pile_load(9);
-      return mapscript_enemy(4,9, ENEMY_MIMIC, "");
+      result = mapscript_enemy(4,9, ENEMY_MIMIC, "");
+	  result = result || mapscript_enemy(11,5, ENEMY_DEATH_SPEAKER, "");
+	  return result;
 
     case 10: // Trade Tunnel
 	  mapscript_locked_door_load(10);

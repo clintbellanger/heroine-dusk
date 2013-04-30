@@ -4,7 +4,7 @@
  Includes the images for enemies
  */
 
-var ENEMY_COUNT = 7;
+var ENEMY_COUNT = 8;
 
 var ENEMY_SHADOW_TENDRILS = 0;
 var ENEMY_IMP = 1;
@@ -13,8 +13,7 @@ var ENEMY_ZOMBIE = 3;
 var ENEMY_SKELETON = 4;
 var ENEMY_DRUID = 5;
 var ENEMY_MIMIC = 6;
-var ENEMY_RAM_DEMON = 7;
-var ENEMY_DEATH_SPEAKER = 8;
+var ENEMY_DEATH_SPEAKER = 7;
 
 var ENEMY_CATEGORY_SHADOW = 0;
 var ENEMY_CATEGORY_DEMON = 1;
@@ -56,6 +55,8 @@ function enemy_init() {
   enemy.img[ENEMY_MIMIC].src = "images/enemies/mimic.png";
   enemy.img[ENEMY_MIMIC].onload = function() {enemy_onload();}
 
+  enemy.img[ENEMY_DEATH_SPEAKER].src = "images/enemies/death_speaker.png";
+  enemy.img[ENEMY_DEATH_SPEAKER].onload = function() {enemy_onload();}
 
   // set enemy stats
 
@@ -80,6 +81,9 @@ function enemy_init() {
   enemy.stats[ENEMY_MIMIC] = {name:"Mimic", hp:30, atk_min:10, atk_max:16, gold_min:16, gold_max:25, category:ENEMY_CATEGORY_AUTOMATON};
   enemy.stats[ENEMY_MIMIC].powers = [ENEMY_POWER_ATTACK];
 
+  enemy.stats[ENEMY_DEATH_SPEAKER] = {name:"Death Speaker", hp:84, atk_min:8, atk_max:15, gold_min:225, gold_max:275, category:ENEMY_CATEGORY_DEMON};
+  enemy.stats[ENEMY_DEATH_SPEAKER].powers = [ENEMY_POWER_ATTACK, ENEMY_POWER_SCORCH];
+  
 }
 
 function enemy_onload() {
@@ -102,5 +106,8 @@ function enemy_render(enemy_id) {
     160 * SCALE,
     120 * SCALE
   );
+  
+  // optional enemy overlays
+  boss_boneshield_render();
 }
 

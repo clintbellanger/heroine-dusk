@@ -11,6 +11,12 @@ function power_hero_attack() {
 
   combat.offense_action = "Attack!";
   
+  // special: override hero action if the boss has bone shield up
+  if (boss.boneshield_active) {
+    boss_boneshield_heroattack();
+	return;
+  }
+  
   // check miss
   var hit_chance = Math.random();
   if (hit_chance < 0.20) {
@@ -43,6 +49,12 @@ function power_hero_attack() {
  * Choose a random power from the enemy's available powers
  */
 function power_enemy(enemy_id) {
+
+  // override for boss action
+  if (enemy_id == ENEMY_DEATH_SPEAKER) {
+    boss_power();
+	return;
+  }
 
   var power_options = enemy.stats[enemy_id].powers.length;
   var power_roll = Math.floor(Math.random() * power_options);
@@ -142,6 +154,9 @@ function power_burn() {
   
   combat.enemy_hurt = true;
   
+  if (boss.boneshield_active) {
+    boss.boneshield_active = false;  
+  }
 }
 
 function power_run() {
