@@ -26,12 +26,14 @@ combat.defense_action = "";
 combat.defense_result = "";
 combat.reward_result = "";
 
+combat.victory_status = "";
 combat.enemy_hurt = false;
 combat.hero_hurt = false;
 combat.run_success = false;
 
 function combat_init() {
   combat_clear_messages();
+  
 }
 
 /**
@@ -44,6 +46,7 @@ function combat_set_enemy(enemy_id) {
   combat.enemy.hp = enemy.stats[enemy_id].hp;
   combat.enemy.category = enemy.stats[enemy_id].category;
   boss_reset();
+  combat.victory_status = "";
 }
 
 /**** Logic **************************/
@@ -241,6 +244,12 @@ function combat_determine_reward() {
   combat.reward_result = "+" + gold_reward + " Gold!";
   
   avatar.gold += gold_reward;
+  
+  // if killed a named creature, remember
+  if (combat.victory_status != "") {
+    avatar.campaign.push(combat.victory_status);  
+  }
+  
   avatar_save();
 
 }

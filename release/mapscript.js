@@ -68,8 +68,9 @@ function mapscript_exec(map_id) {
     
     case 9: // Dead Walkways
       mapscript_bone_pile_load(9);
+	  boss_alter_map();
       result = mapscript_enemy(4,9, ENEMY_MIMIC, "");
-	  result = result || mapscript_enemy(11,5, ENEMY_DEATH_SPEAKER, "");
+	  result = result || mapscript_enemy(11,5, ENEMY_DEATH_SPEAKER, "dspeak");
 	  return result;
 
     case 10: // Trade Tunnel
@@ -256,6 +257,7 @@ function mapscript_enemy(x, y, enemy_id, status) {
     combat.timer = COMBAT_INTRO_DELAY;
     combat.phase = COMBAT_PHASE_INTRO;
     combat_set_enemy(enemy_id);
+	combat.victory_status = "dspeak";
 
     return true;
   }

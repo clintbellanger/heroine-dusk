@@ -2,7 +2,6 @@
  * Boss encounter logic and special art
  */
  
- 
 var boss = new Object();
 
 boss.boneshield_img = new Image();
@@ -18,16 +17,26 @@ function boss_init() {
 function boss_reset() {
   boss.boneshield_active = false;
   boss.boneshield_count = 0;
+  boss_alter_map();
 }
 
 function boss_boneshield_onload() {
   boss.boneshield_loaded = true;
 }
 
+function boss_alter_map() {
+  if (avatar.campaign.indexOf("dspeak") > -1) {
+    if (mazemap.current_id == 9) {
+      mazemap_set_tile(11,5,6);
+	}
+  }
+}
+
+
 function boss_boneshield_activate() {
   boss.boneshield_active = true;
   combat.defense_action = "Bone Shield!";
-  combat.defense_result = "+Def Up!.";
+  combat.defense_result = "+Def Up!";
   combat.hero_hurt = false;
 
 }
