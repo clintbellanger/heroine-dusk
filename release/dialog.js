@@ -145,7 +145,7 @@ function dialog_logic_moveselect() {
 
 function dialog_render() {
 
-  tileset_background();
+  tileset_background_render(shop[dialog.shop_id].background);
 
   bitfont_render(dialog.title, 80, 2, JUSTIFY_CENTER);
 
