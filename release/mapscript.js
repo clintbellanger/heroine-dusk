@@ -261,7 +261,7 @@ function mapscript_enemy(x, y, enemy_id, status) {
     combat.timer = COMBAT_INTRO_DELAY;
     combat.phase = COMBAT_PHASE_INTRO;
     combat_set_enemy(enemy_id);
-	combat.victory_status = "dspeak";
+	combat.victory_status = status;
 
     return true;
   }
