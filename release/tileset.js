@@ -5,7 +5,7 @@ TileSet class.
 */
 
 var TILE_COUNT = 19;
-var BACKGROUND_COUNT = 3;
+var BACKGROUND_COUNT = 4;
 
 var tileset = new Object();
 tileset.tile_img = new Array();
@@ -62,6 +62,9 @@ function tileset_init() {
 
   tileset.background_img[2].src = "images/backgrounds/tempest.png";
   tileset.background_img[2].onload = function() {tileset_onload();};
+
+  tileset.background_img[3].src = "images/backgrounds/interior.png";
+  tileset.background_img[3].onload = function() {tileset_onload();};
   
 
   tileset.walkable[0] = false;

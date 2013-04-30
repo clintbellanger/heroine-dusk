@@ -20,41 +20,41 @@ for (var i=0; i<SHOP_COUNT; i++) {
 shop[0].name = "Cedar Arms";
 shop[0].item[0] = {type:SHOP_WEAPON, value:2};
 shop[0].item[1] = {type:SHOP_WEAPON, value:3};
-shop[0].background = 1;
+shop[0].background = 3;
 
 shop[1].name = "Simmons Fine Clothier";
 shop[1].item[0] = {type:SHOP_ARMOR, value:2};
 shop[1].item[1] = {type:SHOP_ARMOR, value:3};
-shop[1].background = 1;
+shop[1].background = 3;
 
 shop[2].name = "The Pilgrim Inn";
 shop[2].item[0] = {type:SHOP_MESSAGE, msg1:"We saw dead walking", msg2:"from the Canal Boneyard."};
 shop[2].item[1] = {type:SHOP_ROOM, value:10};
-shop[2].background = 1;
+shop[2].background = 3;
 
 shop[3].name = "Sage Therel";
 shop[3].item[0] = {type:SHOP_MESSAGE, msg1:"Fire magic is effective", msg2:"against undead and bone."};
 shop[3].item[1] = {type:SHOP_SPELL, value:2};
-shop[3].background = 1;
+shop[3].background = 3;
 
 shop[4].name = "Woodsman";
 shop[4].item[1] = {type:SHOP_MESSAGE, msg1:"I'm staying right here", msg2:"until the sun comes back."};
-shop[4].background = 1;
+shop[4].background = 3;
 
 shop[5].name = "Stonegate Entrance";
 shop[5].item[0] = {type:SHOP_MESSAGE, msg1:"No one allowed in or", msg2:"out of the city."};
 shop[5].item[1] = {type:SHOP_MESSAGE, msg1:"(The demo ends here.", msg2:"Thanks for playing!)"};
-shop[5].background = 1;
+shop[5].background = 3;
 
 shop[6].name = "Thomas the Fence";
 shop[6].item[0] = {type:SHOP_MESSAGE, msg1:"Unlock magic opens doors", msg2:"and harms automatons."};
 shop[6].item[1] = {type:SHOP_SPELL, value:3};
-shop[6].background = 1;
+shop[6].background = 3;
 
 shop[7].name = "Thieves Guild";
 shop[7].item[0] = {type:SHOP_MESSAGE, msg1:"For a small fee we can", msg2:"grant you safe passage"};
 shop[7].item[1] = {type:SHOP_MESSAGE, msg1:"into Stonegate City.", msg2:"(Buy the full version!)"};
-shop[7].background = 1;
+shop[7].background = 3;
 
 shop[8].name = "A Nightmare";
 shop[8].item[0] = {type:SHOP_MESSAGE, msg1:"Darkness has overtaken", msg2:"the human realm."};
