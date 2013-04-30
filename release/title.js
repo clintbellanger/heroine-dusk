@@ -37,18 +37,22 @@ function title_logic() {
 }
 
 function title_render() {
-  if (title.img_loaded) {
-    ctx.drawImage(title.img, 0, 0, 160*SCALE, 120*SCALE);
+
+  if (!bitfont.loaded || !title.img_loaded) {
+    redraw = true;
+	return;
   }
-  
-  bitfont_render("Maze Thing", 80, 55, JUSTIFY_CENTER);
+
+  ctx.drawImage(title.img, 0, 0, 160*SCALE, 120*SCALE);
   
   if (avatar_continue) {
-    bitfont_render("Continue", 80, 100, JUSTIFY_CENTER);
+    bitfont_render("[ Continue ]", 80, 90, JUSTIFY_CENTER);
   }
   else {
-    bitfont_render("Start", 80, 100, JUSTIFY_CENTER);
+    bitfont_render("[ Start ]", 80, 90, JUSTIFY_CENTER);
   }
+  
+  bitfont_render("Clint Bellanger 2013", 80, 110, JUSTIFY_CENTER);
 }
 
 function title_start() {

@@ -117,6 +117,7 @@ function bitfont_render(text, x, y, justify) {
   for (var i=0; i < uptext.length; i++) {
     bitfont_renderglyph(uptext.charAt(i), y);
   }
+
 }
 
 /**
