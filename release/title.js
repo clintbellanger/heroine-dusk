@@ -52,7 +52,7 @@ function title_render() {
     bitfont_render("[ Start ]", 80, 90, JUSTIFY_CENTER);
   }
   
-  bitfont_render("Clint Bellanger 2013", 80, 110, JUSTIFY_CENTER);
+  bitfont_render("by Clint Bellanger 2013", 80, 110, JUSTIFY_CENTER);
 }
 
 function title_start() {
