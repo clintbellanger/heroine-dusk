@@ -18,6 +18,8 @@ dialog.button_img_loaded = false;
 dialog.option = new Array();
 dialog.message = "";
 dialog.shop_id = 0;
+dialog.items_for_sale = false;
+
 
 for (var i=0; i<3; i++) {
   dialog.option[i] = new Object();
@@ -147,7 +149,10 @@ function dialog_render() {
 
   bitfont_render(dialog.title, 80, 2, JUSTIFY_CENTER);
 
-  bitfont_render(avatar.gold + " Gold", 158, 110, JUSTIFY_RIGHT);
+  // only render gold if there is something for sale
+  if (dialog.items_for_sale) {
+    bitfont_render(avatar.gold + " Gold", 158, 110, JUSTIFY_RIGHT);
+  }
 
   dialog_render_button(dialog.option[0].button, BUTTON_POS_OPT0);
   dialog_render_button(dialog.option[1].button, BUTTON_POS_OPT1);

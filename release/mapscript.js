@@ -106,6 +106,10 @@ function mapscript_message(x, y, status, message) {
 
 
 function mapscript_haybale(x, y) {
+
+  // don't rest if just starting the game
+  if (!avatar.moved) return false;
+
   if (avatar.x == x && avatar.y == y) { 
     explore.message = "You rest for awhile.";
     avatar.hp = avatar.max_hp;

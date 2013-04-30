@@ -150,8 +150,18 @@ function tileset_onload() {
   if (tileset.load_counter == (TILE_COUNT + BACKGROUND_COUNT)) redraw = true;
 }
 
+/**
+ * Draw the default background for this map
+ */
 function tileset_background() {
-  ctx.drawImage(tileset.background_img[atlas.maps[mazemap.current_id].background],0,0, 160*SCALE, 120*SCALE);
+  tileset_background_render(atlas.maps[mazemap.current_id].background);
+}
+
+/**
+ * Render a specific background
+ */
+function tileset_background_render(background_id) {
+  ctx.drawImage(tileset.background_img[background_id],0,0, 160*SCALE, 120*SCALE);  
 }
 
 function tileset_render(tile_id, position) {

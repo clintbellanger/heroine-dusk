@@ -2,7 +2,7 @@
  Dialog info for game shops
  */
 
-var SHOP_COUNT = 8;
+var SHOP_COUNT = 9;
 
 var SHOP_WEAPON = 0;
 var SHOP_ARMOR = 1;
@@ -48,6 +48,10 @@ shop[7].name = "Thieves Guild";
 shop[7].item[0] = {type:SHOP_MESSAGE, msg1:"For a small fee we can", msg2:"grant you safe passage"};
 shop[7].item[1] = {type:SHOP_MESSAGE, msg1:"into Stonegate City.", msg2:"(Buy the full version!)"};
 
+shop[8].name = "A Nightmare";
+shop[8].item[0] = {type:SHOP_MESSAGE, msg1:"Darkness has overtaken", msg2:"the human realm."};
+shop[8].item[1] = {type:SHOP_MESSAGE, msg1:"The monastery is no", msg2:"longer safe."};
+
 
 //---- Set choice options for shops --------
 
@@ -57,6 +61,7 @@ function shop_set(shop_id) {
   dialog.shop_id = shop_id;
   dialog.title = shop[shop_id].name;
   dialog.select_pos = BUTTON_POS_OPT2;
+  dialog.items_for_sale = false;
 
   // most shops should use the exit button as the third option
   dialog.option[2].button = DIALOG_BUTTON_EXIT;
@@ -148,6 +153,9 @@ function shop_set_buy(slot, name, cost, disable_reason) {
   else {
     dialog.option[slot].button = DIALOG_BUTTON_NONE;
   }
+  
+  // used to determine whether to display current gold
+  dialog.items_for_sale = true;
 }
 
 function shop_clear_slot(slot) {

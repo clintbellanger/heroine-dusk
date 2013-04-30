@@ -4,7 +4,7 @@
  
 var avatar = new Object();
 avatar.campaign = new Array();
-
+var avatar_continue = false;
 
 //---- Public Functions ---------------------------------------------
 function avatar_init() {
@@ -16,6 +16,7 @@ function avatar_init() {
 
     if (avatar.hp > 0) {
       mazemap_set(avatar.map_id);
+	  avatar_continue = true;
    }
     else {
       avatar_reset();

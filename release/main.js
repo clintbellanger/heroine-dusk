@@ -73,6 +73,7 @@ function init() {
   combat_init();
   dialog_init();
   boss_init();
+  title_init();
 
   init_complete = true;
 }

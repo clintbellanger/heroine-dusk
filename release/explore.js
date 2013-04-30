@@ -19,7 +19,7 @@ function explore_logic() {
   explore.message = "";
 
   avatar_explore();
-
+	
   // check map exit
   if (avatar.moved) {
     if (mazemap_check_exit()) {

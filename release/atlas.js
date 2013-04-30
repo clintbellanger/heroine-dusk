@@ -18,7 +18,7 @@ for (var i=0; i<MAP_COUNT; i++) {
 atlas.maps[0].name = "Serf Quarters";
 atlas.maps[0].width = 3;
 atlas.maps[0].height = 4;
-atlas.maps[0].background = 0;
+atlas.maps[0].background = 2;
 atlas.maps[0].tiles = [
   [2,2,2],
   [2,17,2],
