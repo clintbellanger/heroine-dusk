@@ -40,75 +40,75 @@ function mazemap_render(x, y, facing) {
 
   if (facing == "north") {
     // back row
-	mazemap_render_tile(x-2,y-2,0);
-	mazemap_render_tile(x+2,y-2,1);
-	mazemap_render_tile(x-1,y-2,2);
-	mazemap_render_tile(x+1,y-2,3);
-	mazemap_render_tile(x,  y-2,4);
+    mazemap_render_tile(x-2,y-2,0);
+    mazemap_render_tile(x+2,y-2,1);
+    mazemap_render_tile(x-1,y-2,2);
+    mazemap_render_tile(x+1,y-2,3);
+    mazemap_render_tile(x,  y-2,4);
     // middle row
-	mazemap_render_tile(x-2,y-1,5);
-	mazemap_render_tile(x+2,y-1,6);
-	mazemap_render_tile(x-1,y-1,7);
-	mazemap_render_tile(x+1,y-1,8);
-	mazemap_render_tile(x,  y-1,9);
-	// front row
-	mazemap_render_tile(x-1,y, 10);
-	mazemap_render_tile(x+1,y, 11);
-	mazemap_render_tile(x,  y, 12);
+    mazemap_render_tile(x-2,y-1,5);
+    mazemap_render_tile(x+2,y-1,6);
+    mazemap_render_tile(x-1,y-1,7);
+    mazemap_render_tile(x+1,y-1,8);
+    mazemap_render_tile(x,  y-1,9);
+    // front row
+    mazemap_render_tile(x-1,y, 10);
+    mazemap_render_tile(x+1,y, 11);
+    mazemap_render_tile(x,  y, 12);
   }
   else if (facing == "south") {
     // back row
-	mazemap_render_tile(x+2,y+2,0);
-	mazemap_render_tile(x-2,y+2,1);
-	mazemap_render_tile(x+1,y+2,2);
-	mazemap_render_tile(x-1,y+2,3);
-	mazemap_render_tile(x,y+2,4);
+    mazemap_render_tile(x+2,y+2,0);
+    mazemap_render_tile(x-2,y+2,1);
+    mazemap_render_tile(x+1,y+2,2);
+    mazemap_render_tile(x-1,y+2,3);
+    mazemap_render_tile(x,y+2,4);
     // middle row
-	mazemap_render_tile(x+2,y+1,5);
-	mazemap_render_tile(x-2,y+1,6);
-	mazemap_render_tile(x+1,y+1,7);
-	mazemap_render_tile(x-1,y+1,8);
-	mazemap_render_tile(x,y+1,9);
-	// front row
-	mazemap_render_tile(x+1,y,10);
-	mazemap_render_tile(x-1,y,11);
-	mazemap_render_tile(x,y,12);  
+    mazemap_render_tile(x+2,y+1,5);
+    mazemap_render_tile(x-2,y+1,6);
+    mazemap_render_tile(x+1,y+1,7);
+    mazemap_render_tile(x-1,y+1,8);
+    mazemap_render_tile(x,y+1,9);
+    // front row
+    mazemap_render_tile(x+1,y,10);
+    mazemap_render_tile(x-1,y,11);
+    mazemap_render_tile(x,y,12);  
   }
   else if (facing == "west") {
     // back row
-	mazemap_render_tile(x-2,y+2,0);
-	mazemap_render_tile(x-2,y-2,1);
-	mazemap_render_tile(x-2,y+1,2);
-	mazemap_render_tile(x-2,y-1,3);
-	mazemap_render_tile(x-2,y,4);
+    mazemap_render_tile(x-2,y+2,0);
+    mazemap_render_tile(x-2,y-2,1);
+    mazemap_render_tile(x-2,y+1,2);
+    mazemap_render_tile(x-2,y-1,3);
+    mazemap_render_tile(x-2,y,4);
     // middle row
-	mazemap_render_tile(x-1,y+2,5);
-	mazemap_render_tile(x-1,y-2,6);
-	mazemap_render_tile(x-1,y+1,7);
-	mazemap_render_tile(x-1,y-1,8);
-	mazemap_render_tile(x-1,y,9);
-	// front row
-	mazemap_render_tile(x,y+1,10);
-	mazemap_render_tile(x,y-1,11);
-	mazemap_render_tile(x,y,12);    
+    mazemap_render_tile(x-1,y+2,5);
+    mazemap_render_tile(x-1,y-2,6);
+    mazemap_render_tile(x-1,y+1,7);
+    mazemap_render_tile(x-1,y-1,8);
+    mazemap_render_tile(x-1,y,9);
+    // front row
+    mazemap_render_tile(x,y+1,10);
+    mazemap_render_tile(x,y-1,11);
+    mazemap_render_tile(x,y,12);    
   }
   else if (facing == "east") {
     // back row
-	mazemap_render_tile(x+2,y-2,0);
-	mazemap_render_tile(x+2,y+2,1);
-	mazemap_render_tile(x+2,y-1,2);
-	mazemap_render_tile(x+2,y+1,3);
-	mazemap_render_tile(x+2,y,4);
+    mazemap_render_tile(x+2,y-2,0);
+    mazemap_render_tile(x+2,y+2,1);
+    mazemap_render_tile(x+2,y-1,2);
+    mazemap_render_tile(x+2,y+1,3);
+    mazemap_render_tile(x+2,y,4);
     // middle row
-	mazemap_render_tile(x+1,y-2,5);
-	mazemap_render_tile(x+1,y+2,6);
-	mazemap_render_tile(x+1,y-1,7);
-	mazemap_render_tile(x+1,y+1,8);
-	mazemap_render_tile(x+1,y,9);
-	// front row
-	mazemap_render_tile(x,y-1,10);
-	mazemap_render_tile(x,y+1,11);
-	mazemap_render_tile(x,y,12);      
+    mazemap_render_tile(x+1,y-2,5);
+    mazemap_render_tile(x+1,y+2,6);
+    mazemap_render_tile(x+1,y-1,7);
+    mazemap_render_tile(x+1,y+1,8);
+    mazemap_render_tile(x+1,y,9);
+    // front row
+    mazemap_render_tile(x,y-1,10);
+    mazemap_render_tile(x,y+1,11);
+    mazemap_render_tile(x,y,12);      
   }
   
 }
@@ -163,13 +163,13 @@ function mazemap_check_exit() {
   for (var i=0; i<atlas.maps[mazemap.current_id].exits.length; i++) {
 
     if ((avatar.x == atlas.maps[mazemap.current_id].exits[i].exit_x) &&
-	    (avatar.y == atlas.maps[mazemap.current_id].exits[i].exit_y)) {
-		
+        (avatar.y == atlas.maps[mazemap.current_id].exits[i].exit_y)) {
+        
       avatar.x = atlas.maps[mazemap.current_id].exits[i].dest_x;
       avatar.y = atlas.maps[mazemap.current_id].exits[i].dest_y;
       mazemap_set(atlas.maps[mazemap.current_id].exits[i].dest_map);
 
-	  return true;
+      return true;
     }  
   }
   return false;
@@ -179,15 +179,15 @@ function mazemap_check_shop() {
   for (var i=0; i<atlas.maps[mazemap.current_id].shops.length; i++) {
 
     if ((avatar.x == atlas.maps[mazemap.current_id].shops[i].exit_x) &&
-	    (avatar.y == atlas.maps[mazemap.current_id].shops[i].exit_y)) {
-	
+        (avatar.y == atlas.maps[mazemap.current_id].shops[i].exit_y)) {
+    
       shop_set(atlas.maps[mazemap.current_id].shops[i].shop_id);
 
       // put avatar back outside for save purposes
       avatar.x = atlas.maps[mazemap.current_id].shops[i].dest_x;
       avatar.y = atlas.maps[mazemap.current_id].shops[i].dest_y;
 
-	  return true;
+      return true;
     }  
   }
   return false;

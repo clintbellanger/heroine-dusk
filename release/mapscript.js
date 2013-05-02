@@ -44,41 +44,41 @@ function mapscript_exec(map_id) {
     case 3: // Meditation Point
       return mapscript_chest(2,1,"heal", "Spellbook: Heal", 1);
 
-	case 4: // Monastery Trail
-	  return mapscript_chest(2,2,"hp1", "Magic Emerald (HP Up)", 1);
+    case 4: // Monastery Trail
+      return mapscript_chest(2,2,"hp1", "Magic Emerald (HP Up)", 1);
 
-	case 5: // Cedar Village
-	  return mapscript_chest(7,10,"g1", "Gold", 10);
+    case 5: // Cedar Village
+      return mapscript_chest(7,10,"g1", "Gold", 10);
 
-	case 6: // Zuruth Plains
+    case 6: // Zuruth Plains
       return mapscript_chest(9,4,"mp1", "Magic Sapphire (MP Up)", 1);
 
-	case 7: // Canal Boneyard
+    case 7: // Canal Boneyard
       return mapscript_chest(13,5,"def1", "Magic Diamond (Def Up)", 1);
 
     case 8: // Mausoleum
       mapscript_bone_pile_load(8);
-	  mapscript_locked_door_load(8);
+      mapscript_locked_door_load(8);
       result = mapscript_haybale(11,9);
       result = result || mapscript_chest(3,2,"atk1", "Magic Ruby (Atk Up)", 1);
-	  result = result || mapscript_chest(3,12,"mp2", "Magic Sapphire (MP Up)", 1);
+      result = result || mapscript_chest(3,12,"mp2", "Magic Sapphire (MP Up)", 1);
       result = result || mapscript_chest(6,9, "g2", "Gold", 25);
 
       return result;
     
     case 9: // Dead Walkways
       mapscript_bone_pile_load(9);
-	  boss_alter_map();
+      boss_alter_map();
       result = mapscript_enemy(4,9, ENEMY_MIMIC, "");
-	  result = result || mapscript_enemy(11,5, ENEMY_DEATH_SPEAKER, "dspeak");
-	  return result;
+      result = result || mapscript_enemy(11,5, ENEMY_DEATH_SPEAKER, "dspeak");
+      return result;
 
     case 10: // Trade Tunnel
-	  mapscript_locked_door_load(10);
+      mapscript_locked_door_load(10);
       mapscript_bone_pile_load(10);
-	  
-	  result = mapscript_chest(11,2, "hp2", "Magic Emerald (HP Up)", 1);
-	  result = result || mapscript_chest(13,2, "g3", "Gold", 100);
+      
+      result = mapscript_chest(11,2, "hp2", "Magic Emerald (HP Up)", 1);
+      result = result || mapscript_chest(13,2, "g3", "Gold", 100);
       result = result || mapscript_enemy(14,9, ENEMY_MIMIC, "");
       result = result || mapscript_enemy(6,4, ENEMY_MIMIC, "");
 
@@ -112,8 +112,7 @@ function mapscript_haybale(x, y) {
 
   if (avatar.x == x && avatar.y == y) { 
     explore.message = "You rest for awhile.";
-    avatar.hp = avatar.max_hp;
-    avatar.mp = avatar.max_mp;
+    avatar_sleep();
     return true;
   }
   return false;
@@ -171,11 +170,11 @@ function mapscript_grant_item(item, item_count) {
   }
   else if (item == "Magic Emerald (HP Up)") {
     avatar.hp += 5;
-	avatar.max_hp += 5;
+    avatar.max_hp += 5;
   }
   else if (item == "Magic Sapphire (MP Up)") {
     avatar.mp += 2;
-	avatar.max_mp += 2;
+    avatar.max_mp += 2;
   }
   else if (item == "Magic Ruby (Atk Up)") {
     avatar.bonus_atk += 1;
@@ -261,7 +260,7 @@ function mapscript_enemy(x, y, enemy_id, status) {
     combat.timer = COMBAT_INTRO_DELAY;
     combat.phase = COMBAT_PHASE_INTRO;
     combat_set_enemy(enemy_id);
-	combat.victory_status = status;
+    combat.victory_status = status;
 
     return true;
   }

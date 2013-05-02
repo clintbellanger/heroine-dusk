@@ -15,13 +15,18 @@ function avatar_init() {
     avatar = JSON.parse(json_save);
 
     if (avatar.hp > 0) {
+
+      // normal continue
       mazemap_set(avatar.map_id);
+      avatar_continue = true;
+    }
+    else if (avatar.sleeploc) {
+      avatar_respawn();
 	  avatar_continue = true;
-   }
+    }
     else {
       avatar_reset();
-      mazemap_set(avatar.map_id);
- 
+      mazemap_set(avatar.map_id); 
     }
     return;
   }
@@ -50,7 +55,30 @@ function avatar_reset() {
   avatar.bonus_atk = 0;
   avatar.bonus_def = 0;
   avatar.spellbook = 0;
+  avatar.sleeploc = [0,1,1]; // map_id, x, y
   avatar.campaign = new Array();
+}
+
+/**
+ * Sleeping restores HP and MP and sets the respawn point
+ */
+function avatar_sleep() {
+  avatar.hp = avatar.max_hp;
+  avatar.mp = avatar.max_mp;
+  avatar.sleeploc = [mazemap.current_id, avatar.x, avatar.y];
+}
+
+function avatar_respawn() {
+  // previously died. restart at last sleep point
+  mazemap_set(avatar.sleeploc[0]);
+  avatar.x = avatar.sleeploc[1];
+  avatar.y = avatar.sleeploc[2];
+  
+  avatar.hp = avatar.max_hp;
+  avatar.mp = avatar.max_mp;
+  
+  // cost of death: lose all gold
+  avatar.gold = 0;
 }
 
 function avatar_explore() {
@@ -70,34 +98,34 @@ function avatar_explore() {
   
   // check movement
   if (input_up) {
-	if (pressing.up) input_lock.up = true;
-	if (pressing.mouse) input_lock.mouse = true;
-	
+    if (pressing.up) input_lock.up = true;
+    if (pressing.mouse) input_lock.mouse = true;
+    
     if (avatar.facing == "north") avatar_move(0,-1);
-	else if (avatar.facing == "west") avatar_move(-1,0);
-	else if (avatar.facing == "south") avatar_move(0,1);
-	else if (avatar.facing == "east") avatar_move(1,0);
+    else if (avatar.facing == "west") avatar_move(-1,0);
+    else if (avatar.facing == "south") avatar_move(0,1);
+    else if (avatar.facing == "east") avatar_move(1,0);
   }
   else if (input_down) {
-	if (pressing.down) input_lock.down = true;
-	if (pressing.mouse) input_lock.mouse = true;
-	
+    if (pressing.down) input_lock.down = true;
+    if (pressing.mouse) input_lock.mouse = true;
+    
     if (avatar.facing == "north") avatar_move(0,1);
-	else if (avatar.facing == "west") avatar_move(1,0);
-	else if (avatar.facing == "south") avatar_move(0,-1);
-	else if (avatar.facing == "east") avatar_move(-1,0);
+    else if (avatar.facing == "west") avatar_move(1,0);
+    else if (avatar.facing == "south") avatar_move(0,-1);
+    else if (avatar.facing == "east") avatar_move(-1,0);
   }
   else if (input_left) {
-	if (pressing.left) input_lock.left = true;
-	if (pressing.mouse) input_lock.mouse = true;
-	
-	avatar_turn_left();
+    if (pressing.left) input_lock.left = true;
+    if (pressing.mouse) input_lock.mouse = true;
+    
+    avatar_turn_left();
   }
   else if (input_right) {
-	if (pressing.right) input_lock.right = true;
-	if (pressing.mouse) input_lock.mouse = true;
-	
-	avatar_turn_right();
+    if (pressing.right) input_lock.right = true;
+    if (pressing.mouse) input_lock.mouse = true;
+    
+    avatar_turn_right();
   }  
   
 }
@@ -106,8 +134,8 @@ function avatar_move(dx,dy) {
   var target_tile = mazemap_get_tile(avatar.x+dx,avatar.y+dy);
   if (tileset.walkable[target_tile]) {
     avatar.x += dx;
-	avatar.y += dy;
-	redraw = true;
+    avatar.y += dy;
+    redraw = true;
     avatar.moved = true;
     avatar_save();
   }

@@ -85,19 +85,19 @@ function shop_set(shop_id) {
       else if (shop[shop_id].item[i].type == SHOP_ARMOR) {
         shop_set_armor(i, shop[shop_id].item[i].value);
       }
-	  else if (shop[shop_id].item[i].type == SHOP_SPELL) {
-	    shop_set_spell(i, shop[shop_id].item[i].value);
-	  }
-	  else if (shop[shop_id].item[i].type == SHOP_ROOM) {
-	    shop_set_room(i, shop[shop_id].item[i].value);
-	  }
+      else if (shop[shop_id].item[i].type == SHOP_SPELL) {
+        shop_set_spell(i, shop[shop_id].item[i].value);
+      }
+      else if (shop[shop_id].item[i].type == SHOP_ROOM) {
+        shop_set_room(i, shop[shop_id].item[i].value);
+      }
       else if (shop[shop_id].item[i].type == SHOP_MESSAGE) {
         shop_set_message(i, shop[shop_id].item[i].msg1, shop[shop_id].item[i].msg2);
       }
-	}
-	else {
-	  shop_clear_slot(i);
-	}
+    }
+    else {
+      shop_clear_slot(i);
+    }
   }
 
 }
@@ -240,9 +240,9 @@ function shop_buy_room(cost) {
   if (avatar.gold < cost) return;
   
   avatar.gold -= cost;
-  avatar.hp = avatar.max_hp;
-  avatar.mp = avatar.max_mp;
   dialog.message = "You have rested";
+  
+  avatar_sleep();
   shop_set(dialog.shop_id);
   redraw = true;
 }
