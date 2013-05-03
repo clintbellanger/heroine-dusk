@@ -6,6 +6,7 @@ The game's world is set in a fantasy human realm where the sun has not returned 
 
 * Game site: http://heroinedusk.com
 * Creator's site: http://clintbellanger.net
+* Featuring music by Yubatake: http://opengameart.org/users/yubatake
 
 ## Technology
 
@@ -19,11 +20,14 @@ The game is written in Javascript using HTML5 canvas. The art was created with B
 
 ## License
 
-* All of the art and code for Heroine Dusk was created by Clint Bellanger.
+* All of the visual art and code for Heroine Dusk was created by Clint Bellanger.
 * The code for Heroine Dusk is released under GPL v3, with later versions permitted.
-* The art for Heroine Dusk is released under CC-BY-SA 3.0, with later versions permitted.
+* The visual art for Heroine Dusk is released under CC-BY-SA 3.0, with later versions permitted.
+* The music is by Yubatake (CC-BY 3.0). http://opengameart.org/users/yubatake
 
 ## Thanks
 
 * Jessica "Zeldyn" Cox, figure model for the heroine and villainess http://zeldyn-stock.deviantart.com/
 * DawnBringer at PixelJoint for the 16 color palette
+* Yubatake for releasing quality music using a free license
+
