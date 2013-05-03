@@ -16,7 +16,7 @@ for (var i=0; i<MAP_COUNT; i++) {
 }
 
 atlas.maps[0].name = "Serf Quarters";
-atlas.maps[0].music = "m31.ogg";
+atlas.maps[0].music = "m31";
 atlas.maps[0].width = 3;
 atlas.maps[0].height = 4;
 atlas.maps[0].background = 2;
@@ -29,7 +29,7 @@ atlas.maps[0].tiles = [
 atlas.maps[0].exits[0] = {exit_x:0, exit_y:2, dest_map:1, dest_x:6, dest_y:6};
 
 atlas.maps[1].name = "Gar'ashi Monastery";
-atlas.maps[1].music = "m31.ogg";
+atlas.maps[1].music = "m31";
 atlas.maps[1].width = 9;
 atlas.maps[1].height = 11;
 atlas.maps[1].background = 1;
@@ -53,7 +53,7 @@ atlas.maps[1].exits[3] = {exit_x:4, exit_y:10, dest_map:4, dest_x:6, dest_y:2};
 atlas.maps[1].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_IMP];
 
 atlas.maps[2].name = "Monk Quarters";
-atlas.maps[2].music = "m31.ogg";
+atlas.maps[2].music = "m31";
 atlas.maps[2].width = 3;
 atlas.maps[2].height = 4;
 atlas.maps[2].background = 0;
@@ -66,7 +66,7 @@ atlas.maps[2].tiles = [
 atlas.maps[2].exits[0] = {exit_x:2, exit_y:2, dest_map:1, dest_x:2, dest_y:6};
 
 atlas.maps[3].name = "Meditation Point";
-atlas.maps[3].music = "m31.ogg";
+atlas.maps[3].music = "m31";
 atlas.maps[3].width = 5;
 atlas.maps[3].height = 6;
 atlas.maps[3].background = 2;
@@ -81,7 +81,7 @@ atlas.maps[3].tiles = [
 atlas.maps[3].exits[0] = {exit_x:2, exit_y:5, dest_map:1, dest_x:4, dest_y:1};
 
 atlas.maps[4].name = "Monastery Trail";
-atlas.maps[4].music = "m31.ogg";
+atlas.maps[4].music = "m31";
 atlas.maps[4].width = 14;
 atlas.maps[4].height = 16;
 atlas.maps[4].background = 1;
@@ -109,7 +109,7 @@ atlas.maps[4].enemies = [ENEMY_SHADOW_TENDRILS, ENEMY_IMP, ENEMY_SHADOW_SOUL];
 atlas.maps[4].shops[0] = {exit_x:5, exit_y:13, shop_id:4, dest_x:5, dest_y:12};
 
 atlas.maps[5].name = "Cedar Village";
-atlas.maps[5].music = "haply.ogg";
+atlas.maps[5].music = "haply";
 atlas.maps[5].width = 12;
 atlas.maps[5].height = 12;
 atlas.maps[5].background = 1;
@@ -135,7 +135,7 @@ atlas.maps[5].shops[2] = {exit_x:8, exit_y:8, shop_id:2, dest_x:9, dest_y:8};
 atlas.maps[5].shops[3] = {exit_x:1, exit_y:8, shop_id:3, dest_x:2, dest_y:8};
 
 atlas.maps[6].name = "Zuruth Plains";
-atlas.maps[6].music = "m31.ogg";
+atlas.maps[6].music = "m31";
 atlas.maps[6].width = 16;
 atlas.maps[6].height = 16;
 atlas.maps[6].background = 2;
@@ -163,7 +163,7 @@ atlas.maps[6].exits[2] = {exit_x:8, exit_y:15, dest_map:10, dest_x:2, dest_y:1};
 atlas.maps[6].enemies = [ENEMY_IMP, ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE];
 
 atlas.maps[7].name = "Canal Boneyard";
-atlas.maps[7].music = "m31.ogg";
+atlas.maps[7].music = "m31";
 atlas.maps[7].width = 15;
 atlas.maps[7].height = 11;
 atlas.maps[7].background = 2;
@@ -185,7 +185,7 @@ atlas.maps[7].exits[1] = {exit_x:10, exit_y:5, dest_map:8, dest_x:1, dest_y:7};
 atlas.maps[7].enemies = [ENEMY_SHADOW_SOUL, ENEMY_ZOMBIE, ENEMY_SKELETON];
 
 atlas.maps[8].name = "Mausoleum";
-atlas.maps[8].music = "elegy_dm.ogg";
+atlas.maps[8].music = "elegy_dm";
 atlas.maps[8].width = 16;
 atlas.maps[8].height = 15;
 atlas.maps[8].background = 2;
@@ -211,7 +211,7 @@ atlas.maps[8].exits[1] = {exit_x:15, exit_y:7, dest_map:9, dest_x:1, dest_y:5};
 atlas.maps[8].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID];
 
 atlas.maps[9].name = "Dead Walkways";
-atlas.maps[9].music = "elegy_dm.ogg";
+atlas.maps[9].music = "elegy_dm";
 atlas.maps[9].width = 13;
 atlas.maps[9].height = 10;
 atlas.maps[9].background = 2;
@@ -231,7 +231,7 @@ atlas.maps[9].exits[0] = {exit_x:0, exit_y:5, dest_map:8, dest_x:14, dest_y:7};
 atlas.maps[9].enemies = [ENEMY_ZOMBIE, ENEMY_SKELETON, ENEMY_DRUID, ENEMY_DRUID]; // druids are common here
 
 atlas.maps[10].name = "Trade Tunnel";
-atlas.maps[10].music = "kawarayu.ogg";
+atlas.maps[10].music = "kawarayu";
 atlas.maps[10].width = 16;
 atlas.maps[10].height = 16;
 atlas.maps[10].background = 2;

@@ -155,14 +155,37 @@ function mazemap_set(map_id) {
   // for save game info
   avatar.map_id = map_id;
 
-  // background music handling
-  var song_for_this_map = "music/" + atlas.maps[map_id].music;
-  var audio_object = document.getElementById("bgmusic");
+  mazemap_set_music(atlas.maps[map_id].music);
 
-  if (song_for_this_map != mazemap.current_song) {
-    audio_object.src = song_for_this_map;
-    mazemap.current_song = song_for_this_map;
+}
+
+/**
+ * Background music handling
+ */
+function mazemap_set_music(song_filename) {
+  
+  // don't reset song if it's already playing
+  if (song_filename == mazemap.current_song) return;
+
+  mazemap.current_song = song_filename;
+
+  var song_path = "music/" + song_filename;
+  var audio_node = document.getElementById("bgmusic");
+
+  // clear the current song
+  audio_node.innerHTML = "";
+
+  // do we need to play ogg or mp3?
+  var newsource = document.createElement('source');
+  if (audio_node.canPlayType('audio/mpeg;')) {
+    newsource.type = "audio/mpeg";
+    newsource.src = song_path + ".mp3";
+  } else {
+    newsource.type = "audio/ogg";
+    newsource.src = song_path + ".ogg";
   }
+  audio_node.appendChild(newsource);
+
 }
 
 /**
