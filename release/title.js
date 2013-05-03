@@ -46,13 +46,14 @@ function title_render() {
   ctx.drawImage(title.img, 0, 0, 160*SCALE, 120*SCALE);
   
   if (avatar_continue) {
-    bitfont_render("[ Continue ]", 80, 90, JUSTIFY_CENTER);
+    bitfont_render("[ Continue ]", 80, 80, JUSTIFY_CENTER);
   }
   else {
-    bitfont_render("[ Start ]", 80, 90, JUSTIFY_CENTER);
+    bitfont_render("[ Start ]", 80, 80, JUSTIFY_CENTER);
   }
   
-  bitfont_render("by Clint Bellanger 2013", 80, 110, JUSTIFY_CENTER);
+  bitfont_render("by Clint Bellanger 2013", 80, 100, JUSTIFY_CENTER);
+  bitfont_render("ft. music by Yubatake", 80, 110, JUSTIFY_CENTER);
 }
 
 function title_start() {

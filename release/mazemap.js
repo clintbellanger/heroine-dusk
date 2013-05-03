@@ -10,6 +10,7 @@ While Atlas is a static collection, MazeMap can be altered by events.
 
 var mazemap = new Object();
 mazemap.current_id = 0;
+mazemap.current_song = "";
 
 //---- Public Functions ---------------------------------------------
 
@@ -153,6 +154,15 @@ function mazemap_set(map_id) {
 
   // for save game info
   avatar.map_id = map_id;
+
+  // background music handling
+  var song_for_this_map = "music/" + atlas.maps[map_id].music;
+  var audio_object = document.getElementById("bgmusic");
+
+  if (song_for_this_map != mazemap.current_song) {
+    audio_object.src = song_for_this_map;
+    mazemap.current_song = song_for_this_map;
+  }
 }
 
 /**
