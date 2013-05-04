@@ -119,8 +119,8 @@ function bitfont_onloadred() {
  */
 function bitfont_render(text, x, y, justify) {
 
-  if (!avatar_badly_hurt() && !bitfont.loaded) return;
-  else if (!bitfont.loadedred) return;
+  if (!bitfont.loaded) return;
+  if (init_complete && avatar_badly_hurt() && !bitfont.loadedred) return;
 
   var uptext = text.toUpperCase();
   bitfont_setposition(uptext, x, justify);
