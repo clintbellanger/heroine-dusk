@@ -160,3 +160,8 @@ function avatar_turn_right() {
   avatar_save();
 }
 
+function avatar_badly_hurt() {
+  if (avatar.hp <= avatar.max_hp/3) return true;
+  return false;
+}
+
