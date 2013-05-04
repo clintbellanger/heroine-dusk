@@ -120,7 +120,6 @@ function bitfont_onloadred() {
 function bitfont_render(text, x, y, justify) {
 
   if (!bitfont.loaded) return;
-  if (init_complete && avatar_badly_hurt() && !bitfont.loadedred) return;
 
   var uptext = text.toUpperCase();
   bitfont_setposition(uptext, x, justify);
@@ -174,7 +173,9 @@ function bitfont_calcwidth(text) {
 function bitfont_renderglyph(character, y) {
 
   var font_color;
-  if (avatar_badly_hurt()) font_color = bitfont.imgred;
+  if (!init_complete) font_color = bitfont.img;
+  else if (!bitfont.loadedred) font_color = bitfont.img;
+  else if (avatar_badly_hurt()) font_color = bitfont.imgred;
   else font_color = bitfont.img;
 
   if (character == " ") {
