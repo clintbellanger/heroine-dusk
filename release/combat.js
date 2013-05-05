@@ -47,6 +47,7 @@ function combat_set_enemy(enemy_id) {
   combat.enemy.category = enemy.stats[enemy_id].category;
   boss_reset();
   combat.victory_status = "";
+  sounds_play(SFX_MISS);
 }
 
 /**** Logic **************************/
