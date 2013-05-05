@@ -69,13 +69,13 @@ function enemy_init() {
   enemy.stats[ENEMY_SHADOW_SOUL] = {name:"Shadow Soul", hp:8, atk_min:3, atk_max:8, gold_min:2, gold_max:4, category:ENEMY_CATEGORY_SHADOW};
   enemy.stats[ENEMY_SHADOW_SOUL].powers = [ENEMY_POWER_ATTACK, ENEMY_POWER_ATTACK, ENEMY_POWER_MPDRAIN];
 
-  enemy.stats[ENEMY_ZOMBIE] = {name:"Zombie", hp:12, atk_min:4, atk_max:10, gold_min:3, gold_max:5, category:ENEMY_CATEGORY_UNDEAD};
+  enemy.stats[ENEMY_ZOMBIE] = {name:"Zombie", hp:12, atk_min:4, atk_max:10, gold_min:3, gold_max:6, category:ENEMY_CATEGORY_UNDEAD};
   enemy.stats[ENEMY_ZOMBIE].powers = [ENEMY_POWER_ATTACK, ENEMY_POWER_ATTACK, ENEMY_POWER_HPDRAIN];
 
-  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:18, atk_min:6, atk_max:12, gold_min:4, gold_max:7, category:ENEMY_CATEGORY_UNDEAD};
+  enemy.stats[ENEMY_SKELETON] = {name:"Skeleton", hp:18, atk_min:6, atk_max:12, gold_min:5, gold_max:8, category:ENEMY_CATEGORY_UNDEAD};
   enemy.stats[ENEMY_SKELETON].powers = [ENEMY_POWER_ATTACK];
 
-  enemy.stats[ENEMY_DRUID] = {name:"Druid", hp:16, atk_min:7, atk_max:14, gold_min:6, gold_max:10, category:ENEMY_CATEGORY_DEMON};
+  enemy.stats[ENEMY_DRUID] = {name:"Druid", hp:16, atk_min:7, atk_max:14, gold_min:7, gold_max:12, category:ENEMY_CATEGORY_DEMON};
   enemy.stats[ENEMY_DRUID].powers = [ENEMY_POWER_ATTACK, ENEMY_POWER_SCORCH, ENEMY_POWER_HPDRAIN, ENEMY_POWER_MPDRAIN];
 
   enemy.stats[ENEMY_MIMIC] = {name:"Mimic", hp:30, atk_min:10, atk_max:16, gold_min:16, gold_max:25, category:ENEMY_CATEGORY_AUTOMATON};
