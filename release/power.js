@@ -14,14 +14,15 @@ function power_hero_attack() {
   // special: override hero action if the boss has bone shield up
   if (boss.boneshield_active) {
     boss_boneshield_heroattack();
-	return;
+    return;
   }
   
   // check miss
   var hit_chance = Math.random();
   if (hit_chance < 0.20) {
     combat.offense_result = "Miss!";
-	return;
+    sounds_play(SFX_MISS);
+    return;
   }
   
   // Hit: calculate damage
@@ -34,7 +35,11 @@ function power_hero_attack() {
   var crit_chance = Math.random();
   if (crit_chance < 0.10) {
     attack_damage += atk_max;
-	combat.offense_action = "Critical!";
+    combat.offense_action = "Critical!";
+    sounds_play(SFX_CRITICAL);
+  }
+  else {
+    sounds_play(SFX_ATTACK);
   }
   
   combat.enemy.hp -= attack_damage;
@@ -53,7 +58,7 @@ function power_enemy(enemy_id) {
   // override for boss action
   if (enemy_id == ENEMY_DEATH_SPEAKER) {
     boss_power();
-	return;
+    return;
   }
 
   var power_options = enemy.stats[enemy_id].powers.length;
@@ -83,7 +88,8 @@ function power_enemy_attack() {
   var hit_chance = Math.random();
   if (hit_chance < 0.30) {
     combat.defense_result = "Miss!";
-	return;
+    sounds_play(SFX_MISS);
+    return;
   }
   
   var atk_min = enemy.stats[combat.enemy.type].atk_min;
@@ -95,7 +101,11 @@ function power_enemy_attack() {
   var crit_chance = Math.random();
   if (crit_chance < 0.05) {
     attack_damage += atk_min;
-	combat.defense_action = "Critical!";
+    combat.defense_action = "Critical!";
+    sounds_play(SFX_CRITICAL);
+  }
+  else {
+    sounds_play(SFX_ATTACK);
   }
   
   // armor absorb
@@ -117,11 +127,12 @@ function power_heal() {
   avatar.hp = avatar.hp + heal_amount;
   if (avatar.hp > avatar.max_hp) avatar.hp = avatar.max_hp;
 
+  sounds_play(SFX_HEAL);
   avatar.mp--;
   
   if (gamestate == STATE_COMBAT) {
     combat.offense_action = "Heal!";
-	combat.offense_result = "+" + heal_amount + " HP";  
+    combat.offense_result = "+" + heal_amount + " HP";  
   }
   else if (gamestate == STATE_INFO) {
     info.power_action = "Heal!";
@@ -149,6 +160,8 @@ function power_burn() {
   // against demons, burn does regular weapon damage.
 
   avatar.mp--;  
+  sounds_play(SFX_FIRE);
+  
   combat.enemy.hp -= attack_damage;
   combat.offense_result = attack_damage + " damage";
   
@@ -166,12 +179,12 @@ function power_run() {
   var chance_run = Math.random();
   if (chance_run < 0.66) {
     combat.run_success = true;
-	combat.offense_result = "";
-	return;
+    combat.offense_result = "";
+    return;
   }
   else {
     combat.offense_result = "Blocked!";
-	return;  
+    return;  
   }  
 }
 
@@ -191,6 +204,7 @@ function power_map_burn() {
     info.power_action = "Burn!";
     info.power_result = "Cleared Path!";
     avatar.mp--;
+	sounds_play(SFX_FIRE);
     avatar_save();
   }
   else {
@@ -273,8 +287,11 @@ function power_scorch() {
   var hit_chance = Math.random();
   if (hit_chance < 0.30) {
     combat.defense_result = "Miss!";
-	return;
+    sounds_play(SFX_MISS);
+    return;
   }
+  
+  sounds_play(SFX_FIRE);
 
   var atk_min = enemy.stats[combat.enemy.type].atk_min;
   var atk_max = enemy.stats[combat.enemy.type].atk_max;
@@ -302,8 +319,11 @@ function power_hpdrain() {
   var hit_chance = Math.random();
   if (hit_chance < 0.30) {
     combat.defense_result = "Miss!";
-	return;
+    sounds_play(SFX_MISS);
+    return;
   }
+  
+  sounds_play(SFX_HPDRAIN);
   
   var atk_min = enemy.stats[combat.enemy.type].atk_min;
   var atk_max = enemy.stats[combat.enemy.type].atk_max;
@@ -327,14 +347,19 @@ function power_mpdrain() {
   var hit_chance = Math.random();
   if (hit_chance < 0.30) {
     combat.defense_result = "Miss!";
-	return;
+    sounds_play(SFX_MISS);
+    return;
   }
+  
+  sounds_play(SFX_MPDRAIN);
   
   if (avatar.mp > 0) {
     avatar.mp--;
-    combat.defense_result = "-1 MP";
+    combat.defense_result = "-1 MP";	
   }
-  else combat.defense_result = "No effect";
+  else {
+    combat.defense_result = "No effect";	
+  }
 
   combat.hero_hurt = true;
 }

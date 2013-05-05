@@ -113,6 +113,7 @@ function mapscript_haybale(x, y) {
   if (avatar.x == x && avatar.y == y) { 
     explore.message = "You rest for awhile.";
     avatar_sleep();
+	sounds_play(SFX_HEAL);
     return true;
   }
   return false;
@@ -150,6 +151,8 @@ function mapscript_chest(x, y, status, item_type, item_count) {
  Found items have permanent unique effects, handle those here
  */
 function mapscript_grant_item(item, item_count) {
+
+  sounds_play(SFX_COIN);
 
   if (item_count == 1) {
     explore.message = "Found " + item + "!";

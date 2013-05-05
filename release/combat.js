@@ -149,6 +149,7 @@ function combat_logic_offense() {
     // check for defeated enemy
     if (combat.enemy.hp <= 0) {
 	  combat.phase = COMBAT_PHASE_VICTORY;
+	  sounds_play(SFX_COIN);
 	  redraw = true;
 	  combat_determine_reward();
 	  return;

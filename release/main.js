@@ -74,6 +74,7 @@ function init() {
   dialog_init();
   boss_init();
   title_init();
+  sounds_init();
 
   init_complete = true;
 }

@@ -207,6 +207,7 @@ function shop_buy_weapon(weapon_id) {
   if (avatar.gold < cost) return;
 
   avatar.gold -= cost;
+  sounds_play(SFX_COIN);
   avatar.weapon = weapon_id;
   dialog.message = "Bought " + info.weapons[weapon_id].name;
   shop_set(dialog.shop_id);
@@ -219,6 +220,7 @@ function shop_buy_armor(armor_id) {
   if (avatar.gold < cost) return;
 
   avatar.gold -= cost;
+  sounds_play(SFX_COIN);
   avatar.armor = armor_id;
   dialog.message = "Bought " + info.armors[armor_id].name;
   shop_set(dialog.shop_id);
@@ -230,6 +232,7 @@ function shop_buy_spell(spell_id) {
   if (avatar.gold < cost) return;
   
   avatar.gold -= cost;
+  sounds_play(SFX_COIN);
   avatar.spellbook = spell_id;
   dialog.message = "Learned " + info.spells[spell_id].name;
   shop_set(dialog.shop_id);
@@ -240,6 +243,7 @@ function shop_buy_room(cost) {
   if (avatar.gold < cost) return;
   
   avatar.gold -= cost;
+  sounds_play(SFX_COIN);
   dialog.message = "You have rested";
   
   avatar_sleep();
