@@ -38,12 +38,13 @@ function boss_boneshield_activate() {
   combat.defense_action = "Bone Shield!";
   combat.defense_result = "+Def Up!";
   combat.hero_hurt = false;
-
+  sounds_play(SFX_BONESHIELD);
 }
 
 // if the boss' bone shield is up, override the regular hero attack
 function boss_boneshield_heroattack() {
   combat.offense_result = "Absorbed!";
+  sounds_play(SFX_BLOCKED);
   combat.enemy_hurt = false;
 }
 

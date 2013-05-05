@@ -10,6 +10,10 @@ var SFX_FIRE = 4;
 var SFX_COIN = 5;
 var SFX_HPDRAIN = 6;
 var SFX_MPDRAIN = 7;
+var SFX_RUN = 8;
+var SFX_BLOCKED = 9;
+var SFX_DEFEAT = 10;
+var SFX_BONESHIELD = 11;
 
 var sounds = new Object();
 sounds.fx = new Array();
@@ -23,7 +27,10 @@ function sounds_init() {
   sounds.fx[SFX_COIN] = new Audio("sounds/coin.wav");
   sounds.fx[SFX_HPDRAIN] = new Audio("sounds/hpdrain.wav");
   sounds.fx[SFX_MPDRAIN] = new Audio("sounds/mpdrain.wav");
-  
+  sounds.fx[SFX_RUN] = new Audio("sounds/run.wav");
+  sounds.fx[SFX_BLOCKED] = new Audio("sounds/blocked.wav");
+  sounds.fx[SFX_DEFEAT] = new Audio("sounds/defeat.wav");
+  sounds.fx[SFX_BONESHIELD] = new Audio("sounds/boneshield.wav");
 }
 
 function sounds_play(sfx_id) {

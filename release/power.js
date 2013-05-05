@@ -175,7 +175,8 @@ function power_burn() {
 function power_run() {
 
   combat.offense_action = "Run!";
-
+  sounds_play(SFX_RUN);
+  
   var chance_run = Math.random();
   if (chance_run < 0.66) {
     combat.run_success = true;

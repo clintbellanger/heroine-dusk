@@ -193,6 +193,7 @@ function combat_logic_defense() {
 	  combat.phase = COMBAT_PHASE_DEFEAT;
       avatar_save();
 	  redraw = true;
+	  sounds_play(SFX_DEFEAT);
 	  return;
 	}
 	else {

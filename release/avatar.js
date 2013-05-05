@@ -139,6 +139,9 @@ function avatar_move(dx,dy) {
     avatar.moved = true;
     avatar_save();
   }
+  else {
+    sounds_play(SFX_BLOCKED);  
+  }
 }
 
 function avatar_turn_left() {
