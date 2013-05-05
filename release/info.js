@@ -77,6 +77,7 @@ function info_logic() {
     gamestate = STATE_EXPLORE;
 	input_lock.action = true;	
 	redraw = true;
+    sounds_play(SFX_CLICK);
   }
 
   // check click to close info screen
@@ -84,6 +85,7 @@ function info_logic() {
     gamestate = STATE_EXPLORE;
 	input_lock.mouse = true;
 	redraw = true;  
+	sounds_play(SFX_CLICK);
   }
 
   // check select movement for spell actions

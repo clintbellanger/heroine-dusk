@@ -240,6 +240,7 @@ function power_unlock() {
   combat.offense_result = attack_damage + " damage";
   
   combat.enemy_hurt = true;
+  sounds_play(SFX_UNLOCK);
 
 }
 
@@ -260,9 +261,11 @@ function power_map_unlock() {
     info.power_result = "Door Opened!";
     avatar.mp--;
     avatar_save();
+	sounds_play(SFX_UNLOCK);
   }
   else {
     info.power_action = "(No Target)";
+	sounds_play(SFX_BLOCK);
   }
 }
 

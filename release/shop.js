@@ -252,6 +252,7 @@ function shop_buy_room(cost) {
 }
 
 function shop_exit(shop_id) {
+  sounds_play(SFX_CLICK);
   gamestate = STATE_EXPLORE;
   redraw = true; 
 }

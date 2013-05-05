@@ -82,7 +82,7 @@ function explore_logic() {
 	redraw = true;
     action.select_pos = BUTTON_POS_INFO;
 	info_clear_messages();
-
+    sounds_play(SFX_CLICK);
     return;
   }
   
@@ -93,6 +93,7 @@ function explore_logic() {
 	redraw = true;
     action.select_pos = BUTTON_POS_INFO;
 	info_clear_messages();
+	sounds_play(SFX_CLICK);
     return;
   }
 

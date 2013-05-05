@@ -14,6 +14,8 @@ var SFX_RUN = 8;
 var SFX_BLOCKED = 9;
 var SFX_DEFEAT = 10;
 var SFX_BONESHIELD = 11;
+var SFX_CLICK = 12;
+var SFX_UNLOCK = 13;
 
 var sounds = new Object();
 sounds.fx = new Array();
@@ -31,6 +33,9 @@ function sounds_init() {
   sounds.fx[SFX_BLOCKED] = new Audio("sounds/blocked.wav");
   sounds.fx[SFX_DEFEAT] = new Audio("sounds/defeat.wav");
   sounds.fx[SFX_BONESHIELD] = new Audio("sounds/boneshield.wav");
+  sounds.fx[SFX_CLICK] = new Audio("sounds/click.wav");
+  sounds.fx[SFX_UNLOCK] = new Audio("sounds/unlock.wav");
+  
 }
 
 function sounds_play(sfx_id) {
