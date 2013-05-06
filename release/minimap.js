@@ -114,10 +114,10 @@ function minimap_render_icon(screen_x, screen_y, icon_type) {
  
   ctx.drawImage(
     minimap.img,
-    icon_type * MINIMAP_ICON_SIZE,
+    icon_type * MINIMAP_ICON_SIZE * PRESCALE,
 	0,
-	MINIMAP_ICON_SIZE,
-	MINIMAP_ICON_SIZE,
+	MINIMAP_ICON_SIZE * PRESCALE,
+	MINIMAP_ICON_SIZE * PRESCALE,
     screen_x * SCALE,
     screen_y * SCALE,
     MINIMAP_ICON_SIZE * SCALE,
@@ -128,10 +128,10 @@ function minimap_render_icon(screen_x, screen_y, icon_type) {
 function minimap_render_cursor(screen_x, screen_y, cursor_dir) {
  ctx.drawImage(
     minimap.cursor,
-    cursor_dir * MINIMAP_ICON_SIZE,
+    cursor_dir * MINIMAP_ICON_SIZE * PRESCALE,
 	0,
-	MINIMAP_ICON_SIZE,
-    MINIMAP_ICON_SIZE,
+	MINIMAP_ICON_SIZE * PRESCALE,
+    MINIMAP_ICON_SIZE * PRESCALE,
     screen_x * SCALE,
     screen_y * SCALE,
     MINIMAP_ICON_SIZE * SCALE,

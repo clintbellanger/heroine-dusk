@@ -185,10 +185,10 @@ function bitfont_renderglyph(character, y) {
 
     ctx.drawImage(
       font_color,
-      bitfont.glyph_x[character],
+      bitfont.glyph_x[character] * PRESCALE,
       0,
-      bitfont.glyph_w[character],
-      bitfont.height,	  
+      bitfont.glyph_w[character] * PRESCALE,
+      bitfont.height * PRESCALE,
       bitfont.cursor_x * SCALE,
       y * SCALE,
       bitfont.glyph_w[character] * SCALE,

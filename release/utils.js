@@ -17,6 +17,15 @@ function isWithin(point, rect) {
 }
 
 function resizeCanvas() {
+  if (!STRETCH_TO_SCREEN) {
+    
+	can.width = 160 * SCALE;
+	can.height = 120 * SCALE;
+	redraw = true;
+	
+	return;
+  }
+
   var aspect_ratio = 4/3;
     
   // the screen is wider than 4:3

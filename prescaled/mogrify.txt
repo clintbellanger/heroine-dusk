@@ -1,0 +1,1 @@
+mogrify -resize 400% -filter Point *.png

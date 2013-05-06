@@ -2,7 +2,6 @@
 var can;     // canvas
 var ctx;     // context
 var FPS = 60;
-var SCALE = 1;
 
 // this style of game doesn't update visually often
 // set this flag anytime the render function should update the view

@@ -187,10 +187,10 @@ function dialog_render_button(button_id, pos) {
 
   ctx.drawImage(
     dialog.button_img,
-    (button_id-1) * BUTTON_SIZE,
+    (button_id-1) * BUTTON_SIZE * PRESCALE,
     0,
-    BUTTON_SIZE,
-    BUTTON_SIZE,	
+    BUTTON_SIZE * PRESCALE,
+    BUTTON_SIZE * PRESCALE,	
     (pos.x + BUTTON_OFFSET) * SCALE,
     (pos.y + BUTTON_OFFSET) * SCALE,
     BUTTON_SIZE * SCALE,

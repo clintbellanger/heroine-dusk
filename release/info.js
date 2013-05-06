@@ -155,10 +155,10 @@ function info_render_equiplayer(itemtier, itemtype) {
 
   ctx.drawImage(
     info.avatar_img,
-    itemtier * AVATAR_SPRITE_W,
-    itemtype * AVATAR_SPRITE_H,
-    AVATAR_SPRITE_W,
-    AVATAR_SPRITE_H,	
+    itemtier * AVATAR_SPRITE_W * PRESCALE,
+    itemtype * AVATAR_SPRITE_H * PRESCALE,
+    AVATAR_SPRITE_W * PRESCALE,
+    AVATAR_SPRITE_H * PRESCALE,	
     AVATAR_DRAW_X * SCALE,
     AVATAR_DRAW_Y * SCALE,
     AVATAR_SPRITE_W * SCALE,
@@ -198,10 +198,10 @@ function info_render_button() {
   
   ctx.drawImage(
     info.button_img,
-    button_x,
+    button_x * PRESCALE,
     0,
-    BUTTON_SIZE,
-    BUTTON_SIZE,	
+    BUTTON_SIZE * PRESCALE,
+    BUTTON_SIZE * PRESCALE,	
     (BUTTON_POS_INFO.x + BUTTON_OFFSET) * SCALE,
     (BUTTON_POS_INFO.y + BUTTON_OFFSET) * SCALE,
     BUTTON_SIZE * SCALE,
