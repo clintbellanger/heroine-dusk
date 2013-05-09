@@ -1,5 +1,7 @@
 # Heroine Dusk
 
+Version 1.1
+
 Heroine Dusk is my April OneGameAMonth project. It's a basic dungeon crawl made using an old aesthetic.
 
 The game's world is set in a fantasy human realm where the sun has not returned in several days. Evil forces are using the safety of night to invade. You are a serf woman takes up arms to fight against the darkness.
