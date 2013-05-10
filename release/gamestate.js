@@ -34,6 +34,8 @@ function gamestate_logic() {
 
 function gamestate_render() {
 
+  bitfont_determinecolor();
+
   switch(gamestate) {
     case STATE_EXPLORE:
 	  explore_render();

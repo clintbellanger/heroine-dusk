@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Heroine Dusk</title>
+    <link rel="stylesheet" type="text/css" href="maze.css" />
+
+    <script type="text/javascript" src="bitfont.js"></script>
+    <script type="text/javascript">
+var PRESCALE = 1;
+var SCALE = 1;
+var can;
+var ctx;
+var init_complete = false;
+
+function init() {
+  bitfont_init();
+  can = document.getElementById("gamecanvas");
+  ctx = can.getContext("2d");  
+  init_complete = true;  
+}
+
+function draw() {
+  ctx.fillStyle = "#ff00ff";
+  ctx.fillRect(0,0,800,8);
+  bitfont_render(document.getElementById("txt").value, 0, 0, JUSTIFY_LEFT);
+}
+
+	</script>
+
+  </head>
+  <body onload="init()">
+
+    <div id="wrap">
+
+      <input id="txt" name="txt">text here</input><br />
+	  <button onclick="draw();">Render</button>
+	  <canvas id="gamecanvas" width="800" height="8" style="background-color: #ff00ff;"></canvas>
+	  
+	</div>    
+
+  </body>  
+</html>
+

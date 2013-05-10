@@ -14,12 +14,16 @@ var JUSTIFY_LEFT = 0;
 var JUSTIFY_RIGHT = 1;
 var JUSTIFY_CENTER = 2;
 
+var FONT_WHITE = 0;
+var FONT_RED = 1;
+
 var bitfont = new Object();
 
 bitfont.img = new Image();
 bitfont.imgred = new Image();
 bitfont.loaded = false;
 bitfont.loadedred = false;
+bitfont.color = FONT_WHITE;
 
 bitfont.kerning = -1;
 bitfont.height = 8;
@@ -146,6 +150,20 @@ function bitfont_setposition(text, x, justify) {
   }
 }
 
+function bitfont_setcolor(color_id) {
+  bitfont.color = color_id;
+}
+
+/**
+ * Note: contains logic specific to Heroine Dusk
+ */
+function bitfont_determinecolor() {
+  if (!init_complete) bitfont_setcolor(FONT_WHITE);
+  else if (!bitfont.loadedred) bitfont_setcolor(FONT_WHITE);
+  else if (avatar_badly_hurt()) bitfont_setcolor(FONT_RED);
+  else bitfont_setcolor(FONT_WHITE);
+}
+
 /**
  * Calculate the total width of a string
  * Useful for center or right justify
@@ -173,10 +191,8 @@ function bitfont_calcwidth(text) {
 function bitfont_renderglyph(character, y) {
 
   var font_color;
-  if (!init_complete) font_color = bitfont.img;
-  else if (!bitfont.loadedred) font_color = bitfont.img;
-  else if (avatar_badly_hurt()) font_color = bitfont.imgred;
-  else font_color = bitfont.img;
+  if (bitfont.color == FONT_WHITE) font_color = bitfont.img;
+  else if (bitfont.color == FONT_RED) font_color = bitfont.imgred;
 
   if (character == " ") {
     bitfont.cursor_x += bitfont.space;
