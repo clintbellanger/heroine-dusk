@@ -160,6 +160,7 @@ function combat_logic_offense() {
       combat_clear_messages();
       gamestate = STATE_EXPLORE;
       redraw = true;
+	  avatar_save();
       return;
 	}
 	else {

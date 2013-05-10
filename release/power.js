@@ -137,6 +137,7 @@ function power_heal() {
   else if (gamestate == STATE_INFO) {
     info.power_action = "Heal!";
     info.power_result = "+" + heal_amount + " HP";
+	avatar_save();
   }
 }
 
