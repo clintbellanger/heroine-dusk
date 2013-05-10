@@ -2,6 +2,8 @@
  Sound effects
  */
  
+var SFX_COUNT = 14;
+ 
 var SFX_ATTACK = 0;
 var SFX_MISS = 1;
 var SFX_CRITICAL = 2;

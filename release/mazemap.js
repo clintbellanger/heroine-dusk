@@ -171,6 +171,9 @@ function mazemap_set_music(song_filename) {
 
   var song_path = "music/" + song_filename;
   var audio_node = document.getElementById("bgmusic");
+  
+  // stop the current song
+  audio_node.pause();
 
   // clear the current song
   audio_node.innerHTML = "";
@@ -185,7 +188,9 @@ function mazemap_set_music(song_filename) {
     newsource.src = song_path + ".ogg";
   }
   audio_node.appendChild(newsource);
-
+  audio_node.load();
+  audio_node.play();
+  
 }
 
 /**
