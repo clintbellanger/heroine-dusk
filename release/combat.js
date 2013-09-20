@@ -77,11 +77,15 @@ function combat_logic() {
 }
 
 function combat_logic_intro() {
-    combat.timer--;
-	
-	// animated sliding in from the left
-    enemy.render_offset.x = 0 - combat.timer * 10;
-	redraw = true;
+    if (ANIMATION == true) {
+        combat.timer--;
+        
+        // animated sliding in from the left
+        enemy.render_offset.x = 0 - combat.timer * 10;
+        redraw = true;
+    } else {
+        combat.timer = 0;
+    }
  
     if (combat.timer == 0) {
 	  combat.phase = COMBAT_PHASE_INPUT;	
@@ -121,7 +125,11 @@ function combat_logic_input() {
   if (used_action) {
     combat.phase = COMBAT_PHASE_OFFENSE;
     redraw = true;
-	combat.timer = 30;
+    if (ANIMATION == true) {
+        combat.timer = 30;
+    } else {
+        combat.timer = 1;
+    }
     return;
   }
 
@@ -169,6 +177,11 @@ function combat_logic_offense() {
       combat.phase = COMBAT_PHASE_DEFENSE;
 	  redraw = true;
 	  combat.timer = 30;
+        if (ANIMATION == true) {
+            combat.timer = 30;
+        } else {
+            combat.timer = 1;
+        }
 	  return;
 	}
   }

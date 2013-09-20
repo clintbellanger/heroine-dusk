@@ -14,3 +14,6 @@ var SCALE = 1;
 
 // If disabled, the display won't scale any images (it will simply display PRESCALEd data).
 var STRETCH_TO_SCREEN = true;
+
+// If disabled, battle animations will be skipped
+var ANIMATION = false;
