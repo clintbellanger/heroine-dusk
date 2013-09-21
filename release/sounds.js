@@ -41,6 +41,7 @@ function sounds_init() {
 }
 
 function sounds_play(sfx_id) {
+  if (OPTIONS.sfx == false) return;
  
   try {
     sounds.fx[sfx_id].currentTime = 0;

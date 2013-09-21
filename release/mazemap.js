@@ -163,6 +163,13 @@ function mazemap_set(map_id) {
  * Background music handling
  */
 function mazemap_set_music(song_filename) {
+  var audio_node = document.getElementById("bgmusic");
+
+  if (OPTIONS.music == false) {
+    audio_node.pause();
+    mazemap.current_song = "";
+    return;
+  }
   
   // don't reset song if it's already playing
   if (song_filename == mazemap.current_song) return;
@@ -170,7 +177,6 @@ function mazemap_set_music(song_filename) {
   mazemap.current_song = song_filename;
 
   var song_path = "music/" + song_filename;
-  var audio_node = document.getElementById("bgmusic");
   
   // stop the current song
   audio_node.pause();
