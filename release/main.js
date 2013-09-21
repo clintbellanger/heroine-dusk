@@ -52,14 +52,20 @@ function init() {
   if (window.addEventListener) {
     window.addEventListener('keydown', handleKeyDown, true);
     window.addEventListener('keyup', handleKeyUp, true);
-	window.addEventListener('mousedown', handleMouseDown, true);
-	window.addEventListener('mouseup', handleMouseUp, true);
-	window.addEventListener('touchstart', handleTouchStart, true);
-	window.addEventListener('touchend', handleTouchEnd, true);
-	window.addEventListener('resize', resizeCanvas, false);
-	window.addEventListener('orientationchange', resizeCanvas, false);
+    window.addEventListener('mousedown', handleMouseDown, true);
+    window.addEventListener('mouseup', handleMouseUp, true);
+    window.addEventListener('touchstart', handleTouchStart, true);
+    window.addEventListener('touchend', handleTouchEnd, true);
+    window.addEventListener('resize', resizeCanvas, false);
+    window.addEventListener('orientationchange', resizeCanvas, false);
   }
   
+  // load some user preferences
+  var json_save = getCookie("options");
+  if (json_save != null) {
+    OPTIONS = JSON.parse(json_save);
+  }
+
   // initialize all game units
   bitfont_init();
   tileset_init();
