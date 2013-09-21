@@ -25,6 +25,7 @@ combat.offense_result = "";
 combat.defense_action = "";
 combat.defense_result = "";
 combat.reward_result = "";
+combat.gold_treasure = 0;
 
 combat.victory_status = "";
 combat.enemy_hurt = false;
@@ -264,6 +265,7 @@ function combat_determine_reward() {
   combat.reward_result = "+" + gold_reward + " Gold!";
   
   avatar.gold += gold_reward;
+  combat.gold_treasure = gold_reward;
   
   // if killed a named creature, remember
   if (combat.victory_status != "") {
@@ -342,6 +344,7 @@ function combat_render_victory() {
   info_render_hpmp();
   bitfont_render("Victory!", 80, 60, JUSTIFY_CENTER);
   bitfont_render(combat.reward_result, 80, 70, JUSTIFY_CENTER);
+  treasure_render_gold(combat.gold_treasure);
 }
 
 function combat_render_defeat() {
