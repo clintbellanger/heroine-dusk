@@ -14,3 +14,9 @@ var SCALE = 1;
 
 // If disabled, the display won't scale any images (it will simply display PRESCALEd data).
 var STRETCH_TO_SCREEN = true;
+
+// user options that can be set from the main menu
+var OPTIONS = new Object();
+OPTIONS.animation = true;
+OPTIONS.music = true;
+OPTIONS.sfx = true;
