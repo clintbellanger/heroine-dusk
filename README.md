@@ -29,7 +29,8 @@ The game is written in Javascript using HTML5 canvas. The art was created with B
 
 ## Thanks
 
+* Justin Jacobs for contributing the Options menu (WTFPL license) https://github.com/dorkster
 * Jessica "Zeldyn" Cox, figure model for the heroine and villainess http://zeldyn-stock.deviantart.com/
-* DawnBringer at PixelJoint for the 16 color palette
-* Yubatake for releasing quality music using a free license
+* DawnBringer at PixelJoint for the 16 color palette http://www.pixeljoint.com/forum/forum_posts.asp?TID=12795
+* Yubatake for releasing quality music using a free license https://soundcloud.com/yubatake/
 
