@@ -163,27 +163,36 @@ function mapscript_grant_item(item, item_count) {
 
   if (item == "Gold") {
     avatar.gold += item_count;
+
+    // flag gold treasure for display while exploring    
+    explore.gold_value = item_count;
   }
   else if (item == "Wood Stick") {
     // only keep the stick if it's better than what you already have
     if (avatar.weapon == 0) avatar.weapon = 1;
+    explore.treasure_id = 10;
   }
   else if (item == "Spellbook: Heal") {
     if (avatar.spellbook == 0) avatar.spellbook = 1;
-  }
-  else if (item == "Magic Emerald (HP Up)") {
-    avatar.hp += 5;
-    avatar.max_hp += 5;
+    explore.treasure_id = 11;
   }
   else if (item == "Magic Sapphire (MP Up)") {
     avatar.mp += 2;
     avatar.max_mp += 2;
+    explore.treasure_id = 12;
+  }
+  else if (item == "Magic Emerald (HP Up)") {
+    avatar.hp += 5;
+    avatar.max_hp += 5;
+    explore.treasure_id = 13;
   }
   else if (item == "Magic Ruby (Atk Up)") {
     avatar.bonus_atk += 1;
+    explore.treasure_id = 14;
   }
   else if (item == "Magic Diamond (Def Up)") {
     avatar.bonus_def += 1;
+    explore.treasure_id = 15;
   }
   
 }

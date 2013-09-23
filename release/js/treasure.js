@@ -3,39 +3,40 @@
  Handles display and rewards for loot
  */
 
-var GOLD_ICON_SIZE = 32;
-
+var TREASURE_ICON_SIZE = 32;
+var TREASURE_POS_X = 64;
+var TREASURE_POS_Y = 88;
 
 var treasure = new Object();
 
-treasure.gold_img = new Image();
-treasure.gold_img_loaded = false;
+treasure.img = new Image();
+treasure.img_loaded = false;
 
 treasure.gold_pos = new Array();
 
 /*** Initialize **********************/
 function treasure_init() {
 
-  treasure.gold_img.src = "images/treasure/gold.png";
-  treasure.gold_img.onload = function() {treasure_gold_onload();};  
+  treasure.img.src = "images/treasure/treasure.png";
+  treasure.img.onload = function() {treasure_img_onload();};  
   
   // icon positions on sprite sheet and on ground in 3D view
   // see art_src/treasure/gold_pos.xcf for destinations reference
-  treasure.gold_pos[0] = {src_x: 0,   src_y:  0, dest_x: 65, dest_y: 93};
-  treasure.gold_pos[1] = {src_x: 32,  src_y:  0, dest_x: 56, dest_y: 96};
-  treasure.gold_pos[2] = {src_x: 64,  src_y:  0, dest_x: 74, dest_y: 95};
-  treasure.gold_pos[3] = {src_x: 96,  src_y:  0, dest_x: 74, dest_y: 86};
-  treasure.gold_pos[4] = {src_x: 128, src_y:  0, dest_x: 50, dest_y: 80};
-  treasure.gold_pos[5] = {src_x: 0,   src_y: 32, dest_x: 63, dest_y: 78};
-  treasure.gold_pos[6] = {src_x: 32,  src_y: 32, dest_x: 41, dest_y: 92};
-  treasure.gold_pos[7] = {src_x: 64,  src_y: 32, dest_x: 90, dest_y: 76};
-  treasure.gold_pos[8] = {src_x: 96,  src_y: 32, dest_x: 87, dest_y: 94};
-  treasure.gold_pos[9] = {src_x: 128, src_y: 32, dest_x: 29, dest_y: 77};
+  treasure.gold_pos[0] = {dest_x: 65, dest_y: 93};
+  treasure.gold_pos[1] = {dest_x: 56, dest_y: 96};
+  treasure.gold_pos[2] = {dest_x: 74, dest_y: 95};
+  treasure.gold_pos[3] = {dest_x: 74, dest_y: 86};
+  treasure.gold_pos[4] = {dest_x: 50, dest_y: 80};
+  treasure.gold_pos[5] = {dest_x: 63, dest_y: 78};
+  treasure.gold_pos[6] = {dest_x: 41, dest_y: 92};
+  treasure.gold_pos[7] = {dest_x: 90, dest_y: 76};
+  treasure.gold_pos[8] = {dest_x: 87, dest_y: 94};
+  treasure.gold_pos[9] = {dest_x: 29, dest_y: 77};
 
 }
 
 /*** Image loading Helpers **********************/
-function treasure_gold_onload() {treasure.gold_img_loaded = true;}
+function treasure_img_onload() {treasure.img_loaded = true;}
 
 /**
  * This function renders a gold pile
@@ -57,18 +58,32 @@ function treasure_render_gold(total_value) {
 
 }
 
-function treasure_render_gold_icon(icon_id) {
+function treasure_render_gold_icon(item_id) {
 
   ctx.drawImage(
-    treasure.gold_img,
-    treasure.gold_pos[icon_id].src_x * PRESCALE,
-    treasure.gold_pos[icon_id].src_y * PRESCALE,
-    GOLD_ICON_SIZE * PRESCALE,
-    GOLD_ICON_SIZE * PRESCALE,
-    treasure.gold_pos[icon_id].dest_x * SCALE,
-    treasure.gold_pos[icon_id].dest_y * SCALE,
-    GOLD_ICON_SIZE * SCALE,
-    GOLD_ICON_SIZE * SCALE 
+    treasure.img,
+    (item_id * TREASURE_ICON_SIZE) * PRESCALE,
+    0,
+    TREASURE_ICON_SIZE * PRESCALE,
+    TREASURE_ICON_SIZE * PRESCALE,
+    treasure.gold_pos[item_id].dest_x * SCALE,
+    treasure.gold_pos[item_id].dest_y * SCALE,
+    TREASURE_ICON_SIZE * SCALE,
+    TREASURE_ICON_SIZE * SCALE 
+  );
+}
+
+function treasure_render_item(item_id) {
+  ctx.drawImage(
+    treasure.img,
+    (item_id * TREASURE_ICON_SIZE) * PRESCALE,
+    0,
+    TREASURE_ICON_SIZE * PRESCALE,
+    TREASURE_ICON_SIZE * PRESCALE,
+    TREASURE_POS_X * SCALE,
+    TREASURE_POS_Y * SCALE,
+    TREASURE_ICON_SIZE * SCALE,
+    TREASURE_ICON_SIZE * SCALE 
   );
 }
 
