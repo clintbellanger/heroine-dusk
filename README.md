@@ -1,6 +1,6 @@
 # Heroine Dusk
 
-Version 1.1
+Version 1.2
 
 Heroine Dusk is my April OneGameAMonth project. It's a basic dungeon crawl made using an old aesthetic.
 
