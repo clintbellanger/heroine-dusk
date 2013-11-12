@@ -150,7 +150,13 @@ function tileset_init() {
 
 function tileset_onload() {
   tileset.load_counter++;
-  if (tileset.load_counter == (TILE_COUNT + BACKGROUND_COUNT)) redraw = true;
+  var percent_loaded = (tileset.load_counter * 100) / (TILE_COUNT + BACKGROUND_COUNT);
+  
+  if (percent_loaded == 100) redraw = true;
+  
+  // we can get the game moving if at least the tiles are finished loading
+  else loadbar_render(percent_loaded);
+  
 }
 
 /**

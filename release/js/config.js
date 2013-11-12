@@ -2,6 +2,9 @@
  Various config options to help deployment to different platforms.
  */
 
+var VIEW_WIDTH = 160;
+var VIEW_HEIGHT = 120;
+ 
 // The art has been prescaled by this factor.
 // PRESCALE 1 means the default 160x120 assets are used in the image folder.
 // e.g. PRESCALE 4 means the image folder has been replaced with the 640x480 prescaled assets.
