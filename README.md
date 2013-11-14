@@ -27,6 +27,14 @@ The game is written in Javascript using HTML5 canvas. The art was created with B
 * The visual art for Heroine Dusk is released under CC-BY-SA 3.0, with later versions permitted.
 * The music is by Yubatake (CC-BY 3.0). http://opengameart.org/users/yubatake
 
+## Trademark
+
+"Heroine Dusk" is a trademark name. The above licenses do not grant you the use of this trademark.
+
+Heroine Dusk refers to the game as I have created it. If you modify the game's content, it's acceptable to say your derivative work is "based on Heroine Dusk" but you may no longer call it "Heroine Dusk".
+
+You must not misrepresent yourself as the creator of Heroine Dusk, especially for commercial purposes.
+
 ## Thanks
 
 * Justin Jacobs for contributing the Options menu (WTFPL license) https://github.com/dorkster
