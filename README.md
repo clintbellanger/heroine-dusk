@@ -31,7 +31,7 @@ The game is written in Javascript using HTML5 canvas. The art was created with B
 
 "Heroine Dusk" is a trademark name. The above copyright licenses do not grant you the use of this trademark.
 
-Heroine Dusk refers to the game as I have created it. If you modify the game's content, it's acceptable to say your derivative work is "based on Heroine Dusk" but you may no longer call it "Heroine Dusk". Common-sense exceptions apply (accessibility features, translations, ports).
+Heroine Dusk refers to the game as I have created it. If you modify the game's content, it's acceptable to say your derivative work is "based on Heroine Dusk" but you may no longer call it "Heroine Dusk".
 
 You may not misrepresent yourself as the creator of Heroine Dusk, especially for commercial purposes.
 
