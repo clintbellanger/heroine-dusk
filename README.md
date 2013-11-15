@@ -1,8 +1,8 @@
-# Heroine Dusk
+# Heroine Dusk™
 
 Version 1.2
 
-Heroine Dusk is my April OneGameAMonth project. It's a basic dungeon crawl made using an old aesthetic.
+Heroine Dusk™ is a basic dungeon crawl made using an old aesthetic. It began as my April OneGameAMonth project.
 
 The game's world is set in a fantasy human realm where the sun has not returned in several days. Evil forces are using the safety of night to invade. You are a serf woman takes up arms to fight against the darkness.
 
@@ -26,6 +26,14 @@ The game is written in Javascript using HTML5 canvas. The art was created with B
 * The code for Heroine Dusk is released under GPL v3, with later versions permitted.
 * The visual art for Heroine Dusk is released under CC-BY-SA 3.0, with later versions permitted.
 * The music is by Yubatake (CC-BY 3.0). http://opengameart.org/users/yubatake
+
+## Trademark
+
+"Heroine Dusk" is a trademark name (™). The above copyright licenses do not grant you the use of this trademark.
+
+Heroine Dusk refers to the game as I have created it. If you modify the game's content, it's acceptable to say your derivative work is "based on Heroine Dusk" but you may no longer call it "Heroine Dusk".
+
+You may not misrepresent yourself as the creator of Heroine Dusk, especially for commercial purposes.
 
 ## Thanks
 
