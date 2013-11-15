@@ -33,7 +33,10 @@ The game is written in Javascript using HTML5 canvas. The art was created with B
 
 Heroine Dusk refers to the game as I have created it. If you modify the game's content, it's acceptable to say your derivative work is "based on Heroine Dusk" but you may no longer call it "Heroine Dusk".
 
+The title screen image release/images/backgrounds/title.png contains the trademark Heroine Dusk block letters logo.
+
 You may not misrepresent yourself as the creator of Heroine Dusk, especially for commercial purposes.
+
 
 ## Thanks
 
