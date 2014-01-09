@@ -345,6 +345,7 @@ function combat_render_victory() {
   bitfont_render("Victory!", 80, 60, JUSTIFY_CENTER);
   bitfont_render(combat.reward_result, 80, 70, JUSTIFY_CENTER);
   treasure_render_gold(combat.gold_treasure);
+  info_render_gold();
 }
 
 function combat_render_defeat() {
@@ -353,8 +354,8 @@ function combat_render_defeat() {
   combat_render_offense_log();
   combat_render_defense_log();
   info_render_hpmp();
-  bitfont_render("You are defeated...", 158, 110, JUSTIFY_RIGHT);
-  bitfont_render("Final Gold: " + avatar.gold, 158, 100, JUSTIFY_RIGHT);
+  bitfont_render("You are defeated...", 158, 100, JUSTIFY_RIGHT);
+  info_render_gold();
 }
 
 function combat_render_offense_log() {

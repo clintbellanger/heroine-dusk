@@ -6,7 +6,7 @@
 // consts
 var AVATAR_SPRITE_W = 80;
 var AVATAR_SPRITE_H = 100;
-var AVATAR_DRAW_X = 40;
+var AVATAR_DRAW_X = 55;
 var AVATAR_DRAW_Y = 20;
 var TYPE_ARMOR = 0;
 var TYPE_WEAPON = 1;
@@ -45,14 +45,14 @@ function info_init() {
   info.weapons[6] = {name:"Battle Axe",  atk_min:7,  atk_max:16, gold:20000};
   info.weapons[7] = {name:"Great Sword", atk_min:8,  atk_max:18, gold:100000};
   
-  info.armors[0] = {name:"No Armor",        def:0,  gold:0};
-  info.armors[1] = {name:"Serf Rags",       def:2,  gold:0};
-  info.armors[2] = {name:"Travel Cloak",    def:4,  gold:50};
-  info.armors[3] = {name:"Hide Cuirass",    def:6,  gold:200};
-  info.armors[4] = {name:"Studded Leather", def:8,  gold:1000};
-  info.armors[5] = {name:"Chain Maille",    def:10, gold:5000};
-  info.armors[6] = {name:"Plate Armor",     def:12, gold:20000};
-  info.armors[7] = {name:"Wyvern Scale",    def:14, gold:100000};
+  info.armors[0] = {name:"No Armor",      def:0,  gold:0};
+  info.armors[1] = {name:"Serf Rags",     def:2,  gold:0};
+  info.armors[2] = {name:"Travel Cloak",  def:4,  gold:50};
+  info.armors[3] = {name:"Hide Cuirass",  def:6,  gold:200};
+  info.armors[4] = {name:"Rivet Leather", def:8,  gold:1000};
+  info.armors[5] = {name:"Chain Maille",  def:10, gold:5000};
+  info.armors[6] = {name:"Plate Armor",   def:12, gold:20000};
+  info.armors[7] = {name:"Wyvern Scale",  def:14, gold:100000};
   
   info.spells[0] = {name:"No Spell", gold:0};
   info.spells[1] = {name:"Heal", gold:0};
@@ -122,20 +122,18 @@ function info_render() {
   mazemap_render(avatar.x, avatar.y, avatar.facing);
  
   bitfont_render("INFO", 80, 2, JUSTIFY_CENTER);
-  bitfont_render("Spells:", 158, 50, JUSTIFY_RIGHT);
+  
+  if (avatar.spellbook > 0) {
+    bitfont_render("Spells", 158, 30, JUSTIFY_RIGHT);
+  }
 
   info_render_equipment();
   info_render_button();
   info_render_itemlist();
   info_render_hpmp();
-  action_render();
-
-  
-  if (!info_render_messages()) {
-  
-    // only display the minimap if messages aren't showing
-    minimap_render();
-  }
+  info_render_gold();
+  action_render();  
+  minimap_render();
 
 }
 
@@ -169,20 +167,29 @@ function info_render_equiplayer(itemtier, itemtype) {
 function info_render_itemlist() {
   var item_string;
 
-  item_string = info.weapons[avatar.weapon].name;
-  if (avatar.bonus_atk > 0) item_string += " +" + avatar.bonus_atk;
-  bitfont_render(item_string, 2, 15, JUSTIFY_LEFT);
+  item_string = info.weapons[avatar.weapon].name;  
+  if (avatar.bonus_atk > 0) {
+    item_string += " +";
+    item_string += avatar.bonus_atk;    
+  }
+  bitfont_render(item_string, 2, 75, JUSTIFY_LEFT);
 
-  item_string = info.armors[avatar.armor].name;
-  if (avatar.bonus_def > 0) item_string += " +" + avatar.bonus_def;
-  bitfont_render(item_string, 2, 25, JUSTIFY_LEFT);
-
-  bitfont_render("Gold: " + avatar.gold, 2, 35, JUSTIFY_LEFT);
+  item_string = info.armors[avatar.armor].name;  
+  if (avatar.bonus_def > 0) {
+    item_string += " +";
+    item_string += avatar.bonus_def;
+  }
+  bitfont_render(item_string, 2, 85, JUSTIFY_LEFT);
+  
 }
 
 function info_render_hpmp() { 
-  bitfont_render("HP: " + avatar.hp + "/" + avatar.max_hp, 2, 100, JUSTIFY_LEFT);
-  bitfont_render("MP: " + avatar.mp + "/" + avatar.max_mp, 2, 110, JUSTIFY_LEFT); 
+  bitfont_render("HP " + avatar.hp + "/" + avatar.max_hp, 2, 100, JUSTIFY_LEFT);
+  bitfont_render("MP " + avatar.mp + "/" + avatar.max_mp, 2, 110, JUSTIFY_LEFT); 
+}
+
+function info_render_gold() {
+  bitfont_render(avatar.gold + " Gold", 158, 110, JUSTIFY_RIGHT);
 }
 
 function info_render_button() {

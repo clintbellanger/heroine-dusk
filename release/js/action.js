@@ -7,14 +7,14 @@ var SELECT_SIZE = 20;
 var BUTTON_OFFSET = 2;
 
 var BUTTON_POS_INFO = {x:140, y:0, w:20, h:20};
-var BUTTON_POS_ATTACK = {x:120, y:30, w:20, h:20};
-var BUTTON_POS_RUN = {x:140, y:30, w:20, h:20};
-var BUTTON_POS_HEAL = {x:120, y:60, w:20, h:20};
-var BUTTON_POS_BURN = {x:140, y:60, w:20, h:20};
-var BUTTON_POS_UNLOCK = {x:120, y:80, w:20, h:20};
-var BUTTON_POS_LIGHT = {x:140, y:80, w:20, h:20};
-var BUTTON_POS_FREEZE = {x:120, y:100, w:20, h:20};
-var BUTTON_POS_REFLECT = {x:140, y:100, w:20, h:20};
+var BUTTON_POS_ATTACK = {x:120, y:20, w:20, h:20};
+var BUTTON_POS_RUN = {x:140, y:20, w:20, h:20};
+var BUTTON_POS_HEAL = {x:120, y:40, w:20, h:20};
+var BUTTON_POS_BURN = {x:140, y:40, w:20, h:20};
+var BUTTON_POS_UNLOCK = {x:120, y:60, w:20, h:20};
+var BUTTON_POS_LIGHT = {x:140, y:60, w:20, h:20};
+var BUTTON_POS_FREEZE = {x:120, y:80, w:20, h:20};
+var BUTTON_POS_REFLECT = {x:140, y:80, w:20, h:20};
 
 
 var action = new Object();

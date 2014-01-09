@@ -151,7 +151,7 @@ function dialog_render() {
 
   // only render gold if there is something for sale
   if (dialog.items_for_sale) {
-    bitfont_render(avatar.gold + " Gold", 158, 110, JUSTIFY_RIGHT);
+    info_render_gold();
   }
 
   dialog_render_button(dialog.option[0].button, BUTTON_POS_OPT0);
