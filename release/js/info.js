@@ -6,7 +6,7 @@
 // consts
 var AVATAR_SPRITE_W = 80;
 var AVATAR_SPRITE_H = 100;
-var AVATAR_DRAW_X = 55;
+var AVATAR_DRAW_X = 40;
 var AVATAR_DRAW_Y = 20;
 var TYPE_ARMOR = 0;
 var TYPE_WEAPON = 1;
@@ -168,18 +168,28 @@ function info_render_itemlist() {
   var item_string;
 
   item_string = info.weapons[avatar.weapon].name;  
+  bitfont_render(item_string, 2, 60, JUSTIFY_LEFT);
+  
+  item_string = "ATK ";
+  item_string += info.weapons[avatar.weapon].atk_min;
+  item_string += "-";
+  item_string += info.weapons[avatar.weapon].atk_max;
   if (avatar.bonus_atk > 0) {
     item_string += " +";
     item_string += avatar.bonus_atk;    
   }
-  bitfont_render(item_string, 2, 75, JUSTIFY_LEFT);
+  bitfont_render(item_string, 6, 70, JUSTIFY_LEFT);
 
-  item_string = info.armors[avatar.armor].name;  
+  item_string = info.armors[avatar.armor].name;
+  bitfont_render(item_string, 2, 80, JUSTIFY_LEFT);
+  
+  item_string = "DEF ";
+  item_string += info.armors[avatar.armor].def;
   if (avatar.bonus_def > 0) {
     item_string += " +";
     item_string += avatar.bonus_def;
   }
-  bitfont_render(item_string, 2, 85, JUSTIFY_LEFT);
+  bitfont_render(item_string, 6, 90, JUSTIFY_LEFT);
   
 }
 
