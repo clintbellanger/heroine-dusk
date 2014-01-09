@@ -34,7 +34,10 @@ function title_set_menu(id) {
     if (OPTIONS.sfx) title.menu[2] = "Sounds are on";
     else title.menu[2] = "Sounds are off";
 
-    title.menu[3] = "Back";
+    if (OPTIONS.minimap) title.menu[3] = "Minimap is on";
+    else title.menu[3] = "Minimap is off";
+    
+    title.menu[4] = "Back";
   }
 
   redraw = true;
@@ -110,6 +113,10 @@ function title_logic() {
         title_set_menu(TITLE_MENU_OPTIONS);
       }
       else if (title.menu_selector == 3) {
+         OPTIONS.minimap = !OPTIONS.minimap;
+         title_set_menu(TITLE_MENU_OPTIONS);
+      }
+      else if (title.menu_selector == 4) {
         title_set_menu(TITLE_MENU_MAIN);
       }
       var json_save = JSON.stringify(OPTIONS);
@@ -136,8 +143,10 @@ function title_render() {
     }
   }
   
-  bitfont_render("by Clint Bellanger 2013", 80, 100, JUSTIFY_CENTER);
-  bitfont_render("ft. music by Yubatake", 80, 110, JUSTIFY_CENTER);
+  if (title.menu_id == TITLE_MENU_MAIN) {
+    bitfont_render("by Clint Bellanger 2013", 80, 100, JUSTIFY_CENTER);
+    bitfont_render("ft. music by Yubatake", 80, 110, JUSTIFY_CENTER);
+  }
 }
 
 function title_start() {

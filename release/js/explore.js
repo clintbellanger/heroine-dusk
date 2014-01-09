@@ -112,12 +112,13 @@ function explore_render() {
   // HUD elements
   // direction
   bitfont_render(avatar.facing, 80, 2, JUSTIFY_CENTER);
-	
+  
   info_render_button();
 
-  // DEBUG: coordinates
-  // bitfont_render(avatar.x + "," + avatar.y, 2, 2, JUSTIFY_LEFT);
-  
+  if (OPTIONS.minimap) {
+    minimap_render();
+  }
+    
   // if there is treasure to display, put the message higher
   if (explore.gold_value > 0 || explore.treasure_id > 0) {
     bitfont_render(explore.message, 80, 70, JUSTIFY_CENTER);  
