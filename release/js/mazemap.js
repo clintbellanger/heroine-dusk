@@ -152,6 +152,9 @@ function mazemap_set(map_id) {
 
   mapscript_exec(map_id);
 
+  // reset encounter chance when moving to a new map
+  explore.encounter_chance = 0;
+  
   // for save game info
   avatar.map_id = map_id;
 
