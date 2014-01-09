@@ -155,7 +155,9 @@ function mazemap_set(map_id) {
   // for save game info
   avatar.map_id = map_id;
 
-  mazemap_set_music(atlas.maps[map_id].music);
+  if (gamestate != STATE_TITLE) {
+    mazemap_set_music(atlas.maps[map_id].music);
+  }
 
 }
 

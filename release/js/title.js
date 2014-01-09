@@ -104,8 +104,7 @@ function title_logic() {
         title_set_menu(TITLE_MENU_OPTIONS);
       }
       else if (title.menu_selector == 1) {
-        OPTIONS.music = !OPTIONS.music;
-        mazemap_set_music(atlas.maps[0].music);
+        OPTIONS.music = !OPTIONS.music;        
         title_set_menu(TITLE_MENU_OPTIONS);
       }
       else if (title.menu_selector == 2) {
@@ -153,10 +152,12 @@ function title_start() {
   gamestate = STATE_DIALOG;
   shop_set(8);
   dialog.option[2].msg1 = "Wake up";
+  mazemap_set_music(atlas.maps[mazemap.current_id].music);
   redraw = true;
 }
 
 function title_continue() {
+  mazemap_set_music(atlas.maps[mazemap.current_id].music);
   gamestate = STATE_EXPLORE;
   redraw = true;
 }
