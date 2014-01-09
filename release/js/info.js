@@ -172,33 +172,22 @@ function info_render_equiplayer(itemtier, itemtype) {
 function info_render_itemlist() {
   var item_string;
 
-  // ARMOR
-  
+  // ARMOR  
   item_string = info.armors[avatar.armor].name;
-  bitfont_render(item_string, 2, 55, JUSTIFY_LEFT);
-  
-  item_string = "DEF ";
-  item_string += info.armors[avatar.armor].def;
   if (avatar.bonus_def > 0) {
     item_string += " +";
     item_string += avatar.bonus_def;
   }
-  bitfont_render(item_string, 6, 65, JUSTIFY_LEFT);
+  bitfont_render(item_string, 2, 65, JUSTIFY_LEFT);
   
   // WEAPON
-    item_string = info.weapons[avatar.weapon].name;  
-  bitfont_render(item_string, 2, 75, JUSTIFY_LEFT);
-  
-  item_string = "ATK ";
-  item_string += info.weapons[avatar.weapon].atk_min;
-  item_string += "-";
-  item_string += info.weapons[avatar.weapon].atk_max;
+  item_string = info.weapons[avatar.weapon].name;  
   if (avatar.bonus_atk > 0) {
     item_string += " +";
     item_string += avatar.bonus_atk;    
-  }
-  bitfont_render(item_string, 6, 85, JUSTIFY_LEFT);
-
+  }  
+  bitfont_render(item_string, 2, 75, JUSTIFY_LEFT);
+  
 }
 
 function info_render_hpmp() { 
