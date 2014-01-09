@@ -10,8 +10,8 @@ var MINIMAP_ICON_WALKABLE = 1;
 // var MINIMAP_ICON_HEROINE = 2;
 var MINIMAP_ICON_EXIT = 3;
 
-var MINIMAP_CENTER_X = 30;
-var MINIMAP_CENTER_Y = 30;
+var MINIMAP_MARGIN_LEFT = 2;
+var MINIMAP_MARGIN_TOP = 2;
 
 var MINIMAP_CURSOR_WEST = 0;
 var MINIMAP_CURSOR_NORTH = 1;
@@ -52,9 +52,9 @@ function minimap_render() {
   var total_x = mazemap.width * MINIMAP_ICON_SIZE;
   var total_y = mazemap.height * MINIMAP_ICON_SIZE;
   
-  // determine starting draw location
-  var left_x = MINIMAP_CENTER_X - (total_x/2);
-  var top_y = MINIMAP_CENTER_Y - (total_y/2);
+  // starting draw location
+  var left_x = MINIMAP_MARGIN_LEFT;
+  var top_y = MINIMAP_MARGIN_TOP;
     
   var draw_x;
   var draw_y;

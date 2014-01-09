@@ -132,8 +132,13 @@ function info_render() {
   info_render_itemlist();
   info_render_hpmp();
   info_render_gold();
-  action_render();  
-  minimap_render();
+  action_render();
+  
+  if (!info_render_messages()) {
+  
+    // hide the minimap if we need to make room for messages
+    minimap_render();
+  }
 
 }
 
@@ -168,7 +173,7 @@ function info_render_itemlist() {
   var item_string;
 
   item_string = info.weapons[avatar.weapon].name;  
-  bitfont_render(item_string, 2, 60, JUSTIFY_LEFT);
+  bitfont_render(item_string, 2, 55, JUSTIFY_LEFT);
   
   item_string = "ATK ";
   item_string += info.weapons[avatar.weapon].atk_min;
@@ -178,10 +183,10 @@ function info_render_itemlist() {
     item_string += " +";
     item_string += avatar.bonus_atk;    
   }
-  bitfont_render(item_string, 6, 70, JUSTIFY_LEFT);
+  bitfont_render(item_string, 6, 65, JUSTIFY_LEFT);
 
   item_string = info.armors[avatar.armor].name;
-  bitfont_render(item_string, 2, 80, JUSTIFY_LEFT);
+  bitfont_render(item_string, 2, 75, JUSTIFY_LEFT);
   
   item_string = "DEF ";
   item_string += info.armors[avatar.armor].def;
@@ -189,7 +194,7 @@ function info_render_itemlist() {
     item_string += " +";
     item_string += avatar.bonus_def;
   }
-  bitfont_render(item_string, 6, 90, JUSTIFY_LEFT);
+  bitfont_render(item_string, 6, 85, JUSTIFY_LEFT);
   
 }
 
@@ -230,11 +235,11 @@ function info_render_messages() {
   var message_displayed = false;
 
   if (info.power_action != "") {
-    bitfont_render(info.power_action, 2, 70, JUSTIFY_LEFT);
+    bitfont_render(info.power_action, 2, 30, JUSTIFY_LEFT);
 	message_displayed = true;
   }
   if (info.power_result != "") {
-    bitfont_render(info.power_result, 2, 80, JUSTIFY_LEFT);
+    bitfont_render(info.power_result, 2, 40, JUSTIFY_LEFT);
 	message_displayed = true;
   }
   return message_displayed;
