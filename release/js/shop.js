@@ -52,8 +52,8 @@ shop[6].item[1] = {type:SHOP_SPELL, value:3};
 shop[6].background = 3;
 
 shop[7].name = "Thieves Guild";
-shop[7].item[0] = {type:SHOP_MESSAGE, msg1:"For a small fee we can", msg2:"grant you safe passage"};
-shop[7].item[1] = {type:SHOP_MESSAGE, msg1:"into Stonegate City.", msg2:"(Buy the full version!)"};
+shop[7].item[0] = {type:SHOP_MESSAGE, msg1:"For a small fee we can", msg2:"sneak you to Stonegate."};
+shop[7].item[1] = {type:SHOP_MESSAGE, msg1:"(Support indie devs!", msg2:"Full version soon!)"};
 shop[7].background = 3;
 
 shop[8].name = "A Nightmare";
